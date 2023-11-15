@@ -1,0 +1,36 @@
+<h4 >Get Admin Database : </h4> 
+<div>
+	<!-- <div style="float: right;">
+		<button  class="btn btn-lg btn-outline-primary" (click)="addUrl()">Add Student</button>&nbsp;
+		<button  class="btn btn-lg btn-outline-primary" (click)="updateUrl()" >Update Student</button>&nbsp;
+		<button  class="btn btn-lg btn-outline-primary" (click)="deleteUrl()" >Delete Student</button>
+		
+	</div> -->
+		
+<table class="table table-striped">
+	<thead>
+		<tr>
+      <th scope="col">#</th>
+			<th scope="col">id</th>
+			<th scope="col">FirstName</th>
+			<th scope="col">LastName</th>
+			<th scope="col">UserName</th>
+      <th scope="col">Password</th>
+      <!-- <th scope="col">Gender</th> -->
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let student of studentData; index as i">
+			<th scope="row">{{ i + 1 }}</th>
+			<td>
+				{{ student.id }}
+			</td>
+			<td>{{ student.firstName }}</td>
+			<td>{{ student.lastName }}</td>
+			<td>{{ student.userName }}</td>
+			<td>{{ student.password }}</td>
+			<!-- <td>{{ student.isMale }}</td> -->
+		</tr>
+	</tbody>
+</table>
+</div>

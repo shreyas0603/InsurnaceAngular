@@ -17,15 +17,18 @@ export class InsuranceService {
     return this.http.get(this.url + "/" + id)
   }
 
-  updateStudent(data:any){
+  updateAmin(data:any){
     return this.http.put(this.url+ "/" + data.id, data)
   }
 
-  addStudent(data:any){
+  addAdmin(data:any){
     return this.http.post(this.url,data)
   }
 
-  deleteStudent(id:any){
+  deleteAdmin(id:any){
     return this.http.delete(this.url+'/'+id)
+  }
+  getAgent (){
+    return this.http.get(this.url+"/Agent")
   }
 }
