@@ -18,7 +18,7 @@ export class GetAdminComponent {
       console.log(this.studentData)
     },
     error:(errorResponse:HttpErrorResponse)=>{
-
+      console.log(errorResponse)
     }
   })
   }

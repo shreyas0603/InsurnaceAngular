@@ -1,0 +1,104 @@
+<head>
+    <link rel="stylesheet" href="admin-navbar.component.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="path/to/your/logo.png" alt="Logo" height="24">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/admin">Dashboard</a>
+              </li>
+              <li  ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Agent
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li ><a ngbDropdownItem class="dropdown-item" href="/addAgent">Add Agent</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Agent</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Commision</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Commision Withdrawal</a></li>
+                </ul>
+              </li>
+              
+              <li ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Insurance
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a ngbDropdownItem class="dropdown-item" >View Customers</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance Account</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Policy Payment</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Policy Claim</a></li>
+                </ul>
+              </li>
+    
+              <li ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Queries
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Feedback</a></li>
+                  
+                </ul>
+              </li>
+    
+              <li ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Insurance Type
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a ngbDropdownItem class="dropdown-item" (click)="AddInsuranceType()">Add Insurance Type</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="/getInsuranceType">View Insurance Type</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="/addInsuranceScheme">Add Insurance Scheme</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="/getInsuranceScheme">View Insurance Scheme</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">Add Insurance Plan</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Insurance Plan</a></li>
+                  
+                </ul>
+              </li>
+    
+              <li ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Settings
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">Tax Setting</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance Setting</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">Add Location</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Location</a></li>
+                  
+                </ul>
+              </li>
+    
+              <li ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Account
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">Profile</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">Change Password</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">Add Employee</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Employee</a></li>
+                  
+                </ul>
+              </li>
+    
+            </ul>
+            <ul class="navbar-nav navbar-right">
+              <li class="nav-item">
+                <a class="nav-link" href="/" >Logout</a>
+              </li>
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+</body>
+

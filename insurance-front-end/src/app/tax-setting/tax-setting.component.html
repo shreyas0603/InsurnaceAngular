@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="tax-setting.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <!-- <app-admin-navbar></app-admin-navbar><br> -->
+  <div class="login-container">
+    <h1>Tax Panel</h1>
+    <!-- [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)" -->
+    <form  >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+        <label for="username">Tax percentage</label>
+        <input type="text" id="username" name="username" placeholder="In percentage" formControlName="userName">
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

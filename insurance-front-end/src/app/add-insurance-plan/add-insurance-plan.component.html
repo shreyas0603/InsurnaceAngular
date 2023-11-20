@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="add-insurance-plan.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <!-- <app-admin-navbar></app-admin-navbar><br> -->
+  <div class="login-container">
+    <h1>Add Insurance Plan</h1>
+    <!-- [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)" -->
+    <form  >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <label >insurance Scheme</label>
+      <div class="form-group">
+      <select  id="account-type" name="account-type" formControlName="accountType">
+        
+        <option [ngValue]="null" disabled>Choose Insurance Scheme</option>
+        <option >something
+         </option>
+        
+      </select>
+    </div>
+      <div class="form-group">
+        <input type="text" id="username" name="username" placeholder="Enter minimum policy term" formControlName="userName">
+      </div>
+      <div class="form-group">
+        <input type="text" id="username" name="username" placeholder="Enter maximum policy term" formControlName="userName">
+      </div>
+      <div class="form-group">
+        <!-- <label for="username">Username</label> -->
+        <input type="number" id="username" name="username" placeholder="Enter minimum age" formControlName="userName">
+      </div>
+      <div class="form-group">
+            <input type="number" id="password" name="password" placeholder="Enter maximum age" formControlName="password">
+        </div>
+        <div class="form-group">
+            <input type="number" id="password" name="password" placeholder="Enter minimum investment amount" formControlName="password">
+        </div>
+        <div class="form-group">
+            <input type="number" id="username" name="username" placeholder="Enter maximum investment amount" formControlName="userName">
+        </div>
+        <div class="form-group">
+            <input type="number" id="username" name="username" placeholder="Enter profit ratio (in %)" formControlName="userName">
+        </div>
+        
+
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -81,8 +81,10 @@
             </a>
             <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
               <!-- The DropDown Options will be fetched from the database this options are dummy -->
-              <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance Plan 1</a></li>
-              <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance plan 2</a></li>
+              <!-- <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance Plan 1</a></li>
+              <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance plan 2</a></li> -->
+              <option class="dropdown-item" *ngFor="let insuranceScheme of insuranceSchemeData" value="{{insuranceScheme.id}}">{{insuranceScheme.insuranceSchemeName}}
+              </option>
             </ul>
           </li>
           <li class="nav-item">
@@ -91,7 +93,7 @@
         </ul>
         <ul class="navbar-nav navbar-right">
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" (click)="loginPage()">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Sign Up</a>
@@ -104,8 +106,8 @@
   
   <div class="container">
     <div class="left">
-      <h1>Heading</h1>
-      <p>Description goes here.</p>
+      <h1>Your Shield in the Storms of Life</h1>
+      <p> Let us be your anchor, ensuring you emerge stronger and more resilient with each passing storm.</p>
     </div>
     <div class="left">
       <h1>       </h1>

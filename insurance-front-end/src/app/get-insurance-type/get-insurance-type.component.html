@@ -1,5 +1,6 @@
+
 <app-admin-navbar></app-admin-navbar>
-<h4 >Get Admin Database : </h4> 
+<h4 align="center">Insurance Type Details : </h4> 
 <div>
 	<!-- <div style="float: right;">
 		<button  class="btn btn-lg btn-outline-primary" (click)="addUrl()">Add Student</button>&nbsp;
@@ -11,24 +12,17 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th scope="col">id</th>
-			<th scope="col">FirstName</th>
-			<th scope="col">LastName</th>
-			<th scope="col">UserName</th>
-      <th scope="col">Password</th>
+            <th scope="col">Index</th>
+			<th scope="col">Insurance Type Name</th>
       <!-- <th scope="col">Gender</th> -->
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let student of studentData">
-			
+		<tr *ngFor="let insuranceType of insuranceTypeData;index as i">
+			<td>{{i+1}}</td>
 			<td>
-				{{ student.id }}
+				{{ insuranceType.insuranceTypeName}}
 			</td>
-			<td>{{ student.firstName }}</td>
-			<td>{{ student.lastName }}</td>
-			<td>{{ student.userName }}</td>
-			<td>{{ student.password }}</td>
 			<!-- <td>{{ student.isMale }}</td> -->
 		</tr>
 	</tbody>

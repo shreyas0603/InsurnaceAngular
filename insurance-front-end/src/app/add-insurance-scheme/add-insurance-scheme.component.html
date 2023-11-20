@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="add-insurance-scheme.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar><br>
+  <div class="login-container">
+    <h1>Add Insurance Scheme</h1>
+    <!--  -->
+    <form [formGroup]="insuranceSchemeForm" (ngSubmit)="addInsuranceScheme(insuranceSchemeForm.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <label >insurance Type</label>
+      <div class="form-group">
+      <select  id="account-type" name="account-type" formControlName="insuranceTypeId">
+        
+        <option [ngValue]="null" disabled>Choose Insurance Type</option>
+        <option *ngFor="let insuranceType of insuranceTypeData" value="{{insuranceType.id}}">{{insuranceType.insuranceTypeName}}
+         </option>
+        
+      </select>
+    </div>
+      <div class="form-group">
+        <input type="text" placeholder="Enter insurance scheme name" formControlName="insuranceSchemeName">
+      </div>
+      <div class="form-group">
+        <input type="number"  placeholder="Enter commission for new registration" formControlName="newRegistrastionCommision">
+      </div>
+      <div class="form-group">
+        <!-- <label for="username">Username</label> -->
+        <input type="number"placeholder="Enter commission for installment payment" formControlName="installmentPaymentCommision">
+      </div>
+      <!--Image section is currently not working-->
+      <!-- <div class="form-group"> 
+            <input type="image" id="password" name="password" placeholder="choose file" formControlName="password">
+        </div> -->
+        <div class="form-group">
+            <input type="text" placeholder="Enter details of insurance scheme" formControlName="details">
+        </div>
+        
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

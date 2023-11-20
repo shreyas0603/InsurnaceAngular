@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-home-page',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AdminHomePageComponent {
 
+  constructor(private router:Router){
+
+  }
+
+  addAgentUrl(){
+    this.router.navigateByUrl('/AddAgent')
+  }
+  updateAgentUrl(){
+    this.router.navigateByUrl('/update')
+  }
+  deleteDeleteUrl(){
+    this.router.navigateByUrl('/delete')
+  }
 }
