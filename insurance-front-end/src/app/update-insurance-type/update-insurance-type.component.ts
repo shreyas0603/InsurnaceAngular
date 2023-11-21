@@ -19,11 +19,20 @@ export class UpdateInsuranceTypeComponent {
     insuranceTypeName:new FormControl('')
   })
   insuranceTypeId:number=0
+
   //id:number=0
   constructor(private insuranceTypeInfo:InsuranceService,private router:Router,private temporaryData:TemporaryDataService){
     
     temporaryData.getId.subscribe(id=>this.insuranceTypeId=id)
     //thi.id=temporaryData.getId()
+    insuranceTypeInfo.getInsuranceTypeById(this.insuranceTypeId).subscribe({
+      next:(result)=>{
+        this.insuranceTypeData=result
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse)
+      }
+    })
     console.log(this.insuranceTypeId)
     
   }
