@@ -23,6 +23,10 @@
 			<td>
 				{{ insuranceType.insuranceTypeName}}
 			</td>
+			<td>
+				<button (click)="setInsurancePlanId(insuranceType.id)">Edit</button>
+				<button (click)="deleteInsuranceType(insuranceType.id)">Delete</button>
+			</td>
 			<!-- <td>{{ student.isMale }}</td> -->
 		</tr>
 	</tbody>

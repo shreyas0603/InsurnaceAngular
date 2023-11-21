@@ -19,6 +19,7 @@
       <select  id="account-type" name="account-type" formControlName="insuranceTypeId">
         
         <option [ngValue]="null" disabled>Choose Insurance Type</option>
+        <option>null</option>
         <option *ngFor="let insuranceType of insuranceTypeData" value="{{insuranceType.id}}">{{insuranceType.insuranceTypeName}}
          </option>
         

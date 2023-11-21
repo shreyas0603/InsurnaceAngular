@@ -1,16 +1,18 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { InsuranceService } from '../service/insurance.service';
-import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { InsuranceService } from '../service/insurance.service';
+import { TemporaryDataService } from '../service/temporary-data.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-add-insurance-plan',
-  templateUrl: './add-insurance-plan.component.html',
-  styleUrls: ['./add-insurance-plan.component.css']
+  selector: 'app-update-insurance-plan',
+  templateUrl: './update-insurance-plan.component.html',
+  styleUrls: ['./update-insurance-plan.component.css']
 })
-export class AddInsurancePlanComponent {
+export class UpdateInsurancePlanComponent {
 
+  insurancePlan:any=[{}]
   insuranceSchemeData:any
   insurancePlanData:any
   insurancePlanForm=new FormGroup({
@@ -23,7 +25,9 @@ export class AddInsurancePlanComponent {
     profitRatioPercentage:new FormControl(''),
     insuranceSchemeId:new FormControl('')
   })
-  constructor(private insuranceService:InsuranceService,private router:Router){
+  insurancePlanId:number=0
+  constructor(private insuranceService:InsuranceService,private temporaryData:TemporaryDataService,private router:Router){
+    temporaryData.getId.subscribe(id=>this.insurancePlanId=id)
     insuranceService.getInsuranceScheme().subscribe({
       next:(result)=>{
         this.insuranceSchemeData=result

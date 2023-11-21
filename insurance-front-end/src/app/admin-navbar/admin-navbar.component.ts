@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TemporaryDataService } from '../service/temporary-data.service';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -8,7 +9,16 @@ import { Router } from '@angular/router';
 })
 export class AdminNavbarComponent {
 
-  constructor(private router:Router){}
+  constructor(private router:Router,private temporarydata:TemporaryDataService){
+    
+    
+  }
+  setRole(){
+    console.log("hih")
+    this.temporarydata.setRole('Admin')
+    // console.log(this.temporarydata.getRole)
+    
+  }
   AddInsuranceType(){
     this.router.navigateByUrl("/addInsuranceType")
   }

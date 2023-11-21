@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="admin-navbar.component.css">
 </head>
-<body>
+<body (click)="setRole()">
     <nav class="navbar navbar-expand-lg navbar-light bg-white ">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -20,10 +20,10 @@
                   Agent
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li ><a ngbDropdownItem class="dropdown-item" href="/addAgent">Add Agent</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Agent</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Commision</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Commision Withdrawal</a></li>
+                  <li ><a ngbDropdownItem class="dropdown-item" routerLink="/addAgent">Add Agent</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">View Agent</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCommission">View Commision</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">View Commision Withdrawal</a></li>
                 </ul>
               </li>
               
@@ -32,10 +32,10 @@
                   Insurance
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a ngbDropdownItem class="dropdown-item" >View Customers</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance Account</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Policy Payment</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Policy Claim</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/agentCustomer">View Customers</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCustomerInsuranceAccount">Insurance Account</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getPolicyPayment">View Policy Payment</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getPolicyClaim">View Policy Claim</a></li>
                 </ul>
               </li>
     
@@ -44,7 +44,7 @@
                   Queries
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Feedback</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getFeedback">View Feedback</a></li>
                   
                 </ul>
               </li>
@@ -55,11 +55,11 @@
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a ngbDropdownItem class="dropdown-item" (click)="AddInsuranceType()">Add Insurance Type</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="/getInsuranceType">View Insurance Type</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="/addInsuranceScheme">Add Insurance Scheme</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="/getInsuranceScheme">View Insurance Scheme</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">Add Insurance Plan</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Insurance Plan</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getInsuranceType">View Insurance Type</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/addInsuranceScheme">Add Insurance Scheme</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getInsuranceScheme">View Insurance Scheme</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/addInsurancePlan">Add Insurance Plan</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getInsurancePlan">View Insurance Plan</a></li>
                   
                 </ul>
               </li>
@@ -69,10 +69,10 @@
                   Settings
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">Tax Setting</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance Setting</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">Add Location</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Location</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Tax Setting</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Insurance Setting</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/addLocation">Add Location</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getLocation">View Location</a></li>
                   
                 </ul>
               </li>
@@ -82,10 +82,10 @@
                   Account
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">Profile</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">Change Password</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">Add Employee</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" href="#">View Employee</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Profile</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Change Password</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/addEmployee">Add Employee</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getEmployee">View Employee</a></li>
                   
                 </ul>
               </li>
@@ -93,7 +93,7 @@
             </ul>
             <ul class="navbar-nav navbar-right">
               <li class="nav-item">
-                <a class="nav-link" href="/" >Logout</a>
+                <a class="nav-link" routerLink="/" >Logout</a>
               </li>
              
             </ul>

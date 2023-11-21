@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 // import {MatTableDataSource} from '@angular/material/table';
 import { InsuranceService } from '../service/insurance.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TemporaryDataService } from '../service/temporary-data.service';
 
 
 @Component({
@@ -26,12 +27,16 @@ export class GetAgentCustomerComponent {
   currentPage=1
   dataSource:any
   removeCustomer:any
+  userRole:string=''
   
   
-  constructor(customerinfo:InsuranceService){
+  constructor(customerinfo:InsuranceService,private temporaryData:TemporaryDataService){
+    this.userRole=temporaryData.getRole()
+    console.log(this.userRole)
     this.insurnaceService=customerinfo
     customerinfo.getCustomer().subscribe((data)=>{
       this.customerData=data
+      console.log(this.userRole)
       console.log(this.customerData);
       // this.collectionSize=this.customerData.length;
     })

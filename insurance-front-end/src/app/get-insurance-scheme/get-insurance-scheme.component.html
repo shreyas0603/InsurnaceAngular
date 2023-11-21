@@ -12,7 +12,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-            <th scope="col">Insurance Type Name</th>
+            <!-- <th scope="col">Insurance Type Name</th> -->
 			<th scope="col">Insurance Scheme Name</th>
             <th scope="col">New Registrastion Commision</th>
             <th scope="col">Installment Payment Commision</th>
@@ -21,8 +21,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let insuranceScheme of insuranceSchemeData;index as i">
-			<td>{{insuranceTypeData.insuranceTypeName}}</td>
+		
+		<tr *ngFor="let insuranceScheme of insuranceSchemeData;index as i"  >
+			<!-- <span>{{findInsuranceTypeName(insuranceScheme.insuranceTypeId)}}</span> -->
+			<!-- <ng-template *ngIf="true" onmouseover="findInsuranceTypeName(insuranceScheme.insuranceTypeId)"></ng-template> -->
+			<!-- <td >{{insuranceTypeData[0].insuranceTypeName}}</td> -->
 			<td>
 				{{ insuranceScheme.insuranceSchemeName}}
 			</td>

@@ -15,6 +15,14 @@ import { GetCustomerInsuranceAccountComponent } from './get-customer-insurance-a
 import { GetPolicyPaymentComponent } from './get-policy-payment/get-policy-payment.component';
 import { GetPolicyClaimComponent } from './get-policy-claim/get-policy-claim.component';
 import { GetCommisionComponent } from './get-commision/get-commision.component';
+import { GetInsurancePlanComponent } from './get-insurance-plan/get-insurance-plan.component';
+import { AddLocationComponent } from './add-location/add-location.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { UpdateInsurancePlanComponent } from './update-insurance-plan/update-insurance-plan.component';
+import { UpdateInsuranceTypeComponent } from './update-insurance-type/update-insurance-type.component';
+import { GetLocationComponent } from './get-location/get-location.component';
+import { GetEmployeeComponent } from './get-employee/get-employee.component';
+import { GetFeedbackComponent } from './get-feedback/get-feedback.component';
 // import { AddAgentComponent } from './add-agent/add-agent.component';
 
 const routes: Routes = [
@@ -34,6 +42,23 @@ const routes: Routes = [
     path:'addAgent',
     component:AddAgentComponent
   },
+  {
+    path:'addEmployee',
+    component:AddEmployeeComponent
+  },
+  {
+    path:'getEmployee',
+    component:GetEmployeeComponent
+  },
+  {
+    path:'addLocation',
+    component:AddLocationComponent
+  },
+  {
+    path:'getLocation',
+    component:GetLocationComponent
+  }
+  ,
   {
     path:'agentCustomer',
     component:GetAgentCustomerComponent
@@ -63,6 +88,10 @@ const routes: Routes = [
     component:AddInsurancePlanComponent
   },
   {
+    path:"getInsurancePlan",
+    component:GetInsurancePlanComponent
+  },
+  {
     path:"login",
     component:CommonLoginComponent
   },
@@ -77,7 +106,20 @@ const routes: Routes = [
   {
     path:"getCommission",
     component:GetCommisionComponent
+  },
+  {
+    path:"updateInsurancePlan",
+    component:UpdateInsurancePlanComponent
+  },
+  {
+    path:"updateInsuranceType",
+    component:UpdateInsuranceTypeComponent
+  },
+  {
+    path:'getFeedback',
+    component:GetFeedbackComponent
   }
+  
   
 ];
 

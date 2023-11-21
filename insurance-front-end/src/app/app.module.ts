@@ -29,6 +29,14 @@ import { GetCustomerInsuranceAccountComponent } from './get-customer-insurance-a
 import { GetPolicyPaymentComponent } from './get-policy-payment/get-policy-payment.component';
 import { GetPolicyClaimComponent } from './get-policy-claim/get-policy-claim.component';
 import { GetCommisionComponent } from './get-commision/get-commision.component';
+import { GetInsurancePlanComponent } from './get-insurance-plan/get-insurance-plan.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { UpdateInsurancePlanComponent } from './update-insurance-plan/update-insurance-plan.component';
+import { UpdateInsuranceTypeComponent } from './update-insurance-type/update-insurance-type.component';
+import { GetLocationComponent } from './get-location/get-location.component';
+import { GetEmployeeComponent } from './get-employee/get-employee.component';
+import { GetFeedbackComponent } from './get-feedback/get-feedback.component';
+// import { AddLocationsComponent } from './add-locations/add-locations.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +62,15 @@ import { GetCommisionComponent } from './get-commision/get-commision.component';
     GetCustomerInsuranceAccountComponent,
     GetPolicyPaymentComponent,
     GetPolicyClaimComponent,
-    GetCommisionComponent
+    GetCommisionComponent,
+    GetInsurancePlanComponent,
+    AddEmployeeComponent,
+    UpdateInsurancePlanComponent,
+    UpdateInsuranceTypeComponent,
+    GetLocationComponent,
+    GetEmployeeComponent,
+    GetFeedbackComponent,
+    // AddLocationsComponent
   ],
   imports: [
     BrowserModule,

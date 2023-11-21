@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TemporaryDataService } from '../service/temporary-data.service';
 
 @Component({
   selector: 'app-agent-navbar',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AgentNavbarComponent {
 
+  constructor(private temporarydata:TemporaryDataService){
+    
+    temporarydata.setRole('Agent')
+  }
 }

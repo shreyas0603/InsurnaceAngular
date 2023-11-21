@@ -7,7 +7,7 @@ body {
     background-size: 600% 600%;
     animation: gradientAnimation 10s ease infinite;
     
-    height: 138vh;
+    height: 100vh;
   }
   
   @keyframes gradientAnimation {
@@ -27,7 +27,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
-    padding: 20px;
+    padding: 20px;  
     text-align: center;
     max-width: 400px;
     width: 100%;

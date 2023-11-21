@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="update-insurance-type.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar><br>
+  <div class="login-container">
+    <h1>Add Insurance Type</h1>
+    <!--  -->
+    <form [formGroup]="insuranceTypeForm" (ngSubmit)="updateInsuranceType(insuranceTypeForm.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+        <label for="username">Insurance Type Name</label>
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+        <input type="hidden"   formControlName="id" [(ngModel)]="insuranceTypeId">
+        <h1>{{insuranceTypeId}}</h1>
+        <input type="text" id="username" name="username" placeholder="Enter insurance type name" formControlName="insuranceTypeName">
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

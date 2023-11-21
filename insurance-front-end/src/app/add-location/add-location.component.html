@@ -1,1 +1,28 @@
-<p>add-location works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="add-location.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar>
+  <div class="login-container">
+    <h1>Employee Registration</h1>
+    <!-- -->
+    <form [formGroup]="addLocation" (ngSubmit)="addNewLocation(addLocation.value)"  >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+        <input type="text" id="firstName" name="username" placeholder="Enter State" formControlName="state">
+      </div>
+      <div class="form-group">
+        <input type="text" id="lastName" name="username" placeholder="Enter City" formControlName="city">
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

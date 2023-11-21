@@ -5,24 +5,25 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-location',
-  templateUrl: './add-location.component.html',
-  styleUrls: ['./add-location.component.css']
+  selector: 'app-add-employee',
+  templateUrl: './add-employee.component.html',
+  styleUrls: ['./add-employee.component.css']
 })
-export class AddLocationComponent {
+export class AddEmployeeComponent {
 
+  employeeData:any
+  addEmployee = new FormGroup({
+    firstName : new FormControl(''),
+    lastName : new FormControl(''),
+    userName : new FormControl(''),
+    password : new FormControl(''),
 
-  locationData:any
-  addLocation = new FormGroup({
-    state : new FormControl(''),
-    city : new FormControl(''),
-   
   })
   constructor(private insuranceservice:InsuranceService,private router:Router){
 
   }
-  addNewLocation(data:any){
-    this.insuranceservice.addLocation(data).subscribe({
+  addNewEmployee(data:any){
+    this.insuranceservice.addEmployee(data).subscribe({
       next:(result)=>{
         alert("Agent Added Successfully")
         console.log(result)
@@ -33,4 +34,5 @@ export class AddLocationComponent {
       }
     })
   }
+
 }

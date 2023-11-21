@@ -1,0 +1,59 @@
+
+<app-admin-navbar></app-admin-navbar>
+<h4 align="center">Insurance Scheme Details : </h4> 
+<div>
+	<!-- <div style="float: right;">
+		<button  class="btn btn-lg btn-outline-primary" (click)="addUrl()">Add Student</button>&nbsp;
+		<button  class="btn btn-lg btn-outline-primary" (click)="updateUrl()" >Update Student</button>&nbsp;
+		<button  class="btn btn-lg btn-outline-primary" (click)="deleteUrl()" >Delete Student</button>
+		
+	</div> -->
+		
+<table class="table table-striped">
+	<thead>
+		<tr>
+            <!-- <th scope="col">Insurance Type Name</th> -->
+			<th scope="col">Minimum Policy Term</th>
+            <th scope="col">Max Policy Term</th>
+            <th scope="col">Minimum Age</th>
+            <th scope="col">Maximum Age</th>
+            <th scope="col">Minimum Investment Amount</th>
+            <th scope="col">Maximum Investment Amount</th>
+            <th scope="col">Profit Ratio Percentage</th>
+			<th scope="col">Action</th>
+      <!-- <th scope="col">Gender</th> -->
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let insurancePlan of insurancePlanData;index as i">
+			<!-- <td>{{insuranceTypeData.insuranceTypeName}}</td> -->
+			<td>
+				{{ insurancePlan.minPolicyTerm}}
+			</td>
+            <td>
+				{{ insurancePlan.maxPolicyTerm}}
+			</td>
+            <td>
+				{{ insurancePlan.minAge}}
+			</td>
+            <td>
+				{{ insurancePlan.maxAge}}
+			</td>
+            <td>
+				{{ insurancePlan.minInvestmentAmount}}
+			</td>
+            <td>
+				{{ insurancePlan.maxInvestmentAmount}}
+			</td>
+            <td>
+				{{ insurancePlan.profitRatioPercentage}}
+			</td>
+			<td>
+				<button (onclick)="setInsurancePlanId(insurancePlan.id)">Edit</button>
+				<button>Delete</button>
+			</td>
+			<!-- <td>{{ student.isMale }}</td> -->
+		</tr>
+	</tbody>
+</table>
+</div>

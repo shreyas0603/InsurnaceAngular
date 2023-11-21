@@ -14,7 +14,7 @@ export class InsuranceService {
   }
 
   getAdminById(id:any){
-    return this.http.get(this.url + "/" + id)
+    return this.http.get(this.url + "/Admin/" + id)
   }
 
   updateAmin(data:any){
@@ -37,6 +37,18 @@ export class InsuranceService {
   getCustomer(){
     return this.http.get(this.url+"/Customer")
   }
+  getEmployee (){
+    return this.http.get(this.url+"/Employee")
+  }
+  addEmployee(data:any){
+    return this.http.post(this.url+"/Employee",data)
+  }
+  getLocation (){
+    return this.http.get(this.url+"/Location")
+  }
+  addLocation(data:any){
+    return this.http.post(this.url+"/Location",data)
+  }
   //customer-insurance-account
   getCustomerInsuranceAccount(){
     return this.http.get(this.url+"/CustomerInsuranceAccount")
@@ -50,11 +62,28 @@ export class InsuranceService {
   getInsuranceTypeById(id:any){
     return this.http.get(this.url + "/InsuranceType/" + id)
   }
+  updateInsuranceType(data:any){
+    return this.http.put(this.url+"/InsuranceType",data)
+  }
+  deleteInsuranceType(id:number){
+    console.log(id)
+    // debugger
+    return this.http.delete(this.url+"/InsuranceType/"+id)
+  }
   addInsuranceScheme(data:any){
     return this.http.post(this.url+"/InsuranceScheme",data)
   }
   getInsuranceScheme(){
     return this.http.get(this.url+"/InsuranceScheme")
+  }
+  addInsurancePlan(data:any){
+    return this.http.post(this.url+"/InsurancePlan",data)
+  }
+  getInsurancePlan(){
+    return this.http.get(this.url+"/InsurancePlan")
+  }
+  updateInsurancePlan(data:any){
+    return this.http.put(this.url+"/InsurancePlan/"+data.id,data)
   }
   //policy payments
   getPolicyPayements(){
@@ -72,5 +101,11 @@ export class InsuranceService {
   // commsion
   getCommision(){
     return this.http.get(this.url+"/Commision")
-  } 
+  }
+  //getquery
+  getQuery(){
+    return this.http.get(this.url+"/Query")
+  }
+
+  
 }

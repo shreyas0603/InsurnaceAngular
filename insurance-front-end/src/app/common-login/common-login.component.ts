@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
 import { DataService } from '../service/data.service';
+import { TemporaryDataService } from '../service/temporary-data.service';
 //import { LoginService } from '../service/login.service';
 //import { DataService } from '../service/data.service';
 
@@ -34,7 +35,8 @@ export class CommonLoginComponent {
   //   // countAdmin: 0
   //  }
   
-  constructor(private auth: LoginService,private router:Router,private data:DataService) {
+  constructor(private auth: LoginService,private router:Router,private data:DataService
+    ,private temporaryData:TemporaryDataService) {
     
     
   }
@@ -44,6 +46,7 @@ export class CommonLoginComponent {
     // this.loginCredential.userName=loginformresponse.userName
     // this.loginCredential.password=loginformresponse.password
     this.roleResponse=loginformresponse.accountType
+    
   }
 
   loginUser(formData:any){
@@ -51,7 +54,7 @@ export class CommonLoginComponent {
     this.accountTypeResponse(formData)
     
     if(this.roleResponse=="Admin"){
-
+      
       this.auth.loginAdmin(formData).subscribe({
         next:(response)=>{
           // console.log(token);
@@ -79,9 +82,10 @@ export class CommonLoginComponent {
           //store user info in data service vars
           this.data.userId=this.user.userId
           this.data.userName=this.user.userName
-  
           
-             this.router.navigateByUrl("/admin")
+          this.temporaryData.setLoginId(this.data.userId)
+          
+          this.router.navigateByUrl("/admin")
           
         },
         error:(errorResponse:HttpErrorResponse)=>{
@@ -124,6 +128,7 @@ export class CommonLoginComponent {
           this.data.userName=this.user.userName
   
           
+          this.temporaryData.setLoginId(this.data.userId)
          
              this.router.navigateByUrl("/agent")
           
@@ -167,6 +172,7 @@ export class CommonLoginComponent {
           this.data.userName=this.user.userName
   
           
+          this.temporaryData.setLoginId(this.data.userId)
          
              this.router.navigateByUrl("/customer")
           
@@ -210,6 +216,7 @@ export class CommonLoginComponent {
           this.data.userName=this.user.userName
   
           
+          this.temporaryData.setLoginId(this.data.userId)
           
              this.router.navigateByUrl("/employee")
           

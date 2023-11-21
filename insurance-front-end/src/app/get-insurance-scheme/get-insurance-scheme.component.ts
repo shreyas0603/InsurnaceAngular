@@ -18,23 +18,25 @@ export class GetInsuranceSchemeComponent {
       next:(data)=>{
       this.insuranceSchemeData=data
       console.log(this.insuranceSchemeData)
-      this.findInsuranceTypeName(this.insuranceSchemeData.insuranceTypeId);
+      // debugger
+      // this.findInsuranceTypeName(this.insuranceSchemeData.insuranceTypeId);
     },
     error:(errorResponse:HttpErrorResponse)=>{
       console.log(errorResponse)
     }
   })
 }
-findInsuranceTypeName(id:number){
-  // debugger
-  this.insuranceService.getInsuranceTypeById(id).subscribe({
-    next:(data)=>{
-      this.insuranceTypeData=data
-      console.log(this.insuranceTypeData)
-    },
-    error:(errorResponse:HttpErrorResponse)=>{
-      console.log(errorResponse)
-    }
-  })
-}
+// findInsuranceTypeName(id:number){
+//   // debugger
+//   this.insuranceService.getInsuranceTypeById(id).subscribe({
+//     next:(data)=>{
+//       this.insuranceTypeData=data
+//       // console.log(this.insuranceTypeData)
+//       // return this.insuranceTypeData.insuranceTypeName
+//     },
+//     error:(errorResponse:HttpErrorResponse)=>{
+//       console.log(errorResponse)
+//     }
+//   })
+// }
 }
