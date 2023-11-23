@@ -68,7 +68,7 @@ th {
 </head>
 <body>
   <app-admin-navbar></app-admin-navbar>
-  <h1 >View FeedBack</h1>
+  <h1 >View Location</h1>
 
   <table class="table table-striped">
 	<thead>
@@ -92,8 +92,8 @@ th {
 			<td>{{ location.state}}</td>
             <td>{{location.city}}</td>
             <td>
-              <button (click)="setId(location.id)">Edit</button>&nbsp;
-				<button (click)="deleteData(location.id)">Delete</button>
+              <button class="btn btn-primary" (click)="setId(location.id)">Edit</button>&nbsp;
+				<button class="btn btn-primary" (click)="deleteData(location.id)">Delete</button>
             </td>
             {{temporaryData.setLocationCount(i+1)}}
 		</tr>

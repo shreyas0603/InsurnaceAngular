@@ -74,6 +74,7 @@ export class CommonLoginComponent {
           
           //Store it in ls
           localStorage.setItem("token",this.myToken)
+          localStorage.setItem("role",this.roleResponse)
           // this.router.navigateByUrl("/weather");
   
           //access object from resopnse body
@@ -84,6 +85,8 @@ export class CommonLoginComponent {
           this.data.userName=this.user.userName
           
           this.temporaryData.setLoginId(this.data.userId)
+          
+          console.log(this.roleResponse)
           
           this.router.navigateByUrl("/admin")
           
@@ -118,6 +121,7 @@ export class CommonLoginComponent {
           
           //Store it in ls
           localStorage.setItem("token",this.myToken)
+          localStorage.setItem("role",this.roleResponse)
           // this.router.navigateByUrl("/weather");
   
           //access object from resopnse body
@@ -162,7 +166,8 @@ export class CommonLoginComponent {
           
           //Store it in ls
           localStorage.setItem("token",this.myToken)
-          this.router.navigateByUrl("/weather");
+          localStorage.setItem("role",this.roleResponse)
+          // this.router.navigateByUrl("/weather");
   
           //access object from resopnse body
           this.user=response.body
@@ -206,7 +211,8 @@ export class CommonLoginComponent {
           
           //Store it in ls
           localStorage.setItem("token",this.myToken)
-          this.router.navigateByUrl("/weather");
+          localStorage.setItem("role",this.roleResponse)
+          // this.router.navigateByUrl("/weather");
   
           //access object from resopnse body
           this.user=response.body

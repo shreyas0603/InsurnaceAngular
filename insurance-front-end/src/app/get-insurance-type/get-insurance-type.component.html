@@ -25,8 +25,8 @@
 				{{ insuranceType.insuranceTypeName}}
 			</td>
 			<td>
-				<button (click)="setInsurancePlanId(insuranceType.id)">Edit</button>
-				<button (click)="deleteInsuranceType(insuranceType.id)">Delete</button>
+				<button class="btn btn-primary" (click)="setInsurancePlanId(insuranceType.id)">Edit</button>&nbsp;
+				<button class="btn btn-primary" (click)="deleteInsuranceType(insuranceType.id)">Delete</button>
 			</td>
 			<!-- <td>{{ student.isMale }}</td> -->
 			{{temporaryData.setInsuranceTypeCount(i+1)}}

@@ -35,6 +35,30 @@ export class GetInsuranceSchemeComponent {
     }
   })
 }
+// insuranceTypeName(id:number){
+//   debugger
+//   this.insuranceService.getInsuranceTypeById(id).subscribe({
+//     next:(result)=>{
+//       console.log(result)
+//       this.insuranceTypeData=result
+//       return this.insuranceTypeData[0].insuranceTypeName
+//     }
+//   })
+// }
+ngOnInit():void{
+  // debugger
+  var token=localStorage.getItem('token')
+  
+  var role = localStorage.getItem('role')
+  if(token==null){
+    alert('Please login')
+    this.router.navigateByUrl('/login')
+  }
+  else if(role!='Admin'){
+    alert('Please Login As Admin')
+    this.router.navigateByUrl('/login')
+  }
+}
 setId(id:number){
   console.log(id)
   this.temporaryData.setId(id)

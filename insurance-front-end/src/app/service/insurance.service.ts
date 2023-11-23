@@ -12,7 +12,9 @@ export class InsuranceService {
   getAdmins(){
     return this.http.get(this.url+"/Admin")
   }
-
+  isAdminUsernameUnique(username: string){
+    return this.http.get(this.url+"/Admin/UsernameUnique"+"?username="+username)
+  }
   getAdminById(id:any){
     return this.http.get(this.url + "/Admin/" + id)
   }
@@ -35,6 +37,9 @@ export class InsuranceService {
   getAgent (){
     return this.http.get(this.url+"/Agent")
   }
+  isAgentUsernameUnique(username: string){
+    return this.http.get(this.url+"/Agent/UsernameUnique"+"?username="+username)
+  }
   getAgentById(id:Number){
     return this.http.get(this.url+"/Agent/"+id)
   }
@@ -54,6 +59,9 @@ export class InsuranceService {
   getCustomer(){
     return this.http.get(this.url+"/Customer")
   }
+  isCustomerUsernameUnique(username: string){
+    return this.http.get(this.url+"/Customer/UsernameUnique"+"?username="+username)
+  }
   getCustomerById(id:number){
     return this.http.get(this.url+"/Customer/"+id)
   }
@@ -66,6 +74,9 @@ export class InsuranceService {
   //Employee
   getEmployee (){
     return this.http.get(this.url+"/Employee")
+  }
+  isEmployeeUsernameUnique(username: string){
+    return this.http.get(this.url+"/Employee/UsernameUnique"+"?username="+username)
   }
   getEmployeeById (id:number){
     return this.http.get(this.url+"/Employee/"+id)

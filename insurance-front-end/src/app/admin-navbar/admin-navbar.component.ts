@@ -13,8 +13,9 @@ export class AdminNavbarComponent {
     
     
   }
-  deleteToken(){
-    localStorage.removeItem('token')
+    deleteToken(){
+    // localStorage.removeItem('token')
+    localStorage.clear()
   }
   setRole(){
     console.log("hih")

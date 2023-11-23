@@ -30,8 +30,10 @@
 			<!-- <ng-template *ngIf="true" onmouseover="findInsuranceTypeName(insuranceScheme.insuranceTypeId)"></ng-template> -->
 			
 			<!-- <div *ngIf="true">{{findInsuranceTypeName(insuranceScheme.insuranceTypeId)}}</div> -->
-			<td *ngIf="insuranceTypeData[i].id==insuranceScheme.insuranceTypeId">
+			<!-- <td *ngIf="insuranceTypeData[i].id==insuranceScheme.insuranceTypeId"> -->
+			<td>
 				{{insuranceTypeData[i].insuranceTypeName}}
+				<!-- {{insuranceTypeName(insuranceSchemeData.insuranceTypeId)}} -->
 			</td>
 			<td>
 				{{ insuranceScheme.insuranceSchemeName}}
@@ -47,8 +49,8 @@
 				{{ insuranceScheme.details}}
 			</td>
 			<td>
-				<button (click)="setId(insuranceScheme.id)">Edit</button>&nbsp;
-				<button (click)="deleteData(insuranceScheme.id)">Delete</button>
+				<button class="btn btn-primary" (click)="setId(insuranceScheme.id)">Edit</button>&nbsp;
+				<button class="btn btn-primary" (click)="deleteData(insuranceScheme.id)">Delete</button>
 			</td>
 			{{temporaryData.setInsuranceSchemeCount(i+1)}}
 			<!-- <td>{{ student.isMale }}</td> -->

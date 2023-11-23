@@ -14,7 +14,8 @@ export class AgentNavbarComponent {
     
   }
   deleteToken(){
-    localStorage.removeItem('token')
+    // localStorage.removeItem('token')
+    localStorage.clear()
   }
   setRole(){
     console.log("hih")

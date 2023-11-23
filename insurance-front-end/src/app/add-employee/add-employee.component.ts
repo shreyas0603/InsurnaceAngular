@@ -19,8 +19,35 @@ export class AddEmployeeComponent {
     password : new FormControl(''),
 
   })
+  userName:string="";
+  isUnique:any;
   constructor(private insuranceservice:InsuranceService,private router:Router){
 
+  }
+  ngOnInit():void{
+    // debugger
+    var token=localStorage.getItem('token')
+    
+    var role = localStorage.getItem('role')
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Admin'){
+      alert('Please Login As Admin')
+      this.router.navigateByUrl('/login')
+    }
+  }
+  checkUsernameUniqueness(){
+    this.insuranceservice.isEmployeeUsernameUnique(this.userName).subscribe({
+      next:(result)=>{
+          this.isUnique=result;
+      },
+      error:(Httperror:HttpErrorResponse)=>{
+        console.log(Httperror);
+       
+      }
+    })
   }
   addNewEmployee(data:any){
     this.insuranceservice.addEmployee(data).subscribe({

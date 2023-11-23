@@ -95,8 +95,8 @@ th {
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let payment of paymentData">
-            <td>{{ payment.customerId }}</td>
+		<tr *ngFor="let payment of paymentData;index as i">
+            <td>{{ customerData[i].userName }}</td>
 			<td>{{ payment.insurancePlanId}}</td>
             <td>{{ payment.paidAmount}}</td>
             <td>{{ payment.taxAmount}}</td> 

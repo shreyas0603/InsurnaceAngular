@@ -10,10 +10,16 @@
 <body>
     <app-admin-navbar></app-admin-navbar>
   <div class="login-container">
-    <h1>Employee Registration</h1>
+    <h1>Add Location</h1>
     <!-- -->
     <form [formGroup]="addLocation" (ngSubmit)="addNewLocation(addLocation.value)"  >
       <!-- <p>Kindly enter the credentials</p> -->
+      <!-- <select formControlName="state">
+        <option [ngValue]="null" disabled>Choose Insurance Type</option>
+        <option>null</option>
+        <option *ngFor="let insuranceType of insuranceTypeData" value="{{insuranceType.id}}">{{insuranceType.insuranceTypeName}}
+         </option>
+      </select> -->
       <div class="form-group">
         <input type="text" id="firstName" name="username" placeholder="Enter State" formControlName="state">
       </div>

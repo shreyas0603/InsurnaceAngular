@@ -101,8 +101,8 @@ th {
             <td>{{agent.commision}}</td>
             <td>{{ agent.totalCommision}}</td>
             <td>
-              <button (click)="setId(agent.id)">Edit</button>
-              <button (click)="deleteData(agent.id)">Delete</button>
+              <button class="btn btn-primary" (click)="setId(agent.id)">Edit</button> &nbsp;
+              <button class="btn btn-primary" (click)="deleteData(agent.id)">Delete</button>
             </td>
             {{temporaryData.setAgentCount(i+1)}}
 		</tr>

@@ -75,7 +75,8 @@ th {
             <th scope="col">Nominee</th>
             <th scope="col">Nominee Relation</th>
             <!-- <th scope="col">Password</th> -->
-            <th scope="col">LocationId</th>
+            <th scope="col">Location</th>
+            <th scope="col">Agent </th>
             <th scope="col">Action</th>
             <!-- <th scope="col">AgentId</th> -->
 		</tr>
@@ -93,10 +94,12 @@ th {
             <td>{{ customer.nomineeName }}</td>
             <td>{{ customer.nomineeRelation}}</td>
             <!-- <td>{{customer.password}}</td> -->
-            <td>{{customer.locationId}}</td>
+            <td>{{locationData[i].city}},{{locationData[i].state}}</td>
+            <td>{{agentData[i].userName}}</td>
             <td>
-              <button (click)="setId(customer.id)">Edit</button>&nbsp;
-              <button (click)="deleteData(customer.id)">Delete</button>
+              
+              <button class="btn btn-primary" (click)="setId(customer.id)">Edit</button>&nbsp;
+              <button class="btn btn-primary" (click)="deleteData(customer.id)">Delete</button>
             </td>
             {{temporaryData.setCustomerCount(i+1)}}
             <!-- <td>{{customer.agentId}}</td> -->

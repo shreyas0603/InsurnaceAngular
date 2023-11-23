@@ -93,8 +93,8 @@ th {
             <td>{{employee.lastName}}</td>
             <td>{{ employee.userName}}</td> 
             <td>
-              <button (click)="setId(employee.id)">Edit</button>&nbsp;
-              <button (click)="deleteData(employee.id)">Delete</button>
+              <button class="btn btn-primary" (click)="setId(employee.id)">Edit</button>&nbsp;
+              <button class="btn btn-primary" (click)="deleteData(employee.id)">Delete</button>
             </td>
             {{temporaryData.setEmployeeCount(i+1)}}
 		</tr>

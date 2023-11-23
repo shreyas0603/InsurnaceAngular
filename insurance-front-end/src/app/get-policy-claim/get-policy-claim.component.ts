@@ -24,4 +24,18 @@ export class GetPolicyClaimComponent {
       // this.collectionSize=this.customerData.length;
     })
   }
+  ngOnInit():void{
+    // debugger
+    var token=localStorage.getItem('token')
+    
+    var role = localStorage.getItem('role')
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Admin' && role!='Agent'){
+      alert('Please Login As Admin Or Agent')
+      this.router.navigateByUrl('/login')
+    }
+  }
 }

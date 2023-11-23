@@ -82,22 +82,22 @@ th {
             <th scope="col">Query Date</th>
             <th scope="col">Reply</th>
           
-            <th scope="col">Customer Id</th>
+            <th scope="col">Customer</th>
            <th scope="col">Action</th>
             <!-- <th scope="col">Status</th> -->   <!--can be added-->
            
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let query of queryData">
+		<tr *ngFor="let query of queryData;index as i">
             <td>{{ query.id }}</td>
 			<td>{{ query.queryTitle}}</td>
             <td>{{query.queryMessage}}</td>
             <td>{{ query.queryDate}}</td> 
             <td>{{query.reply}}</td>
-            <td>{{ query.customerId}}</td>
+            <td>{{ customerData[i].userName}}</td>
             <td>
-              <button (click)="setId(query.id)">Edit</button>
+              <button class="btn btn-primary" (click)="setId(query.id)">Edit</button>
               <!-- <button (click)="deleteData(query.id)">Delete</button> -->
             </td>
           

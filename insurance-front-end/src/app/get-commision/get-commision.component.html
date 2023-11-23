@@ -78,11 +78,14 @@ th {
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let commision of commisionData">
+		<tr *ngFor="let commision of commisionData;index as i">
             
-	    <td>{{ commision.insurancePlanId }} 	</td>
-			<td>{{ commision.agentId}}</td>
-            <td>{{ commision.customerId}}</td>
+	    <!-- <td>{{ commision.insurancePlanId }} 	</td> -->
+      <td >{{commision.insurancePlanId}}</td>
+			<!-- <td>{{ commision.agentId}}</td> -->
+      <td>{{agentData[i].userName}}</td>
+            <!-- <td>{{ commision.customerId}}</td> -->
+            <td>{{customerData[i].userName}}</td>
             <td>{{ commision.commisionAmount}}</td>
             
           </tr>

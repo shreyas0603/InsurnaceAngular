@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
 import { TemporaryDataService } from '../service/temporary-data.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-get-commision',
@@ -17,13 +18,58 @@ export class GetCommisionComponent {
   collectionSize=0;
   total:number=0;
   userRole:string=''
+
+  insurancePlanData:any
+  agentData:any
+  customerData:any
   constructor(private commisioninfo:InsuranceService,private temporaryData:TemporaryDataService, private router: Router){
     this.userRole=temporaryData.getRole()
     commisioninfo.getCommision().subscribe((data)=>{
       this. commisionData=data
       console.log(this. commisionData);
+      
+      commisioninfo.getCustomer().subscribe({
+        next:(response)=>{
+          this.customerData=response
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
+      })
+      commisioninfo.getInsurancePlan().subscribe({
+        next:(response)=>{
+          console.log(response)
+          this.insurancePlanData=response
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
+      })
+      commisioninfo.getAgent().subscribe({
+        next:(response)=>{
+          this.agentData=response
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
+      })
+      
       // this.collectionSize=this.customerData.length;
     })
+  }
+  ngOnInit():void{
+    // debugger
+    var token=localStorage.getItem('token')
+    
+    var role = localStorage.getItem('role')
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Admin' && role!='Agent'){
+      alert('Please Login As Admin Or Agent')
+      this.router.navigateByUrl('/login')
+    }
   }
   setId(id:number){
     console.log(id)

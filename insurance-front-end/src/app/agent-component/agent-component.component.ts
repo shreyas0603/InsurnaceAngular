@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TemporaryDataService } from '../service/temporary-data.service';
 import { DataService } from '../service/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agent-component',
@@ -10,7 +11,15 @@ import { DataService } from '../service/data.service';
 })
 export class AgentComponentComponent {
   userName:string=''
-  constructor(protected temporaryData:TemporaryDataService, private data:DataService){
+  token:string | null=null
+  constructor(protected temporaryData:TemporaryDataService,private router:Router, private data:DataService){
     this.userName= data.userName
+  }
+  ngOnInit():void{
+    this.token=localStorage.getItem('token')
+    if(this.token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
   }
 }

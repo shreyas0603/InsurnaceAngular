@@ -79,7 +79,7 @@ th {
 	<thead>
 		<tr>
             <!-- <th scope="col">Id</th> -->
-			<th scope="col">Customer id</th>
+			<th scope="col">Customer</th>
 			<!-- <th scope="col">Cust LastName</th> -->
 			<th scope="col">Account No</th>
             <!-- <th scope="col">Insurnace Type</th> -->    <!--please add -->
@@ -96,8 +96,8 @@ th {
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let account of accountData">
-            <td>{{ account.customerId }}</td>
+		<tr *ngFor="let account of accountData;index as i">
+            <td>{{ customerData[i].userName }}</td>
 			<td>{{ account.id}}</td>
             <td>{{ account.insuranceCreationDate}}</td>
             <td>{{ account.maturityDate}}</td>
@@ -108,8 +108,8 @@ th {
             <td>{{account.sumAssured}}</td>
             <!-- <td>{{customer.agentId}}</td> -->
             <td>
-              <button (click)="setId(account.id)">Edit</button>
-              <button (click)="deleteData(account.id)">Delete</button>
+              <button class="btn btn-primary" (click)="setId(account.id)">Edit</button>&nbsp;
+              <button class="btn btn-primary" (click)="deleteData(account.id)">Delete</button>
             </td>
 		</tr>
 	</tbody>

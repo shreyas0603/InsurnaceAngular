@@ -29,6 +29,8 @@ export class GetAgentCustomerComponent {
   dataSource:any
   removeCustomer:any
   userRole:string=''
+  locationData:any
+  agentData:any
   
   
   constructor(private customerinfo:InsuranceService,protected temporaryData:TemporaryDataService,private router:Router){
@@ -40,10 +42,41 @@ export class GetAgentCustomerComponent {
       console.log(this.userRole)
       console.log(this.customerData);
       // this.collectionSize=this.customerData.length;
+      customerinfo.getLocation().subscribe({
+        next:(response)=>{
+          console.log(response)
+          this.locationData=response
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
+      })
+      customerinfo.getAgent().subscribe({
+        next:(response)=>{
+          this.agentData=response
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
+      })
     })
+    customerinfo
     // this.refreshCountries();
   }
-
+  ngOnInit():void{
+    // debugger
+    var token=localStorage.getItem('token')
+    
+    var role = localStorage.getItem('role')
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Admin' && role!='Agent'){
+      alert('Please Login As Admin or Agent')
+      this.router.navigateByUrl('/login')
+    }
+  }
   setId(id:number){
     console.log(id)
     this.temporaryData.setId(id)
