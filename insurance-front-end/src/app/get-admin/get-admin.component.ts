@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
 import { Router } from '@angular/router';
+import { TemporaryDataService } from '../service/temporary-data.service';
 
 @Component({
   selector: 'app-get-admin',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class GetAdminComponent {
 
   studentData:any;
-  constructor(private studentInfo:InsuranceService, private router: Router){
+  constructor(private studentInfo:InsuranceService,private temporaryData:TemporaryDataService, private router: Router){
     studentInfo.getAdmins().subscribe({
       next:(data)=>{
       this.studentData=data
@@ -21,5 +22,18 @@ export class GetAdminComponent {
       console.log(errorResponse)
     }
   })
+  }
+  setId(id:number){
+    console.log(id)
+    this.temporaryData.setId(id)
+    this.router.navigateByUrl("/updateCustomer")
+  }
+  deleteData(id:number){
+    console.log(id)
+    this.studentInfo.deleteCustomer(id).subscribe({
+      next:(response)=>{
+        alert('data deleted')
+      }
+    })
   }
 }

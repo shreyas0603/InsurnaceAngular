@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="update-insurance-scheme.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar><br>
+  <div class="login-container">
+    <h1>Update Insurance Scheme</h1>
+    <!--  -->
+    <form [formGroup]="insurnaceSchemeForm" (ngSubmit)="updateinsurnaceScheme(insurnaceSchemeForm.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+    
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+        <input type="hidden"   formControlName="id" [(ngModel)]="schemeId">
+        <!-- <h1>{{insuranceTypeId}}</h1> -->
+        <label for="username">insuranceSchemeName</label>
+        <input type="text" id="username" name="username" 
+         formControlName="insuranceSchemeName" [(ngModel)]="schemeData.insuranceSchemeName">
+         <label for="username">newRegistrastionCommision</label>
+         <input type="text" id="username" name="username"
+         formControlName="newRegistrastionCommision" [(ngModel)]="schemeData.newRegistrastionCommision">
+         <label for="username">installmentPaymentCommision</label>
+         <input type="text" id="username" name="username"
+         formControlName="installmentPaymentCommision" [(ngModel)]="schemeData.installmentPaymentCommision">
+         <label for="username">details</label>
+         <input type="text" id="username" name="username"
+         formControlName="details" [(ngModel)]="schemeData.details">
+         <input type="hidden" formControlName="insuranceTypeId" [(ngModel)]="schemeData.insuranceTypeId">
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+
+

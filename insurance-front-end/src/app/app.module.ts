@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+// import { MatPaginatorModule } from '@angular/material/paginator';
+// import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +38,24 @@ import { UpdateInsuranceTypeComponent } from './update-insurance-type/update-ins
 import { GetLocationComponent } from './get-location/get-location.component';
 import { GetEmployeeComponent } from './get-employee/get-employee.component';
 import { GetFeedbackComponent } from './get-feedback/get-feedback.component';
+import { UpdateQueryComponent } from './update-query/update-query.component';
+import { UpdateCommisionComponent } from './update-commision/update-commision.component';
+import { UpdatePolicyClaimComponent } from './update-policy-claim/update-policy-claim.component';
+import { UpdatePolicyPaymentComponent } from './update-policy-payment/update-policy-payment.component';
+import { UpdateInsuranceSchemeComponent } from './update-insurance-scheme/update-insurance-scheme.component';
+import { UpdateCustomerInsuranceAccountComponent } from './update-customer-insurance-account/update-customer-insurance-account.component';
+import { UpdateLocationComponent } from './update-location/update-location.component';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { UpdateAgentComponent } from './update-agent/update-agent.component';
+import { UpdateAdminComponent } from './update-admin/update-admin.component';
+import { AgentProfileComponent } from './agent-profile/agent-profile.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminChangePasswordComponent } from './admin-change-password/admin-change-password.component';
+import { AgentChangePasswordComponent } from './agent-change-password/agent-change-password.component';
+import { GetAgentComponent } from './get-agent/get-agent.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { AddLocationsComponent } from './add-locations/add-locations.component';
 
 @NgModule({
@@ -70,6 +90,23 @@ import { GetFeedbackComponent } from './get-feedback/get-feedback.component';
     GetLocationComponent,
     GetEmployeeComponent,
     GetFeedbackComponent,
+    UpdateQueryComponent,
+    UpdateCommisionComponent,
+    UpdatePolicyClaimComponent,
+    UpdatePolicyPaymentComponent,
+    UpdateInsuranceSchemeComponent,
+    UpdateCustomerInsuranceAccountComponent,
+    UpdateLocationComponent,
+    UpdateEmployeeComponent,
+    UpdateCustomerComponent,
+    UpdateAgentComponent,
+    UpdateAdminComponent,
+    AgentProfileComponent,
+    AdminProfileComponent,
+    AdminChangePasswordComponent,
+    AgentChangePasswordComponent,
+    GetAgentComponent,
+    AboutUsComponent,
     // AddLocationsComponent
   ],
   imports: [
@@ -77,7 +114,8 @@ import { GetFeedbackComponent } from './get-feedback/get-feedback.component';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,

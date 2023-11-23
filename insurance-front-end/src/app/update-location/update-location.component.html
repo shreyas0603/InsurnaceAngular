@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="update-location.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar><br>
+  <div class="login-container">
+    <h1>Update Location</h1>
+    <!--  -->
+    <form [formGroup]="locationForm" (ngSubmit)="updateLocation(locationForm.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+    
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+        <input type="hidden"   formControlName="id" [(ngModel)]="locationId">
+        <!-- <h1>{{insuranceTypeId}}</h1> -->
+        <label for="username">state</label>
+        <input type="text" id="username" name="username" 
+         formControlName="state" [(ngModel)]="locationData.state">
+         <label for="username">City</label>
+         <input type="text" id="username" name="username"
+         formControlName="city" [(ngModel)]="locationData.city">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="update-customer.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar><br>
+  <div class="login-container">
+    <h1>Update Customer</h1>
+    <!--  -->
+    <form [formGroup]="customerForm" (ngSubmit)="updateCustomer(customerForm.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+    
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+        <input type="hidden"   formControlName="id" [(ngModel)]="customerId">
+        <!-- <h1>{{insuranceTypeId}}</h1> -->
+        <label for="username">dateOfBirth</label>
+        <input type="text" id="username" name="username" 
+         formControlName="dateOfBirth" [(ngModel)]="customerData.dateOfBirth">
+         <label for="username">userName</label>
+         <input type="text" id="username" name="username"
+         formControlName=" userName" [(ngModel)]="customerData.userName">
+         <label for="username">firstName</label>
+         <input type="text" id="username" name="username"
+         formControlName=" firstName" [(ngModel)]="customerData.firstName">
+         <label for="username">lastName</label>
+         <input type="text" id="username" name="username"
+         formControlName="lastName" [(ngModel)]="customerData.lastName">
+         <input type="hidden" formControlName="password" [(ngModel)]="customerData.password">
+         <label for="username">mobileNumber</label>
+         <input type="text" formControlName="mobileNumber" [(ngModel)]="customerData.mobileNumber">
+         <label for="username">email</label>
+         <input type="text" formControlName="email" [(ngModel)]="customerData.email">
+         <label for="username">nomineeName</label>
+         <input type="text" formControlName="nomineeName" [(ngModel)]="customerData.nomineeName">
+         <label for="username">nomineeRelation</label>
+         <input type="text" formControlName="nomineeRelation" [(ngModel)]="customerData.nomineeRelation">
+         <input type="hidden" formControlName="locationId" [(ngModel)]="customerData.locationId">
+         <input type="hidden" formControlName="agentId" [(ngModel)]="customerData.agentId">
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+
+
+
+

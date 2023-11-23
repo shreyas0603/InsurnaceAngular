@@ -1,6 +1,6 @@
 
 <app-admin-navbar></app-admin-navbar>
-<h4 align="center">Insurance Scheme Details : </h4> 
+<h4 align="center">Insurance Plan Details : </h4> 
 <div>
 	<!-- <div style="float: right;">
 		<button  class="btn btn-lg btn-outline-primary" (click)="addUrl()">Add Student</button>&nbsp;
@@ -49,8 +49,8 @@
 				{{ insurancePlan.profitRatioPercentage}}
 			</td>
 			<td>
-				<button (onclick)="setInsurancePlanId(insurancePlan.id)">Edit</button>
-				<button>Delete</button>
+				<button (click)="setId(insurancePlan.id)">Edit</button>
+				<button (click)="deleteData(insurancePlan.id)">Delete</button>
 			</td>
 			<!-- <td>{{ student.isMale }}</td> -->
 		</tr>

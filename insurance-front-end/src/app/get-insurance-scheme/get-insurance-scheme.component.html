@@ -12,32 +12,45 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-            <!-- <th scope="col">Insurance Type Name</th> -->
+            <th scope="col">Insurance Type Name</th>
 			<th scope="col">Insurance Scheme Name</th>
             <th scope="col">New Registrastion Commision</th>
             <th scope="col">Installment Payment Commision</th>
             <th scope="col">Details</th>
+			<th scope="col">Action</th>
       <!-- <th scope="col">Gender</th> -->
 		</tr>
 	</thead>
 	<tbody>
 		
-		<tr *ngFor="let insuranceScheme of insuranceSchemeData;index as i"  >
+		<tr *ngFor="let insuranceScheme of insuranceSchemeData;index as i"   >
+			<!-- {{findInsuranceTypeName(insuranceSchemeData.insuranceTypeId)}} -->
+			<!-- <div *ngFor="let insuranceType of insuranceTypeData"></div> -->
 			<!-- <span>{{findInsuranceTypeName(insuranceScheme.insuranceTypeId)}}</span> -->
 			<!-- <ng-template *ngIf="true" onmouseover="findInsuranceTypeName(insuranceScheme.insuranceTypeId)"></ng-template> -->
-			<!-- <td >{{insuranceTypeData[0].insuranceTypeName}}</td> -->
+			
+			<!-- <div *ngIf="true">{{findInsuranceTypeName(insuranceScheme.insuranceTypeId)}}</div> -->
+			<td *ngIf="insuranceTypeData[i].id==insuranceScheme.insuranceTypeId">
+				{{insuranceTypeData[i].insuranceTypeName}}
+			</td>
 			<td>
 				{{ insuranceScheme.insuranceSchemeName}}
 			</td>
             <td>
 				{{ insuranceScheme.newRegistrastionCommision}}
 			</td>
+			
             <td>
 				{{ insuranceScheme.installmentPaymentCommision}}
 			</td>
             <td>
 				{{ insuranceScheme.details}}
 			</td>
+			<td>
+				<button (click)="setId(insuranceScheme.id)">Edit</button>&nbsp;
+				<button (click)="deleteData(insuranceScheme.id)">Delete</button>
+			</td>
+			{{temporaryData.setInsuranceSchemeCount(i+1)}}
 			<!-- <td>{{ student.isMale }}</td> -->
 		</tr>
 	</tbody>

@@ -16,6 +16,7 @@
 			<th scope="col">LastName</th>
 			<th scope="col">UserName</th>
       <th scope="col">Password</th>
+	  <th scope="col">Action</th>
       <!-- <th scope="col">Gender</th> -->
 		</tr>
 	</thead>
@@ -29,6 +30,10 @@
 			<td>{{ student.lastName }}</td>
 			<td>{{ student.userName }}</td>
 			<td>{{ student.password }}</td>
+			<td>
+				<button (click)="setId(student.id)">Edit</button>
+				<button (click)="deleteData(student.id)">Delete</button>
+			  </td>
 			<!-- <td>{{ student.isMale }}</td> -->
 		</tr>
 	</tbody>

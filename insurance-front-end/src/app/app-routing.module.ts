@@ -23,6 +23,19 @@ import { UpdateInsuranceTypeComponent } from './update-insurance-type/update-ins
 import { GetLocationComponent } from './get-location/get-location.component';
 import { GetEmployeeComponent } from './get-employee/get-employee.component';
 import { GetFeedbackComponent } from './get-feedback/get-feedback.component';
+import { AgentProfileComponent } from './agent-profile/agent-profile.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AdminChangePasswordComponent } from './admin-change-password/admin-change-password.component';
+import { AgentChangePasswordComponent } from './agent-change-password/agent-change-password.component';
+import { GetAgentComponent } from './get-agent/get-agent.component';
+import { UpdateAgentComponent } from './update-agent/update-agent.component';
+import { UpdateQueryComponent } from './update-query/update-query.component';
+import { UpdateCustomerInsuranceAccountComponent } from './update-customer-insurance-account/update-customer-insurance-account.component';
+import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { UpdateLocationComponent } from './update-location/update-location.component';
+import { UpdateInsuranceSchemeComponent } from './update-insurance-scheme/update-insurance-scheme.component';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 // import { AddAgentComponent } from './add-agent/add-agent.component';
 
 const routes: Routes = [
@@ -31,8 +44,20 @@ const routes: Routes = [
     component:DefaultPageComponent
   },
   {
+    path:'aboutUs',
+    component:AboutUsComponent
+  },
+  {
     path:'admin',
     component:AdminHomePageComponent
+  },
+  {
+    path:'adminProfile',
+    component:AdminProfileComponent
+  },
+  {
+    path:'adminChangePassword',
+    component:AdminChangePasswordComponent
   },
   {
     path:'agent',
@@ -43,6 +68,22 @@ const routes: Routes = [
     component:AddAgentComponent
   },
   {
+    path:'getAgent',
+    component:GetAgentComponent
+  },
+  {
+    path:'agentProfile',
+    component:AgentProfileComponent
+  },
+  {
+    path:'updateAgent',
+    component:UpdateAgentComponent
+  },
+  {
+    path:'agentChangePassword',
+    component:AgentChangePasswordComponent
+  },
+  {
     path:'addEmployee',
     component:AddEmployeeComponent
   },
@@ -51,12 +92,20 @@ const routes: Routes = [
     component:GetEmployeeComponent
   },
   {
+    path:'updateEmployee',
+    component:UpdateEmployeeComponent
+  },
+  {
     path:'addLocation',
     component:AddLocationComponent
   },
   {
     path:'getLocation',
     component:GetLocationComponent
+  },
+  {
+    path:'updateLocation',
+    component:UpdateLocationComponent
   }
   ,
   {
@@ -64,8 +113,16 @@ const routes: Routes = [
     component:GetAgentCustomerComponent
   },
   {
+    path:'updateCustomer',
+    component:UpdateCustomerComponent
+  },
+  {
     path:'getCustomerInsuranceAccount',
     component:GetCustomerInsuranceAccountComponent
+  },
+  {
+    path:'updateCustomerInsuranceAccount',
+    component:UpdateCustomerInsuranceAccountComponent
   },
   {
     path:"addInsuranceType",
@@ -82,6 +139,10 @@ const routes: Routes = [
   {
     path:"getInsuranceScheme",
     component:GetInsuranceSchemeComponent
+  },
+  {
+    path:'updateInsuranceScheme',
+    component:UpdateInsuranceSchemeComponent
   },
   {
     path:"addInsurancePlan",
@@ -118,6 +179,10 @@ const routes: Routes = [
   {
     path:'getFeedback',
     component:GetFeedbackComponent
+  },
+  {
+    path:'updateQuery',
+    component:UpdateQueryComponent
   }
   
   

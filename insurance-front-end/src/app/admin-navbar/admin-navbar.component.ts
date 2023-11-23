@@ -13,6 +13,9 @@ export class AdminNavbarComponent {
     
     
   }
+  deleteToken(){
+    localStorage.removeItem('token')
+  }
   setRole(){
     console.log("hih")
     this.temporarydata.setRole('Admin')

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="update-agent.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar><br>
+  <div class="login-container">
+    <h1>Update Agent</h1>
+    <!--  -->
+    <form [formGroup]="agentForm" (ngSubmit)="updateInsuranceType(agentForm.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+        <label for="username">First Name</label>
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+        <input type="hidden"   formControlName="id" [(ngModel)]="agentId">
+        <!-- <h1>{{agentId}}</h1> -->
+        <input type="text" formControlName="firstName" [(ngModel)]="agentData.firstName">
+        <label for="username">Last Name</label>
+        <input type="text" formControlName="lastName" [(ngModel)]="agentData.lastName">
+        <label for="username">User Name</label>
+        <input type="text" formControlName="userName" [(ngModel)]="agentData.userName">
+        <input type="hidden" formControlName="password" [(ngModel)]="agentData.password">
+        <label for="username">Mobile Number</label>
+        <input type="text" formControlName="mobileNumber" [(ngModel)]="agentData.mobileNumber">
+        <label for="username">Email</label>
+        <input type="text" formControlName="email" [(ngModel)]="agentData.email">
+        <label for="username">commision</label>
+        <input type="text" formControlName="commision" [(ngModel)]="agentData.commision">
+        <label for="username">totalCommision</label>
+        <input type="text" formControlName="totalCommision" [(ngModel)]="agentData.totalCommision">
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

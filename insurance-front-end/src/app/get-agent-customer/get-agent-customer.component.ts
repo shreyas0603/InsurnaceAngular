@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TemporaryDataService } from '../service/temporary-data.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class GetAgentCustomerComponent {
   userRole:string=''
   
   
-  constructor(customerinfo:InsuranceService,private temporaryData:TemporaryDataService){
+  constructor(private customerinfo:InsuranceService,protected temporaryData:TemporaryDataService,private router:Router){
     this.userRole=temporaryData.getRole()
     console.log(this.userRole)
     this.insurnaceService=customerinfo
@@ -43,27 +44,17 @@ export class GetAgentCustomerComponent {
     // this.refreshCountries();
   }
 
-  // showBankData (pageNumber: number, pageSize: number) {
-  //   console.log("hi data");
-  //   this.insurnaceService.customers(pageNumber, pageSize).subscribe({
-  //   next: (response) => {
-  //   this.headers = response.headers.get('X-Pagination');
-  //   this.customerData= response.body;
-  //   this.headers = JSON.parse(this.headers);
-  //   this.paginator.length = this.headers. TotalCount;
-  //   this.paginator.pageIndex = this.currentPage;
-  //   this.dataSource = new MatTableDataSource(this.customerData);
-  //   },
-  //   error: (errorResponse: HttpErrorResponse) => {
-  //     console.log(errorResponse);
-  //     }
-  //   });
-  //   this.removeCustomer = this.insurnaceService;
-  // }
-  //   pageChanged (event: PageEvent) {
-  //     this.pageSize = event.pageSize;
-  //     this.currentPage = event.pageIndex;
-  //     this.showBankData(this.currentPage + 1, this.pageSize);
-
-  //   }
+  setId(id:number){
+    console.log(id)
+    this.temporaryData.setId(id)
+    this.router.navigateByUrl("/updateCustomer")
+  }
+  deleteData(id:number){
+    console.log(id)
+    this.customerinfo.deleteCustomerInsuranceAccount(id).subscribe({
+      next:(response)=>{
+        alert('data deleted')
+      }
+    })
+  }
 }

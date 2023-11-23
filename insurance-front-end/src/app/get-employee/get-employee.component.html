@@ -68,7 +68,7 @@ th {
 </head>
 <body>
  <app-admin-navbar></app-admin-navbar>
-  <h1 >View FeedBack</h1>
+  <h1 >View Employee</h1>
 
   <table class="table table-striped">
 	<thead>
@@ -80,18 +80,23 @@ th {
            
             <th scope="col">LastName</th>
             <th scope="col">UserName</th>
-           
+           <th scope="col">Action</th>
            
             <!-- <th scope="col">Status</th> -->   <!--can be added-->
            
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let employee of employeeData">
+		<tr *ngFor="let employee of employeeData;index as i">
             <td>{{ employee.id }}</td>
 			<td>{{ employee.firstName}}</td>
             <td>{{employee.lastName}}</td>
             <td>{{ employee.userName}}</td> 
+            <td>
+              <button (click)="setId(employee.id)">Edit</button>&nbsp;
+              <button (click)="deleteData(employee.id)">Delete</button>
+            </td>
+            {{temporaryData.setEmployeeCount(i+1)}}
 		</tr>
 	</tbody>
 </table>

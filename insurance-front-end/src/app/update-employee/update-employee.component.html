@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="update-employee.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar><br>
+  <div class="login-container">
+    <h1>Update Employee</h1>
+    <!--  -->
+    <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee(employeeForm.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+    
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+        <input type="hidden"   formControlName="id" [(ngModel)]="employeeId">
+        <!-- <h1>{{insuranceTypeId}}</h1> -->
+        <label for="username">firstName</label>
+        <input type="text" id="username" name="username" 
+         formControlName="firstName" [(ngModel)]="employeeData.firstName">
+         <label for="username">lastName</label>
+         <input type="text" id="username" name="username"
+         formControlName="lastName" [(ngModel)]="employeeData.lastName">
+         <label for="username">userName</label>
+         <input type="text" id="username" name="username"
+         formControlName="userName" [(ngModel)]="employeeData.userName">
+         <input type="hidden" id="username" name="username"
+         formControlName="password" [(ngModel)]="employeeData.password">
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
+
+
+
+

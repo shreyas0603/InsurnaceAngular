@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="update-customer-insurance-account.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Update Customer Insurance Account</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar><br>
+  <div class="login-container">
+    <h1>update Customer Insurance Account</h1>
+    <!--  -->
+    <form [formGroup]="insurnaceAccountForm" (ngSubmit)="updateCustomerAccount(insurnaceAccountForm.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+        <label for="username">Insurance Creation Date</label>
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+        <input type="hidden"   formControlName="id" [(ngModel)]="accountId">
+        <!-- <h1>{{agentId}}</h1> -->
+        <input type="text" formControlName="insuranceCreationDate" [(ngModel)]="accountData.insuranceCreationDate">
+        <label for="username">Maturity Date</label>
+        <input type="text" formControlName="maturityDate" [(ngModel)]="accountData.maturityDate">
+        <label for="username">Policy Term</label>
+        <input type="text" formControlName="policyTerm" [(ngModel)]="accountData.PolicyTerm">
+        <label for="username">TotalPremium</label>
+        <input type="text" formControlName="totalPremium" [(ngModel)]="accountData.totalPremium">
+        <label for="username">Profit Ratio</label>
+        <input type="text" formControlName="profitRatio" [(ngModel)]="accountData.profitRatio">
+        <!-- <label for="username">sumAssured</label> -->
+        <input type="hidden" formControlName="sumAssured" [(ngModel)]="accountData.sumAssured">
+        <!-- <label for="username">commision</label> -->
+        <input type="hidden" formControlName="customerId" [(ngModel)]="accountData.customerId">
+        <!-- <label for="username">totalCommision</label> -->
+        <input type="hidden" formControlName="insurancePlanId" [(ngModel)]="accountData.insurancePlanId">
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

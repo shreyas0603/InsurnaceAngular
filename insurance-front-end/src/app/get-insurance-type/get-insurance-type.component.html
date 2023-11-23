@@ -14,12 +14,13 @@
 		<tr>
             <th scope="col">Index</th>
 			<th scope="col">Insurance Type Name</th>
+			<th scope="col">Action</th>
       <!-- <th scope="col">Gender</th> -->
 		</tr>
 	</thead>
 	<tbody>
 		<tr *ngFor="let insuranceType of insuranceTypeData;index as i">
-			<td>{{i+1}}</td>
+			<td>{{insuranceType.id}}</td>
 			<td>
 				{{ insuranceType.insuranceTypeName}}
 			</td>
@@ -28,6 +29,7 @@
 				<button (click)="deleteInsuranceType(insuranceType.id)">Delete</button>
 			</td>
 			<!-- <td>{{ student.isMale }}</td> -->
+			{{temporaryData.setInsuranceTypeCount(i+1)}}
 		</tr>
 	</tbody>
 </table>

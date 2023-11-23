@@ -67,7 +67,12 @@ th {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-  <app-agent-navbar></app-agent-navbar>
+  <div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
   <h1 >View Policy Payments</h1>
 
   <table class="table table-striped">
@@ -84,6 +89,7 @@ th {
           
             <th scope="col">PaidDate</th>
             <th scope="col">TransactionType</th>
+            <!-- <th scope="col">Action</th> -->
             <!-- <th scope="col">Status</th> -->   <!--can be added-->
            
 		</tr>
@@ -97,6 +103,10 @@ th {
             <td>{{payment.totalAmount}}</td><!--paid amount +TaxAmount-->
             <td>{{ payment.paidDate}}</td>
             <td>{{ payment.transactionType}}</td>
+            <!-- <td>
+              <button (click)="setId(payment.id)">Edit</button>
+				<button (click)="deleteData(payment.id)">Delete</button>
+            </td> -->
           
             <!-- <td>{{payment.status}}</td> -->  <!--Can be added-->
          

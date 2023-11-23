@@ -83,7 +83,7 @@ th {
             <th scope="col">Reply</th>
           
             <th scope="col">Customer Id</th>
-           
+           <th scope="col">Action</th>
             <!-- <th scope="col">Status</th> -->   <!--can be added-->
            
 		</tr>
@@ -96,7 +96,10 @@ th {
             <td>{{ query.queryDate}}</td> 
             <td>{{query.reply}}</td>
             <td>{{ query.customerId}}</td>
-         
+            <td>
+              <button (click)="setId(query.id)">Edit</button>
+              <!-- <button (click)="deleteData(query.id)">Delete</button> -->
+            </td>
           
            
          

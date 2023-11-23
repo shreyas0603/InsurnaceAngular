@@ -12,10 +12,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class UpdateInsurancePlanComponent {
 
-  insurancePlan:any=[{}]
-  insuranceSchemeData:any
-  insurancePlanData:any
-  insurancePlanForm=new FormGroup({
+  insurnacePlanForm=new FormGroup({
+    id:new FormControl(''),
     minPolicyTerm:new FormControl(''),
     maxPolicyTerm:new FormControl(''),
     minAge:new FormControl(''),
@@ -25,28 +23,38 @@ export class UpdateInsurancePlanComponent {
     profitRatioPercentage:new FormControl(''),
     insuranceSchemeId:new FormControl('')
   })
-  insurancePlanId:number=0
-  constructor(private insuranceService:InsuranceService,private temporaryData:TemporaryDataService,private router:Router){
-    temporaryData.getId.subscribe(id=>this.insurancePlanId=id)
-    insuranceService.getInsuranceScheme().subscribe({
+
+  planData:any
+  planId:number=0
+
+  constructor(private planinfo:InsuranceService,private temporaryData: TemporaryDataService,private router:Router){
+    temporaryData.getId.subscribe(id=>this.planId=id)
+    //thi.id=temporaryData.getId()
+    planinfo.getInsurancePlanById(this.planId).subscribe({
       next:(result)=>{
-        this.insuranceSchemeData=result
-        console.log(this.insuranceSchemeData)
+        this.planData=result
       },
       error(errorResponse:HttpErrorResponse){
         console.log(errorResponse)
       }
     })
+    console.log(this.planId)
+    
   }
-  addInsuranceScheme(data:any){
-    console.log(this.insurancePlanForm)
-    this.insuranceService.addInsurancePlan(data).subscribe({
+  updateinsurnacePlan(data:any){
+    // this.insuranceTypeForm.id=this.insuranceTypeId
+    console.log(data)
+    this.planinfo.updateInsurancePlan(data).subscribe({
       next:(resopnse)=>{
+        console.log(resopnse)
         alert("Insurance type Added");
         this.router.navigateByUrl("/admin")
-      },error(errorResponse:HttpErrorResponse){
+      },
+      error(errorResponse:HttpErrorResponse){
         console.log(errorResponse)
       }
+      
     })
+    console.log(data)
   }
 }

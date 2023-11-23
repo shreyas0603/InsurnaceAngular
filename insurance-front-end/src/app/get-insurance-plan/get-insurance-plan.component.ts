@@ -26,10 +26,18 @@ export class GetInsurancePlanComponent {
     }
     })
   }
-  setInsurancePlanId(id:number){
-    debugger
+  setId(id:number){
+    console.log(id)
     this.temporaryData.setId(id)
     this.router.navigateByUrl("/updateInsurancePlan")
+  }
+  deleteData(id:number){
+    console.log(id)
+    this.insuranceService.deleteInsurancePlan(id).subscribe({
+      next:(response)=>{
+        alert('data deleted')
+      }
+    })
   }
 
 // findInsuranceTypeName(id:number){

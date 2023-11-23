@@ -57,9 +57,9 @@ th {
   <div *ngIf="userRole=='Admin'">
     <app-admin-navbar></app-admin-navbar>
   </div>
-  <ng-template *ngIf="userRole=='Agent'">
+  <div *ngIf="userRole=='Agent'">
     <app-agent-navbar></app-agent-navbar>
-  </ng-template>
+  </div>
   <h1 >View Agent Customer</h1>
 
   <table class="table table-striped">
@@ -76,11 +76,12 @@ th {
             <th scope="col">Nominee Relation</th>
             <!-- <th scope="col">Password</th> -->
             <th scope="col">LocationId</th>
+            <th scope="col">Action</th>
             <!-- <th scope="col">AgentId</th> -->
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let customer of customerData">
+		<tr *ngFor="let customer of customerData;index as i">
             <!-- <td>{{ customer.id }}</td> -->
 			<td>
 				{{ customer.firstName }} {{customer.lastName}}
@@ -93,6 +94,11 @@ th {
             <td>{{ customer.nomineeRelation}}</td>
             <!-- <td>{{customer.password}}</td> -->
             <td>{{customer.locationId}}</td>
+            <td>
+              <button (click)="setId(customer.id)">Edit</button>&nbsp;
+              <button (click)="deleteData(customer.id)">Delete</button>
+            </td>
+            {{temporaryData.setCustomerCount(i+1)}}
             <!-- <td>{{customer.agentId}}</td> -->
 		</tr>
 	</tbody>

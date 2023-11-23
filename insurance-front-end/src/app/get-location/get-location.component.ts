@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
+import { TemporaryDataService } from '../service/temporary-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-location',
@@ -14,11 +16,24 @@ export class GetLocationComponent {
   customers:any;
   collectionSize=0;
   
-  constructor(locationinfo:InsuranceService){
+  constructor(private locationinfo:InsuranceService,protected temporaryData:TemporaryDataService,private router:Router){
     locationinfo.getLocation().subscribe((data)=>{
       this. locationData=data
       console.log(this.locationData);
       // this.collectionSize=this.customerData.length;
+    })
+  }
+  setId(id:number){
+    console.log(id)
+    this.temporaryData.setId(id)
+    this.router.navigateByUrl("/updateLocation")
+  }
+  deleteData(id:number){
+    console.log(id)
+    this.locationinfo.deleteLocation(id).subscribe({
+      next:(response)=>{
+        alert('data deleted')
+      }
     })
   }
 }

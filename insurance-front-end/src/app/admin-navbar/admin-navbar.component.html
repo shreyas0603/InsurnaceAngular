@@ -4,8 +4,9 @@
 <body (click)="setRole()">
     <nav class="navbar navbar-expand-lg navbar-light bg-white ">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="path/to/your/logo.png" alt="Logo" height="24">
+          <a class="navbar-brand" routerLink="/">
+            <!-- <img src="path/to/your/logo.png" alt="Logo" height="24"> -->
+            <h5>AtmanirbharInsurance</h5>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,7 +14,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link" href="/admin">Dashboard</a>
+                <a class="nav-link" routerLink="/admin">Dashboard</a>
               </li>
               <li  ngbDropdown class="dropdown nav-item ">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
@@ -21,7 +22,7 @@
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li ><a ngbDropdownItem class="dropdown-item" routerLink="/addAgent">Add Agent</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">View Agent</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getAgent">View Agent</a></li>
                   <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCommission">View Commision</a></li>
                   <li><a ngbDropdownItem class="dropdown-item" routerLink="#">View Commision Withdrawal</a></li>
                 </ul>
@@ -66,11 +67,12 @@
     
               <li ngbDropdown class="dropdown nav-item ">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
-                  Settings
+                  <!-- Seettings -->
+                  Location
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Tax Setting</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Insurance Setting</a></li>
+                  <!-- <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Tax Setting</a></li> -->
+                  <!-- <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Insurance Setting</a></li> -->
                   <li><a ngbDropdownItem class="dropdown-item" routerLink="/addLocation">Add Location</a></li>
                   <li><a ngbDropdownItem class="dropdown-item" routerLink="/getLocation">View Location</a></li>
                   
@@ -82,8 +84,8 @@
                   Account
                 </a>
                 <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Profile</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" routerLink="#">Change Password</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/adminProfile">Profile</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/adminChangePassword">Change Password</a></li>
                   <li><a ngbDropdownItem class="dropdown-item" routerLink="/addEmployee">Add Employee</a></li>
                   <li><a ngbDropdownItem class="dropdown-item" routerLink="/getEmployee">View Employee</a></li>
                   
@@ -93,7 +95,7 @@
             </ul>
             <ul class="navbar-nav navbar-right">
               <li class="nav-item">
-                <a class="nav-link" routerLink="/" >Logout</a>
+                <a class="nav-link" (click)="deleteToken()" routerLink="/" >Logout</a>
               </li>
              
             </ul>

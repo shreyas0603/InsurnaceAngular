@@ -2,6 +2,9 @@ nav{
     /* background-color: #444; */
     padding: 10px;
 }
+body{
+  max-height: 50px;
+}
 /* .navbar {
     background: #3498db;
     padding: 10px;

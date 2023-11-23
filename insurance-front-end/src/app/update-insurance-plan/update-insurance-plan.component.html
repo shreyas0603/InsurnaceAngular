@@ -10,45 +10,38 @@
 <body>
     <app-admin-navbar></app-admin-navbar><br>
   <div class="login-container">
-    <h1>Add Insurance Plan</h1>
+    <h1>Update Insurance Plan</h1>
     <!-- " -->
-    <form [formGroup]="insurancePlanForm" (ngSubmit)="addInsuranceScheme(insurancePlanForm.value)" >
+    <form [formGroup]="insurnacePlanForm" (ngSubmit)="updateinsurnacePlan(insurnacePlanForm.value)" >
       <!-- <p>Kindly enter the credentials</p> -->
-      <label >insurance Scheme</label>
       <div class="form-group">
-      <select  id="account-type" name="account-type" formControlName="accountType">
-        
-        <option [ngValue]="null" disabled>Choose Insurance Scheme</option>
-        <option *ngFor="let insuranceScheme of insuranceSchemeData" value="{{insuranceScheme.id}}">{{insuranceScheme.insuranceSchemeName}}
-        </option>
-        
-      </select>
-    </div>
-      <div class="form-group">
-        <input type="number"  placeholder="Enter minimum policy term" formControlName="minPolicyTerm">
-      </div>
-      <div class="form-group">
-        <input type="number"  placeholder="Enter maximum policy term" formControlName="maxPolicyTerm">
-      </div>
-      <div class="form-group">
-        <!-- <label for="username">Username</label> -->
-        <input type="number"  placeholder="Enter minimum age" formControlName="minAge">
-      </div>
-      <div class="form-group">
-            <input type="number"  placeholder="Enter maximum age" formControlName="maxAge">
-        </div>
-        <div class="form-group">
-            <input type="number"  placeholder="Enter minimum investment amount" formControlName="minInvestmentAmount">
-        </div>
-        <div class="form-group">
-            <input type="number" placeholder="Enter maximum investment amount" formControlName="maxInvestmentAmount">
-        </div>
-        <div class="form-group">
-          <input type="number"  placeholder="Enter profit ratio (in %)" formControlName="profitRatioPercentage">
-        </div>
-        
+    
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+        <input type="hidden"   formControlName="id" [(ngModel)]="planId">
+        <!-- <h1>{{insuranceTypeId}}</h1> -->
+        <label for="username">minPolicyTerm</label>
+        <input type="text" id="username" name="username" 
+         formControlName="minPolicyTerm" [(ngModel)]="planData.minPolicyTerm">
+         <label for="username">maxPolicyTerm</label>
+         <input type="text" id="username" name="username"
+         formControlName="maxPolicyTerm" [(ngModel)]="planData. maxPolicyTerm">
+         <label for="username">MinAge</label>
+         <input type="text" id="username" name="username"
+         formControlName="minAge" [(ngModel)]="planData.minAge">
+         <label for="username">MaxAge</label>
+         <input type="text" id="username" name="username"
+         formControlName="maxAge" [(ngModel)]="planData.maxAge">
+         <label for="username">minInvestmentAmount</label>
+         <input type="text" formControlName="minInvestmentAmount" [(ngModel)]="planData.minInvestmentAmount">
+         <label for="username">maxInvestmentAmount</label>
+         <input type="text" formControlName="maxInvestmentAmount" [(ngModel)]="planData.maxInvestmentAmount">
+         <label for="username">profitRatioPercentage</label>
+         <input type="text" formControlName="profitRatioPercentage" [(ngModel)]="planData.profitRatioPercentage">
+         <input type="hidden" formControlName="insuranceSchemeId" [(ngModel)]="planData. insuranceSchemeId">
+         
 
-
+      </div>
+      
       <button type="submit">Submit</button>
     </form>
   </div>

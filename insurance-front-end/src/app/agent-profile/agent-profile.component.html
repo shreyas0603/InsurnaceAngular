@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="agent-profile.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <header>
+        <app-agent-navbar></app-agent-navbar>
+    </header>
+  <div class="login-container">
+    <h1>Agent Profile</h1>
+    <!-- <div class="form-group" (change)="selectedId($event)" *ngFor="let agent of agentData  " >
+        <input type="text" value="{{agent.firstName}}">
+    </div> -->
+    <!-- -->
+    
+    <form [formGroup]="addAgent" (ngSubmit)="updateAgent(addAgent.value) ">
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+        <label for=""> firstName</label>
+        <input type="hidden" formControlName="id" [(ngModel)]="agentId" >
+        <input type="text" id="firstName" name="username" formControlName="firstName" [(ngModel)]="agentData.firstName">
+      </div>
+      <div class="form-group">
+        <label for="">lastName</label>
+        <input type="text" id="lastName" name="username" placeholder="Enter your LastName" formControlName="lastName"  [(ngModel)]="agentData.lastName">
+      </div>
+      <div class="form-group">
+        <!-- <label for="username">Username</label> -->
+        <label for="">userName</label>
+        <input type="text" id="userName" name="username" placeholder="Enter your username" formControlName="userName"  [(ngModel)]="agentData.userName">
+        <input type="hidden" formControlName="password" [(ngModel)]="agentData.password" >
+        <input type="hidden" formControlName="commision" [(ngModel)]="agentData.commision" >
+        <input type="hidden" formControlName="totalCommision" [(ngModel)]="agentData.totalCommision" >
+      </div>
+      <!-- <div class="form-group">
+            <input type="password" id="password" name="password" placeholder="Enter your password" formControlName="password">
+        </div> -->
+        <!-- <div class="form-group">
+            <input type="password" id="password" name="password" placeholder="Confirm Password" formControlName="password">
+        </div> -->
+        <div class="form-group">
+          <label for="">MobileNo</label>
+            <input type="number" id="mobileNumber" name="username" placeholder="Enter your MobileNumber" formControlName="mobileNumber"  [(ngModel)]="agentData.mobileNumber">
+        </div>
+        <div class="form-group">
+          <label for="">Email</label>
+            <input type="email" id="email" name="username" placeholder="Enter your Email" formControlName="email"  [(ngModel)]="agentData.email">
+        </div>
+        
+
+
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</body>
+</html>

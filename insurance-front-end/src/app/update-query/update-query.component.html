@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="update-query.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar><br>
+  <div class="login-container">
+    <h1>Update Query</h1>
+    <!--  -->
+    <form [formGroup]="queryForm" (ngSubmit)="updateQuery(queryForm.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+    
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+        <input type="hidden"   formControlName="id" [(ngModel)]="QueryId">
+        <!-- <h1>{{insuranceTypeId}}</h1> -->
+        <label for="username">Query Title</label>
+        <input type="text" id="username" name="username" 
+         formControlName="queryTitle" [(ngModel)]="QueryData.queryTitle">
+         <label for="username">Query Message</label>
+         <input type="text" id="username" name="username"
+         formControlName="queryMessage" [(ngModel)]="QueryData.queryMessage">
+         <label for="username">Query Date</label>
+         <input type="text" id="username" name="username"
+         formControlName="queryDate" [(ngModel)]="QueryData.queryDate">
+         <label for="username">Reply</label>
+         <input type="text" id="username" name="username"
+         formControlName="reply" [(ngModel)]="QueryData.reply">
+         <input type="hidden"   formControlName="customerId" [(ngModel)]="QueryData.customerId">
+      </div>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
