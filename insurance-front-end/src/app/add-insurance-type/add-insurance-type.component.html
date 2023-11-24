@@ -16,10 +16,13 @@
       <!-- <p>Kindly enter the credentials</p> -->
       <div class="form-group">
         <label for="username">Insurance Type Name</label>
-        <input type="text" id="username" name="username" placeholder="Enter insurance type name" formControlName="insuranceTypeName">
+        <input type="text" id="insuranceTypeName" name="insuranceTypeName" placeholder="Enter insurance type name" formControlName="insuranceTypeName" required>
+        <div *ngIf="insuranceTypeForm.get('insuranceTypeName')?.hasError('required') && insuranceTypeForm.get('insuranceTypeName')?.touched">
+          insuranceTypeName is mandatory.
+      </div>
       </div>
       
-      <button type="submit">Submit</button>
+      <button type="submit" >Submit</button>
     </form>
   </div>
 </body>

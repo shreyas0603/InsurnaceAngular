@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 import { InsuranceService } from '../service/insurance.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-insurance-type',
@@ -13,7 +14,7 @@ export class AddInsuranceTypeComponent {
 
   insuranceTypeData:any
   insuranceTypeForm=new FormGroup({
-    insuranceTypeName:new FormControl('')
+    insuranceTypeName:new FormControl('', [Validators.required, Validators.maxLength(50)])
   })
   constructor(private insuranceTypeInfo:InsuranceService,private router:Router){
 
@@ -37,6 +38,9 @@ export class AddInsuranceTypeComponent {
       next:(resopnse)=>{
         alert("Insurance type Added");
         this.router.navigateByUrl("/admin")
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse.error)
       }
     })
   }

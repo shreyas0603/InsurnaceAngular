@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-employee',
@@ -13,12 +13,20 @@ export class AddEmployeeComponent {
 
   employeeData:any
   addEmployee = new FormGroup({
-    firstName : new FormControl(''),
-    lastName : new FormControl(''),
-    userName : new FormControl(''),
-    password : new FormControl(''),
+    firstName : new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
+    lastName : new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
+    userName : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9]*'), Validators.minLength(3), Validators.maxLength(50)]),
+    password : new FormControl('', [Validators.required,  Validators.minLength(6),
+      Validators.maxLength(15), this.validateSpecialChar]),
 
   })
+  validateSpecialChar(control:any) {
+    const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+    if (control.value && !specialCharRegex.test(control.value)) {
+      return { specialChar: true };
+    }
+    return null;
+  }
   userName:string="";
   isUnique:any;
   constructor(private insuranceservice:InsuranceService,private router:Router){

@@ -47,7 +47,20 @@ export class AgentProfileComponent {
 
   
   }
-
+  ngOnInit():void{
+    // debugger
+    var token=localStorage.getItem('token')
+    
+    var role = localStorage.getItem('role')
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Agent'){
+      alert('Please Login As Agent')
+      this.router.navigateByUrl('/login')
+    }
+  }
   // selectedId(event:any){
   //   console.log(event.target.value);
   //   this.studentinfo.getAgentById(event.target.value).subscribe((data)=>{

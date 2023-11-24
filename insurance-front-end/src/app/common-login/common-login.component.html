@@ -23,14 +23,22 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username" formControlName="userName">
+        <label for="userName">Username</label>
+        <input type="text" id="userName" name="userName" placeholder="Enter your username" formControlName="userName" required>
+        <div *ngIf="loginForm.get('userName')?.hasError('required') && loginForm.get('userName')?.touched">
+          Username is mandatory.
+      </div>
+      
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password" formControlName="password">
+        <input type="password" id="password" name="password" placeholder="Enter your password" formControlName="password" required>
+        <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+          Password is mandatory.
       </div>
-      <button type="submit">Login</button>
+      
+      </div>
+      <button type="submit" >Login</button>
     </form>
   </div>
 </body>

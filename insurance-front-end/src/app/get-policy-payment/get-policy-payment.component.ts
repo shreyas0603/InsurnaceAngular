@@ -58,6 +58,7 @@ export class GetPolicyPaymentComponent {
     this.paymentinfo.deletePolicyPayments(id).subscribe({
       next:(response)=>{
         alert('data deleted')
+        location.reload()
       }
     })
   }

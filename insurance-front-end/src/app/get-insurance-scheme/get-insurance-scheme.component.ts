@@ -69,6 +69,7 @@ deleteData(id:number){
   this.insuranceService.deleteInsuranceScheme(id).subscribe({
     next:(response)=>{
       alert('data deleted')
+      location.reload()
     }
   })
 }

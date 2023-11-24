@@ -42,6 +42,20 @@ export class AgentChangePasswordComponent {
 
   
   }
+  ngOnInit():void{
+    // debugger
+    var token=localStorage.getItem('token')
+    
+    var role = localStorage.getItem('role')
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Agent'){
+      alert('Please Login As Agent')
+      this.router.navigateByUrl('/login')
+    }
+  }
   changeAgentPassword(data:any){
 
     this.studentinfo.changePasswordAgent(data).subscribe({

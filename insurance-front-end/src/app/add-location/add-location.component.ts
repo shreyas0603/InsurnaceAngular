@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-location',
@@ -14,8 +14,8 @@ export class AddLocationComponent {
 
   locationData:any
   addLocation = new FormGroup({
-    state : new FormControl(''),
-    city : new FormControl(''),
+    state : new FormControl('', [Validators.required, Validators.maxLength(15)]),
+    city : new FormControl('', [Validators.required, Validators.maxLength(10)]),
    
   })
   constructor(private insuranceservice:InsuranceService,private router:Router){

@@ -77,4 +77,10 @@ body {
   button:hover {
     background: #2980b9;
   }
+  div{
+    color: red;
+  }
+  label{
+    color:  #3498db;
+  }
   

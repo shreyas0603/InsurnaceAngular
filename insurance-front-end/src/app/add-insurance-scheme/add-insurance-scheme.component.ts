@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { InsuranceService } from '../service/insurance.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -14,11 +14,11 @@ export class AddInsuranceSchemeComponent {
   insuranceSchemeData:any
   insuranceTypeData:any
   insuranceSchemeForm=new FormGroup({
-    insuranceTypeId:new FormControl(''),
-    insuranceSchemeName:new FormControl(''),
-    newRegistrastionCommision:new FormControl(''),
-    installmentPaymentCommision:new FormControl(''),
-    details:new FormControl('')
+    insuranceTypeId:new FormControl('',[Validators.required]),
+    insuranceSchemeName:new FormControl('', [Validators.required, Validators.maxLength(50)]),
+    newRegistrationCommision:new FormControl('', [Validators.required, Validators.min(1)]),
+    installmentPaymentCommision:new FormControl('', [Validators.required, Validators.min(1)]),
+    details:new FormControl('', [Validators.required])
   })
   constructor(private insuranceService:InsuranceService,private router:Router){
     insuranceService.getInsuranceType().subscribe({

@@ -9,7 +9,7 @@
 		
 	</div> -->
 		
-<table class="table table-striped">
+<table #table class="table table-striped">
 	<thead>
 		<tr>
             <th scope="col">Index</th>
@@ -18,8 +18,9 @@
       <!-- <th scope="col">Gender</th> -->
 		</tr>
 	</thead>
-	<tbody>
-		<tr *ngFor="let insuranceType of insuranceTypeData;index as i">
+	<tbody >
+		<tr *ngFor="let insuranceType of insuranceTypeData;index as i" >
+			
 			<td>{{insuranceType.id}}</td>
 			<td>
 				{{ insuranceType.insuranceTypeName}}
@@ -28,9 +29,12 @@
 				<button class="btn btn-primary" (click)="setInsurancePlanId(insuranceType.id)">Edit</button>&nbsp;
 				<button class="btn btn-primary" (click)="deleteInsuranceType(insuranceType.id)">Delete</button>
 			</td>
+		
 			<!-- <td>{{ student.isMale }}</td> -->
 			{{temporaryData.setInsuranceTypeCount(i+1)}}
 		</tr>
 	</tbody>
 </table>
+<button align="left" class="btn btn-primary" #table>Previous</button>
+<button align="right" class="btn btn-primary" >Next</button>
 </div>

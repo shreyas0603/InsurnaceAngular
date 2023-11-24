@@ -43,6 +43,20 @@ export class UpdateCustomerInsuranceAccountComponent {
     console.log(this.accountId)
     
   }
+  ngOnInit():void{
+    // debugger
+    var token=localStorage.getItem('token')
+    
+    var role = localStorage.getItem('role')
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Admin'){
+      alert('Please Login As Admin')
+      this.router.navigateByUrl('/login')
+    }
+  }
   updateCustomerAccount(data:any){
     // this.insuranceTypeForm.id=this.insuranceTypeId
     console.log(data)

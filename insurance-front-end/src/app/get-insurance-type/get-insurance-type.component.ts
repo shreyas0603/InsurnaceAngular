@@ -12,6 +12,9 @@ import { TemporaryDataService } from '../service/temporary-data.service';
 export class GetInsuranceTypeComponent {
 
   insuranceTypeData:any;
+  pageSize:number=0;
+  numberOfRecords:number=5;
+  
   constructor(private insuranceService:InsuranceService, private router: Router,protected temporaryData:TemporaryDataService){
     insuranceService.getInsuranceType().subscribe({
       next:(data)=>{
@@ -38,6 +41,9 @@ export class GetInsuranceTypeComponent {
       this.router.navigateByUrl('/login')
     }
   }
+  setPaginator(index:number){
+
+  }
   setInsurancePlanId(id:number){
     console.log(id)
     this.temporaryData.setId(id)
@@ -48,6 +54,7 @@ export class GetInsuranceTypeComponent {
     this.insuranceService.deleteInsuranceType(id).subscribe({
       next:(response)=>{
         alert('data deleted')
+        location.reload()
       }
     })
   }

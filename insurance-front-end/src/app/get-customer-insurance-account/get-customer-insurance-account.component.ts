@@ -58,6 +58,7 @@ export class GetCustomerInsuranceAccountComponent {
     this.accountinfo.deleteCustomerInsuranceAccount(id).subscribe({
       next:(response)=>{
         alert('data deleted')
+        location.reload()
       }
     })
   }

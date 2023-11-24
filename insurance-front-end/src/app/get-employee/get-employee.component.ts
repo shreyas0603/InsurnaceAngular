@@ -47,6 +47,7 @@ export class GetEmployeeComponent {
     this.employeeinfo.deleteEmployee(id).subscribe({
       next:(response)=>{
         alert('data deleted')
+        location.reload()
       }
     })
   }

@@ -48,6 +48,7 @@ export class GetAgentComponent {
     this.agentinfo.deleteAgent(id).subscribe({
       next:(response)=>{
         alert('data deleted')
+        location.reload()
       }
     })
   }

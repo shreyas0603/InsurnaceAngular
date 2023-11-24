@@ -81,6 +81,7 @@ export class GetCommisionComponent {
     this.commisioninfo.deleteCommision(id).subscribe({
       next:(response)=>{
         alert('data deleted')
+        location.reload()
       }
     })
   }

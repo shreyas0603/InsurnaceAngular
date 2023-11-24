@@ -47,6 +47,7 @@ export class GetLocationComponent {
     this.locationinfo.deleteLocation(id).subscribe({
       next:(response)=>{
         alert('data deleted')
+        location.reload()
       }
     })
   }

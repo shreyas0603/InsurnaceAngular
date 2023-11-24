@@ -50,6 +50,7 @@ export class GetInsurancePlanComponent {
     this.insuranceService.deleteInsurancePlan(id).subscribe({
       next:(response)=>{
         alert('data deleted')
+        location.reload()
       }
     })
   }

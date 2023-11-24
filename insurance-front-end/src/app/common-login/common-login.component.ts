@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
 import { DataService } from '../service/data.service';
@@ -17,8 +17,8 @@ export class CommonLoginComponent {
   
   loginForm=new FormGroup({
     accountType:new FormControl(''),
-    userName: new FormControl(''),
-    password: new FormControl('')
+    userName: new FormControl('',[Validators.required,]),
+    password: new FormControl('',[Validators.required,])
   })
 
   myToken: any="";
@@ -93,6 +93,7 @@ export class CommonLoginComponent {
         },
         error:(errorResponse:HttpErrorResponse)=>{
           console.log(errorResponse);
+          alert(errorResponse.error)
           
         }
       })

@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-insurance-plan',
@@ -14,14 +14,14 @@ export class AddInsurancePlanComponent {
   insuranceSchemeData:any
   insurancePlanData:any
   insurancePlanForm=new FormGroup({
-    minPolicyTerm:new FormControl(''),
-    maxPolicyTerm:new FormControl(''),
-    minAge:new FormControl(''),
-    maxAge:new FormControl(''),
-    minInvestmentAmount:new FormControl(''),
-    maxInvestmentAmount:new FormControl(''),
-    profitRatioPercentage:new FormControl(''),
-    insuranceSchemeId:new FormControl('')
+    insurenceSchemeId: new FormControl('', [Validators.required]),
+    minPolicyTerm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(60)]),
+    maxPolicyTerm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(60)]),
+    minAge: new FormControl('', [Validators.required, Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]),
+    maxAge: new FormControl('', [Validators.required, Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]),
+    minInvestmentAmount: new FormControl('', [Validators.required, Validators.min(1)]),
+    maxInvestmentAmount: new FormControl('', [Validators.required, Validators.min(1)]),
+    profitRatioPercentage: new FormControl('', [Validators.required, Validators.min(0)])
   })
   constructor(private insuranceService:InsuranceService,private router:Router){
     insuranceService.getInsuranceScheme().subscribe({

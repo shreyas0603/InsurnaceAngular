@@ -18,38 +18,59 @@
       <div class="form-group">
       <select  id="account-type" name="account-type" formControlName="accountType">
         
-        <option [ngValue]="null" disabled>Choose Insurance Scheme</option>
-        <option *ngFor="let insuranceScheme of insuranceSchemeData" value="{{insuranceScheme.id}}">{{insuranceScheme.insuranceSchemeName}}
+        <option [ngValue]="null"  disabled >Choose Insurance Scheme</option>
+        <option *ngFor="let insuranceScheme of insuranceSchemeData" value="{{insuranceScheme.id}}" >{{insuranceScheme.insuranceSchemeName}}
         </option>
         
       </select>
     </div>
+    <div class="form-group">
+      <input type="number"  placeholder="Enter minimum policy term" formControlName="minPolicyTerm" required>
+      <div *ngIf="insurancePlanForm.get('minPolicyTerm')?.hasError('required') && insurancePlanForm.get('minPolicyTerm')?.touched">
+        minPolicyTerm is mandatory.
+    </div>
+    </div>
+    <div class="form-group">
+      <input type="number"  placeholder="Enter maximum policy term" formControlName="maxPolicyTerm" required>
+      <div *ngIf="insurancePlanForm.get('maxPolicyTerm')?.hasError('required') && insurancePlanForm.get('maxPolicyTerm')?.touched">
+        maxPolicyTerm is mandatory.
+    </div>
+    </div>
+    <div class="form-group">
+      <!-- <label for="username">Username</label> -->
+      <input type="number"  placeholder="Enter minimum age" formControlName="minAge" required>
+      <div *ngIf="insurancePlanForm.get('minAge')?.hasError('required') && insurancePlanForm.get('minAge')?.touched">
+        minAge is mandatory.
+    </div>
+    </div>
+    <div class="form-group">
+          <input type="number"  placeholder="Enter maximum age" formControlName="maxAge" required>
+          <div *ngIf="insurancePlanForm.get('maxAge')?.hasError('required') && insurancePlanForm.get('maxAge')?.touched">
+            maxAge is mandatory.
+        </div>
+        </div>
       <div class="form-group">
-        <input type="number"  placeholder="Enter minimum policy term" formControlName="minPolicyTerm">
+          <input type="number"  placeholder="Enter minimum investment amount" formControlName="minInvestmentAmount" required>
+          <div *ngIf="insurancePlanForm.get('minInvestmentAmount')?.hasError('required') && insurancePlanForm.get('minInvestmentAmount')?.touched">
+            minInvestmentAmount is mandatory.
+        </div>
+        </div>
+      <div class="form-group">
+          <input type="number" placeholder="Enter maximum investment amount" formControlName="maxInvestmentAmount" required>
+          <div *ngIf="insurancePlanForm.get('maxInvestmentAmount')?.hasError('required') && insurancePlanForm.get('maxInvestmentAmount')?.touched">
+            maxInvestmentAmount is mandatory.
+        </div>
+        </div>
+      <div class="form-group">
+        <input type="number"  placeholder="Enter profit ratio (in %)" formControlName="profitRatioPercentage" required>
+        <div *ngIf="insurancePlanForm.get('profitRatioPercentage')?.hasError('required') && insurancePlanForm.get('profitRatioPercentage')?.touched">
+          profitRatioPercentage is mandatory.
       </div>
-      <div class="form-group">
-        <input type="number"  placeholder="Enter maximum policy term" formControlName="maxPolicyTerm">
       </div>
-      <div class="form-group">
-        <!-- <label for="username">Username</label> -->
-        <input type="number"  placeholder="Enter minimum age" formControlName="minAge">
-      </div>
-      <div class="form-group">
-            <input type="number"  placeholder="Enter maximum age" formControlName="maxAge">
-        </div>
-        <div class="form-group">
-            <input type="number"  placeholder="Enter minimum investment amount" formControlName="minInvestmentAmount">
-        </div>
-        <div class="form-group">
-            <input type="number" placeholder="Enter maximum investment amount" formControlName="maxInvestmentAmount">
-        </div>
-        <div class="form-group">
-          <input type="number"  placeholder="Enter profit ratio (in %)" formControlName="profitRatioPercentage">
-        </div>
         
 
 
-      <button type="submit">Submit</button>
+      <button type="submit" [disabled]="insurancePlanForm">Submit</button>
     </form>
   </div>
 </body>
