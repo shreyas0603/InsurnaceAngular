@@ -36,6 +36,8 @@ import { UpdateLocationComponent } from './update-location/update-location.compo
 import { UpdateInsuranceSchemeComponent } from './update-insurance-scheme/update-insurance-scheme.component';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AddCommisionWithdrawalComponent } from './add-commision-withdrawal/add-commision-withdrawal.component';
+import { GetCommisionWithdrawalComponent } from './get-commision-withdrawal/get-commision-withdrawal.component';
 // import { AddAgentComponent } from './add-agent/add-agent.component';
 
 const routes: Routes = [
@@ -167,6 +169,14 @@ const routes: Routes = [
   {
     path:"getCommission",
     component:GetCommisionComponent
+  },
+  {
+    path:"addCommmisionWithdrawal",
+    component:AddCommisionWithdrawalComponent
+  },
+  {
+    path:"getCommisionWithdrawal",
+    component:GetCommisionWithdrawalComponent
   },
   {
     path:"updateInsurancePlan",

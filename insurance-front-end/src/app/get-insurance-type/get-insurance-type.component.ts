@@ -13,7 +13,7 @@ export class GetInsuranceTypeComponent {
 
   insuranceTypeData:any;
   pageSize:number=0;
-  numberOfRecords:number=5;
+  numberOfRecords:number=5
   
   constructor(private insuranceService:InsuranceService, private router: Router,protected temporaryData:TemporaryDataService){
     insuranceService.getInsuranceType().subscribe({

@@ -213,6 +213,13 @@ export class InsuranceService {
   updateQuery(data:any){
     return this.http.put(this.url+"/Query",data)
   }
-  
+  //CommisionWithdrawal
+  getCommisonWithdrawal(){
+    return this.http.get(this.url+"/CommisionWithdrawal")
+  }
+ 
+  addCommisionWithdrawal(data:any){
+    return this.http.post(this.url+"/CommisionWithdrawal",data)
+  }
   
 }

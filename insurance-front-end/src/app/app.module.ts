@@ -56,6 +56,8 @@ import { AgentChangePasswordComponent } from './agent-change-password/agent-chan
 import { GetAgentComponent } from './get-agent/get-agent.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddCommisionWithdrawalComponent } from './add-commision-withdrawal/add-commision-withdrawal.component';
+import { GetCommisionWithdrawalComponent } from './get-commision-withdrawal/get-commision-withdrawal.component';
 // import { AddLocationsComponent } from './add-locations/add-locations.component';
 
 @NgModule({
@@ -107,6 +109,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AgentChangePasswordComponent,
     GetAgentComponent,
     AboutUsComponent,
+    AddCommisionWithdrawalComponent,
+    GetCommisionWithdrawalComponent,
     // AddLocationsComponent
   ],
   imports: [
