@@ -39,6 +39,7 @@ export class GetAgentCustomerComponent {
     this.insurnaceService=customerinfo
     customerinfo.getCustomer().subscribe((data)=>{
       this.customerData=data
+      
       console.log(this.userRole)
       console.log(this.customerData);
       // this.collectionSize=this.customerData.length;
@@ -62,6 +63,9 @@ export class GetAgentCustomerComponent {
     })
     customerinfo
     // this.refreshCountries();
+  }
+  setCount(count:number){
+   
   }
   ngOnInit():void{
     // debugger

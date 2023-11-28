@@ -38,6 +38,10 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AddCommisionWithdrawalComponent } from './add-commision-withdrawal/add-commision-withdrawal.component';
 import { GetCommisionWithdrawalComponent } from './get-commision-withdrawal/get-commision-withdrawal.component';
+import { CustomerComponentComponent } from './customer-component/customer-component.component';
+import { CustomerChangePasswordComponent } from './customer-change-password/customer-change-password.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { AddQueryComponent } from './add-query/add-query.component';
 // import { AddAgentComponent } from './add-agent/add-agent.component';
 
 const routes: Routes = [
@@ -108,6 +112,18 @@ const routes: Routes = [
   {
     path:'updateLocation',
     component:UpdateLocationComponent
+  },
+  {
+    path:'customer',
+    component:CustomerComponentComponent
+  },
+  {
+    path:'customerChangePassword',
+    component:CustomerChangePasswordComponent
+  },
+  {
+    path:'customerProfile',
+    component:CustomerProfileComponent
   }
   ,
   {
@@ -193,6 +209,10 @@ const routes: Routes = [
   {
     path:'updateQuery',
     component:UpdateQueryComponent
+  },
+  {
+    path:'addQuery',
+    component:AddQueryComponent
   }
   
   

@@ -65,8 +65,8 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Agent Customer</h5>
-                <p class="card-text">No of Customer: int</p>
-                <a href="/agentCustomer" class="btn btn-primary">View Agent Customer</a>
+                <p class="card-text">No of Customer: {{temporaryData.getCustomerCount()}}</p>
+                <a routerLink="/agentCustomer" class="btn btn-primary">View Agent Customer</a>
               </div>
             </div>
           </div>
@@ -75,8 +75,8 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Insurance Account</h5>
-                <p class="card-text">No of Accounts: int</p>
-                <a href="/getCustomerInsuranceAccount" class="btn btn-primary">View Insurance Account</a>
+                <p class="card-text">No of Accounts: {{temporaryData.getCustomerInsuranceAccount()}}</p>
+                <a routerLink="/getCustomerInsuranceAccount" class="btn btn-primary">View Insurance Account</a>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@
               <div class="card-body">
                 <h5 class="card-title">Commision</h5>
                 <p class="card-text">No of Commisions : int</p>
-                <a href="/getCommission" class="btn btn-primary">View Commision</a>
+                <a routerLink="/getCommission" class="btn btn-primary">View Commision</a>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
               <div class="card-body">
                 <h5 class="card-title">Commision Withdrawal</h5>
                 <p class="card-text">No of Withdrawals: int</p>
-                <a href="/commisionWithdrawal" class="btn btn-primary">View Commision Withdrawal</a>
+                <a routerLink="/commisionWithdrawal" class="btn btn-primary">View Commision Withdrawal</a>
               </div>
             </div>
           </div>
@@ -110,7 +110,7 @@
               <div class="card-body">
                 <h5 class="card-title">Policy Payments</h5>
                 <p class="card-text">No of policy Payements:int</p>
-                <a href="/getPolicyPayment" class="btn btn-primary">View Policy Payments</a>
+                <a routerLink="/getPolicyPayment" class="btn btn-primary">View Policy Payments</a>
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@
               <div class="card-body">
                 <h5 class="card-title">Policy Claims</h5>
                 <p class="card-text">No of Policy Claims:int</p>
-                <a href="/getPolicyClaim" class="btn btn-primary">View Policy Claims</a>
+                <a routerLink="/getPolicyClaim" class="btn btn-primary">View Policy Claims</a>
               </div>
             </div>
           </div>

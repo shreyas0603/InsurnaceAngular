@@ -58,6 +58,11 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddCommisionWithdrawalComponent } from './add-commision-withdrawal/add-commision-withdrawal.component';
 import { GetCommisionWithdrawalComponent } from './get-commision-withdrawal/get-commision-withdrawal.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { CustomerChangePasswordComponent } from './customer-change-password/customer-change-password.component';
+import { CustomerNavbarComponent } from './customer-navbar/customer-navbar.component';
+import { CustomerComponentComponent } from './customer-component/customer-component.component';
+import { AddQueryComponent } from './add-query/add-query.component';
 // import { AddLocationsComponent } from './add-locations/add-locations.component';
 
 @NgModule({
@@ -111,6 +116,11 @@ import { GetCommisionWithdrawalComponent } from './get-commision-withdrawal/get-
     AboutUsComponent,
     AddCommisionWithdrawalComponent,
     GetCommisionWithdrawalComponent,
+    CustomerProfileComponent,
+    CustomerChangePasswordComponent,
+    CustomerNavbarComponent,
+    CustomerComponentComponent,
+    AddQueryComponent,
     // AddLocationsComponent
   ],
   imports: [

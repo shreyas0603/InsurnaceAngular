@@ -20,7 +20,11 @@ export class TemporaryDataService {
   private insuranceTypeCount:number=0
   private insuranceSchemeCount:number=0
   private locationCount:number=0
+  private customerInsuranceAccount:number=0
 
+  getCustomerInsuranceAccount(){
+    return this.customerInsuranceAccount
+  }
   getAgentCount(){
     return this.agentCount
   }
@@ -59,6 +63,9 @@ export class TemporaryDataService {
     // localStorage.setItem('agentCount',JSON.stringify({count}))
     // localStorage.setItem('agentCount',count.toString())
     this.agentCount=count
+  }
+  setCustomerInsuranceAccount(count:number){
+    this.customerInsuranceAccount=count
   }
   setEmployeeCount(count:number){
     this.employeeCount=count

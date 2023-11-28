@@ -93,8 +93,9 @@ th {
   </thead>
   <tbody>
     <tr *ngFor="let withdrawal of withdrawalData">
-            <td>{{ withdrawal.requestDate }}</td>
-            <td>{{withdrawal.agentId}}</td>
+            <td>{{withdrawal.requestDate}}</td>
+            <!-- <td>{{withdrawal.agentId}}</td> -->
+            <!-- <td>{{getAgentName(withdrawal.agentId)}}</td> -->
             <td>{{withdrawal.isApproved}}</td>
             <td>{{ withdrawal.withdrawalAmount}}</td>
     </tr>

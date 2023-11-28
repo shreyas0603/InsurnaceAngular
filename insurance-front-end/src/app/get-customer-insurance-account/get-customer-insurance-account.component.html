@@ -73,6 +73,9 @@ th {
   <div *ngIf="userRole=='Agent'">
     <app-agent-navbar></app-agent-navbar>
   </div>
+  <div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+  </div>
   <h1 >View Customer Insurance Account</h1>
 
   <table class="table table-striped">
@@ -91,7 +94,7 @@ th {
             <th scope="col">Total Premium Amount</th>
             <th scope="col">Profit Ratio</th>
             <th scope="col">Sum Assured</th>
-            <th scope="col">Action</th>
+            <th *ngIf="userRole=='Admin'" scope="col">Action</th>
            
 		</tr>
 	</thead>
@@ -107,10 +110,11 @@ th {
             <!-- <td>{{customer.password}}</td> -->
             <td>{{account.sumAssured}}</td>
             <!-- <td>{{customer.agentId}}</td> -->
-            <td>
+            <td *ngIf="userRole=='Admin'">
               <button class="btn btn-primary" (click)="setId(account.id)">Edit</button>&nbsp;
               <button class="btn btn-primary" (click)="deleteData(account.id)">Delete</button>
             </td>
+            {{temporaryData.setCustomerInsuranceAccount(i+1)}}
 		</tr>
 	</tbody>
 </table>

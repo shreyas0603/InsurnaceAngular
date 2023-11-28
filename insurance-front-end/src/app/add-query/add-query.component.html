@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="add-query.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-admin-navbar></app-admin-navbar>
+  <div class="login-container">
+    <h1>Add Location</h1>
+    <!-- -->
+    <form [formGroup]="addQuery" (ngSubmit)="addNewQuery(addQuery.value)"  >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <!-- <select formControlName="state">
+        <option [ngValue]="null" disabled>Choose Insurance Type</option>
+        <option>null</option>
+        <option *ngFor="let insuranceType of insuranceTypeData" value="{{insuranceType.id}}">{{insuranceType.insuranceTypeName}}
+         </option>
+      </select> -->
+      <div class="form-group">
+        <input type="text" id="queryTitle" name="queryTitle" placeholder="Enter Query Title" formControlName="queryTitle" required>
+        <div *ngIf="addQuery.get('queryTitle')?.hasError('required') && addQuery.get('queryTitle')?.touched">
+            Query Title is mandatory.
+      </div>
+      </div>
+      <div class="form-group">
+        <input type="text" id="queryMessage" name="queryMessage" placeholder="Enter Query Message" formControlName="queryMessage" required>
+        <div *ngIf="addQuery.get('queryMessage')?.hasError('required') && addQuery.get('queryMessage')?.touched">
+            Query Message is mandatory.
+      </div>
+      </div>
+      <div class="form-group">
+        <input type="date" id="queryDate" name="queryDate" placeholder="Enter Query Date" formControlName="queryDate" required>
+        <div *ngIf="addQuery.get('queryDate')?.hasError('required') && addQuery.get('queryDate')?.touched">
+            Query Date is mandatory.
+      </div>
+      </div>
+        <input type="hidden" formControlName="reply">
+        <input type="hidden" formControlName="customerId" [(ngModel)]="getCustomerId">
+      
+      <button type="submit" >Submit</button>
+    </form>
+  </div>
+</body>
+</html>

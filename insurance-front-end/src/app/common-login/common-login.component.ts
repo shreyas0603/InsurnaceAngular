@@ -179,7 +179,7 @@ export class CommonLoginComponent {
   
           
           this.temporaryData.setLoginId(this.data.userId)
-         
+          this.temporaryData.setRole('Customer') 
              this.router.navigateByUrl("/customer")
           
         },

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
 import { TemporaryDataService } from '../service/temporary-data.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-get-commision-withdrawal',
@@ -11,9 +12,9 @@ export class GetCommisionWithdrawalComponent {
 
   withdrawalData:any;
   total:number=0;
+  agentData:any
  
- 
-  constructor(locationinfo:InsuranceService,protected temporaryData:TemporaryDataService){
+  constructor(private locationinfo:InsuranceService,protected temporaryData:TemporaryDataService){
     
     locationinfo.getCommisonWithdrawal().subscribe((data)=>{
       this. withdrawalData=data
@@ -21,7 +22,21 @@ export class GetCommisionWithdrawalComponent {
       // this.collectionSize=this.customerData.length;
     })
   }
- 
+  getAgentName(id:number){
+    debugger
+    this.locationinfo.getAgentById(id).subscribe({
+      next:(result)=>{
+        this.agentData=result
+        return this.agentData.userName
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse)
+        alert(errorResponse.error)
+      }
+    })
+    console.log(this.agentData.userName);
+    
+  }
   calculateTotal() {
     // if (!this.commisionData) {
     //   return 0;

@@ -18,21 +18,45 @@ export class GetCustomerInsuranceAccountComponent {
   collectionSize=0;
   userRole:string=''
   customerData:any
-  constructor(private accountinfo:InsuranceService,private temporaryData:TemporaryDataService, private router: Router){
+  customerloginId:number=0
+  constructor(private accountinfo:InsuranceService,protected temporaryData:TemporaryDataService, private router: Router){
     this.userRole=temporaryData.getRole()
-    accountinfo.getCustomerInsuranceAccount().subscribe((data)=>{
-      this. accountData=data
-      console.log(this. accountData);
-      // this.collectionSize=this.customerData.length;
-      accountinfo.getCustomer().subscribe({
+    this.customerloginId=temporaryData.getLoginId()
+    if(this.userRole=='Admin' || this.userRole=='Agent'){
+
+      accountinfo.getCustomerInsuranceAccount().subscribe((data)=>{
+        this. accountData=data
+        console.log(this. accountData);
+        // this.collectionSize=this.customerData.length;
+        accountinfo.getCustomer().subscribe({
+          next:(response)=>{
+            this.customerData=response
+          },
+          error(errorResponse:HttpErrorResponse){
+            console.log(errorResponse)
+          }
+        })
+      })
+    }
+    else if(this.userRole=='Customer' ){
+      accountinfo.getCustomerInsuranceAccountByCustomerId(this.customerloginId).subscribe({
         next:(response)=>{
-          this.customerData=response
+          this.accountData=response
+          console.log(this.accountData)
+          accountinfo.getCustomer().subscribe({
+            next:(response)=>{
+              this.customerData=response
+            },
+            error(errorResponse:HttpErrorResponse){
+              console.log(errorResponse)
+            }
+          })  
         },
         error(errorResponse:HttpErrorResponse){
           console.log(errorResponse)
         }
       })
-    })
+    }
   }
   ngOnInit():void{
     // debugger
@@ -43,7 +67,7 @@ export class GetCustomerInsuranceAccountComponent {
       alert('Please login')
       this.router.navigateByUrl('/login')
     }
-    else if(role!='Admin' && role!='Agent'){
+    else if(role!='Admin' && role!='Agent' && role!='Customer'){
       alert('Please Login As Admin Or Agent')
       this.router.navigateByUrl('/login')
     }

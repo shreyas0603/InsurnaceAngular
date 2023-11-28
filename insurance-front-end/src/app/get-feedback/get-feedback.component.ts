@@ -17,7 +17,9 @@ export class GetFeedbackComponent {
   customers:any;
   collectionSize=0;
   customerData:any
+  userRole:string=''
   constructor(private queryinfo:InsuranceService,private temporaryData:TemporaryDataService, private router: Router){
+    this.userRole=temporaryData.getRole()
     queryinfo.getQuery().subscribe((data)=>{
       this. queryData=data
       console.log(this.queryData);
@@ -42,7 +44,7 @@ export class GetFeedbackComponent {
       this.router.navigateByUrl('/login')
     }
     else if(role!='Admin' && role!='Customer'){
-      alert('Please Login As Admin')
+      alert('Please Login As Admin Or Customer')
       this.router.navigateByUrl('/login')
     }
   }

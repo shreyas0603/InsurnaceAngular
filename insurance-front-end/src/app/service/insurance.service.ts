@@ -59,6 +59,9 @@ export class InsuranceService {
   getCustomer(){
     return this.http.get(this.url+"/Customer")
   }
+  changePasswordCustomer(data:any){
+    return this.http.post(this.url+"/Customer/ChangePassword",data)
+  }
   isCustomerUsernameUnique(username: string){
     return this.http.get(this.url+"/Customer/UsernameUnique"+"?username="+username)
   }
@@ -112,6 +115,9 @@ export class InsuranceService {
   }
   getCustomerInsuranceAccountById(id:number){
     return this.http.get(this.url+"/CustomerInsuranceAccount/"+id)
+  }
+  getCustomerInsuranceAccountByCustomerId(id:number){
+    return this.http.get(this.url+"/CustomerInsuranceAccount/ByCustomerId/"+id)
   }
   updateCustomerInsuranceAccount(data:any){
     return this.http.put(this.url+"/CustomerInsuranceAccount",data)
@@ -204,6 +210,9 @@ export class InsuranceService {
     return this.http.delete(this.url+"/Commision/"+id)
   }
   //getquery
+  addQuery(data:any){
+    return this.http.post(this.url+"/Query",data)
+  }
   getQuery(){
     return this.http.get(this.url+"/Query")
   }
