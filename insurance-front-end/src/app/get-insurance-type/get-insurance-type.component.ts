@@ -11,15 +11,26 @@ import { TemporaryDataService } from '../service/temporary-data.service';
 })
 export class GetInsuranceTypeComponent {
 
-  insuranceTypeData:any;
-  pageSize:number=0;
-  numberOfRecords:number=5
+  insuranceTypeData:Array<any>
+  // pageSize:number=0;
+  // numberOfRecords:number=5
   
+  //as per video
+  page: number = 1;
+  totalRecords:number=0
+  
+
   constructor(private insuranceService:InsuranceService, private router: Router,protected temporaryData:TemporaryDataService){
-    insuranceService.getInsuranceType().subscribe({
-      next:(data)=>{
+    this.insuranceTypeData=new Array<any>()
+  }
+  getInsuranceData(){
+    this.insuranceService.getInsuranceType().subscribe(
+      {next:
+      (data)=>{
       this.insuranceTypeData=data
       console.log(this.insuranceTypeData)
+      this.totalRecords=data.length
+      console.log(this.totalRecords)
       // debugger
     },
     error:(errorResponse:HttpErrorResponse)=>{
@@ -29,6 +40,7 @@ export class GetInsuranceTypeComponent {
   }
   ngOnInit():void{
     // debugger
+    this.getInsuranceData()
     var token=localStorage.getItem('token')
     
     var role = localStorage.getItem('role')
@@ -41,9 +53,7 @@ export class GetInsuranceTypeComponent {
       this.router.navigateByUrl('/login')
     }
   }
-  setPaginator(index:number){
-
-  }
+  
   setInsurancePlanId(id:number){
     console.log(id)
     this.temporaryData.setId(id)

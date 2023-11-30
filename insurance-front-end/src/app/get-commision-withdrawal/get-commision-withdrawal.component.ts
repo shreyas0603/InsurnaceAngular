@@ -22,21 +22,21 @@ export class GetCommisionWithdrawalComponent {
       // this.collectionSize=this.customerData.length;
     })
   }
-  getAgentName(id:number){
-    debugger
-    this.locationinfo.getAgentById(id).subscribe({
-      next:(result)=>{
-        this.agentData=result
-        return this.agentData.userName
-      },
-      error(errorResponse:HttpErrorResponse){
-        console.log(errorResponse)
-        alert(errorResponse.error)
-      }
-    })
-    console.log(this.agentData.userName);
+  // getAgentName(id:number){
+  //   debugger
+  //   this.locationinfo.getAgentById(id).subscribe({
+  //     next:(result)=>{
+  //       this.agentData=result
+  //       return this.agentData.userName
+  //     },
+  //     error(errorResponse:HttpErrorResponse){
+  //       console.log(errorResponse)
+  //       alert(errorResponse.error)
+  //     }
+  //   })
+  //   console.log(this.agentData.userName);
     
-  }
+  // }
   calculateTotal() {
     // if (!this.commisionData) {
     //   return 0;

@@ -15,7 +15,7 @@
       <div class="form-group">
         <label for="account-type">Account Type</label>
         <select  id="account-type" name="account-type" formControlName="accountType">
-          <option [ngValue]="null" disabled>Choose your profile</option>
+          <option value="" disabled selected>Choose your profile</option>
           <option *ngFor="let prf of allAccountType" [ngValue]="prf">
             {{ prf }}
            </option>

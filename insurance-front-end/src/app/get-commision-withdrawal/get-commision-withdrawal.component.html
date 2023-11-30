@@ -79,11 +79,11 @@ th {
   <thead>
     <tr>
             <!-- <th scope="col">Id</th> -->
-      <th scope="col">RequestDate</th>  <!--Customer Name-->
+      <th scope="col">Request Date</th>  <!--Customer Name-->
      
       
-      <th scope="col">AgentId</th>
-      <th scope="col">IsApproved</th>
+      <!-- <th scope="col">AgentId</th> -->
+      <th scope="col">Is Approved</th>
       <th scope="col">Withdrawal Amount</th>  <!--account no-->
             <!-- <th scope="col">TotalAmount</th> -->
          
@@ -100,7 +100,7 @@ th {
             <td>{{ withdrawal.withdrawalAmount}}</td>
     </tr>
         <tr>
-            <td colspan="3">TotalWithdrawalAmount</td>
+            <td colspan="2">TotalWithdrawalAmount</td>
             <td>{{calculateTotal()}} {{makeTotalZero()}}</td>
           </tr>
   </tbody>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class InsuranceService {
   isAdminUsernameUnique(username: string){
     return this.http.get(this.url+"/Admin/UsernameUnique"+"?username="+username)
   }
-  getAdminById(id:any){
+  getAdminById(id:any):Observable<any>{
     return this.http.get(this.url + "/Admin/" + id)
   }
 
@@ -34,13 +35,13 @@ export class InsuranceService {
     return this.http.post(this.url+"/Admin/ChangePassword",data)
   }
   //Agent
-  getAgent (){
+  getAgent ():Observable<any>{
     return this.http.get(this.url+"/Agent")
   }
   isAgentUsernameUnique(username: string){
     return this.http.get(this.url+"/Agent/UsernameUnique"+"?username="+username)
   }
-  getAgentById(id:Number){
+  getAgentById(id:Number):Observable<any>{
     return this.http.get(this.url+"/Agent/"+id)
   }
   addAgent(data:any){
@@ -56,7 +57,7 @@ export class InsuranceService {
     return this.http.post(this.url+"/Agent/ChangePassword",data)
   }
   //Customer
-  getCustomer(){
+  getCustomer():Observable<any>{
     return this.http.get(this.url+"/Customer")
   }
   changePasswordCustomer(data:any){
@@ -65,7 +66,7 @@ export class InsuranceService {
   isCustomerUsernameUnique(username: string){
     return this.http.get(this.url+"/Customer/UsernameUnique"+"?username="+username)
   }
-  getCustomerById(id:number){
+  getCustomerById(id:number):Observable<any>{
     return this.http.get(this.url+"/Customer/"+id)
   }
   updateCustomer(data:any){
@@ -75,13 +76,13 @@ export class InsuranceService {
     return this.http.delete(this.url+"/Customer/"+id)
   }
   //Employee
-  getEmployee (){
+  getEmployee ():Observable<any>{
     return this.http.get(this.url+"/Employee")
   }
   isEmployeeUsernameUnique(username: string){
     return this.http.get(this.url+"/Employee/UsernameUnique"+"?username="+username)
   }
-  getEmployeeById (id:number){
+  getEmployeeById (id:number):Observable<any>{
     return this.http.get(this.url+"/Employee/"+id)
   }
   addEmployee(data:any){
@@ -94,10 +95,10 @@ export class InsuranceService {
     return this.http.delete(this.url+"/Employee/"+id)
   }
   //Location
-  getLocation (){
+  getLocation ():Observable<any>{
     return this.http.get(this.url+"/Location")
   }
-  getLocationById (id:number){
+  getLocationById (id:number):Observable<any>{
     return this.http.get(this.url+"/Location/"+id)
   }
   addLocation(data:any){
@@ -110,13 +111,13 @@ export class InsuranceService {
     return this.http.delete(this.url+"/Location/"+id)
   }
   //customer-insurance-account
-  getCustomerInsuranceAccount(){
+  getCustomerInsuranceAccount():Observable<any>{
     return this.http.get(this.url+"/CustomerInsuranceAccount")
   }
-  getCustomerInsuranceAccountById(id:number){
+  getCustomerInsuranceAccountById(id:number):Observable<any>{
     return this.http.get(this.url+"/CustomerInsuranceAccount/"+id)
   }
-  getCustomerInsuranceAccountByCustomerId(id:number){
+  getCustomerInsuranceAccountByCustomerId(id:number):Observable<any>{
     return this.http.get(this.url+"/CustomerInsuranceAccount/ByCustomerId/"+id)
   }
   updateCustomerInsuranceAccount(data:any){
@@ -129,10 +130,10 @@ export class InsuranceService {
   addInsuranceType(data:any){
     return this.http.post(this.url+"/InsuranceType",data)
   }
-  getInsuranceType(){
+  getInsuranceType():Observable<any>{
     return this.http.get(this.url+"/InsuranceType")
   }
-  getInsuranceTypeById(id:any){
+  getInsuranceTypeById(id:any):Observable<any>{
     return this.http.get(this.url + "/InsuranceType/" + id)
   }
   updateInsuranceType(data:any){
@@ -145,10 +146,10 @@ export class InsuranceService {
   addInsuranceScheme(data:any){
     return this.http.post(this.url+"/InsuranceScheme",data)
   }
-  getInsuranceScheme(){
+  getInsuranceScheme():Observable<any>{
     return this.http.get(this.url+"/InsuranceScheme")
   }
-  getInsuranceSchemeById(id:number){
+  getInsuranceSchemeById(id:number):Observable<any>{
     return this.http.get(this.url+"/InsuranceScheme/"+id)
   }
   updateInsuranceScheme(data:any){
@@ -161,10 +162,10 @@ export class InsuranceService {
   addInsurancePlan(data:any){
     return this.http.post(this.url+"/InsurancePlan",data)
   }
-  getInsurancePlan(){
+  getInsurancePlan():Observable<any>{
     return this.http.get(this.url+"/InsurancePlan")
   }
-  getInsurancePlanById(id:number){
+  getInsurancePlanById(id:number):Observable<any>{
     return this.http.get(this.url+"/InsurancePlan/"+id)
   }
   updateInsurancePlan(data:any){
@@ -174,7 +175,7 @@ export class InsuranceService {
     return this.http.delete(this.url+"/InsurancePlan/"+id)
   }
   //policy payments
-  getPolicyPayements(){
+  getPolicyPayements():Observable<any>{
     return this.http.get(this.url+"/PolicyPayment")
   }
   updatePolicyPayments(data:any){
@@ -184,7 +185,7 @@ export class InsuranceService {
     return this.http.delete(this.url+"/PolicyPayment/"+id)
   }
   //policy claim
-  getPolicyClaim(){
+  getPolicyClaim():Observable<any>{
     return this.http.get(this.url+"/PolicyClaim")
   }
   updatePolicyClaim(data:any){
@@ -200,7 +201,7 @@ export class InsuranceService {
     { observe: 'response' });
   }
   // commsion
-  getCommision(){
+  getCommision():Observable<any>{
     return this.http.get(this.url+"/Commision")
   }
   updateCommision(data:any){
@@ -213,17 +214,17 @@ export class InsuranceService {
   addQuery(data:any){
     return this.http.post(this.url+"/Query",data)
   }
-  getQuery(){
+  getQuery():Observable<any>{
     return this.http.get(this.url+"/Query")
   }
-  getQueryById(id:number){
+  getQueryById(id:number):Observable<any>{
     return this.http.get(this.url+"/Query/"+id)
   }
   updateQuery(data:any){
     return this.http.put(this.url+"/Query",data)
   }
   //CommisionWithdrawal
-  getCommisonWithdrawal(){
+  getCommisonWithdrawal():Observable<any>{
     return this.http.get(this.url+"/CommisionWithdrawal")
   }
  

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 // import { MatPaginatorModule } from '@angular/material/paginator';
 // import { MatTableModule } from '@angular/material/table';
 
@@ -63,6 +64,7 @@ import { CustomerChangePasswordComponent } from './customer-change-password/cust
 import { CustomerNavbarComponent } from './customer-navbar/customer-navbar.component';
 import { CustomerComponentComponent } from './customer-component/customer-component.component';
 import { AddQueryComponent } from './add-query/add-query.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
 // import { AddLocationsComponent } from './add-locations/add-locations.component';
 
 @NgModule({
@@ -121,6 +123,7 @@ import { AddQueryComponent } from './add-query/add-query.component';
     CustomerNavbarComponent,
     CustomerComponentComponent,
     AddQueryComponent,
+    AddCustomerComponent,
     // AddLocationsComponent
   ],
   imports: [
@@ -129,7 +132,8 @@ import { AddQueryComponent } from './add-query/add-query.component';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:JwtInterceptor,

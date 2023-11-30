@@ -19,7 +19,13 @@
 		</tr>
 	</thead>
 	<tbody >
-		<tr *ngFor="let insuranceType of insuranceTypeData;index as i" >
+		<tr *ngFor="let insuranceType of insuranceTypeData
+		| paginate:{
+			id:'listing_pagination',
+      itemsPerPage:5,
+      currentPage:page,
+      totalItems:totalRecords
+    };index as i" >
 			
 			<td>{{insuranceType.id}}</td>
 			<td>
@@ -35,6 +41,16 @@
 		</tr>
 	</tbody>
 </table>
-<button align="left" class="btn btn-primary" #table>Previous</button>
-<button align="right" class="btn btn-primary" >Next</button>
+<div align="center">
+	<pagination-controls
+	id="listing_pagination"
+	[maxSize]="5"
+	[directionLinks]="true"
+	
+	(pageChange)="page =$event"
+	>
+	</pagination-controls>
+	</div>
+<!-- <button align="left" class="btn btn-primary" #table>Previous</button>
+<button align="right" class="btn btn-primary" >Next</button> -->
 </div>
