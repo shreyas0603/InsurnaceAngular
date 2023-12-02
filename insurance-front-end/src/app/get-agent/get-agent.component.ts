@@ -11,15 +11,18 @@ import { Router } from '@angular/router';
 export class GetAgentComponent {
 
   
-  agentData:any;
-  page = 1;
-	pageSize = 4;
+  agentData:Array<any>;
+  page: number = 1;
+  totalRecords:number=0 
   customers:any;
   collectionSize=0;
   
   constructor(private agentinfo:InsuranceService,protected temporaryData:TemporaryDataService, private router: Router){
+    this.agentData=new Array<any>()
     agentinfo.getAgent().subscribe((data)=>{
       this. agentData=data
+      this.totalRecords=data.length
+      console.log(this.totalRecords)
       console.log(this.agentData);
       // this.collectionSize=this.customerData.length;
     })

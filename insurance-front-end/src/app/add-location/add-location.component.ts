@@ -19,7 +19,7 @@ export class AddLocationComponent {
    
   })
   constructor(private insuranceservice:InsuranceService,private router:Router){
-
+    
     
   }
   ngOnInit():void{

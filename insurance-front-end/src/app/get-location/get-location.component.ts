@@ -10,15 +10,15 @@ import { Router } from '@angular/router';
 })
 export class GetLocationComponent {
 
-  locationData:any;
-  page = 1;
-	pageSize = 4;
-  customers:any;
-  collectionSize=0;
+  locationData:Array<any>;
+  page: number = 1;
+  totalRecords:number=0
   
   constructor(private locationinfo:InsuranceService,protected temporaryData:TemporaryDataService,private router:Router){
+    this.locationData=new Array<any>()
     locationinfo.getLocation().subscribe((data)=>{
       this. locationData=data
+      this.totalRecords=data.length
       console.log(this.locationData);
       // this.collectionSize=this.customerData.length;
     })

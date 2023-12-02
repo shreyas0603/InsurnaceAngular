@@ -11,17 +11,20 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class GetFeedbackComponent {
 
-  queryData:any;
-  page = 1;
-	pageSize = 4;
-  customers:any;
-  collectionSize=0;
-  customerData:any
+  queryData:Array<any>;
+  page: number = 1;
+  totalRecords:number=0 
+  customerData:Array<any>
   userRole:string=''
+  
   constructor(private queryinfo:InsuranceService,private temporaryData:TemporaryDataService, private router: Router){
+    this.queryData=new Array<any>()
+    this.customerData=new Array<any>()
     this.userRole=temporaryData.getRole()
     queryinfo.getQuery().subscribe((data)=>{
       this. queryData=data
+      this.totalRecords=data.length
+      console.log(this.totalRecords)
       console.log(this.queryData);
       // this.collectionSize=this.customerData.length;
     })
@@ -33,6 +36,11 @@ export class GetFeedbackComponent {
         console.log(errorResponse)
       }
     })
+  }
+  pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
   }
   ngOnInit():void{
     // debugger
@@ -52,6 +60,15 @@ export class GetFeedbackComponent {
     console.log(id)
     this.temporaryData.setId(id)
     this.router.navigateByUrl("/updateQuery")
+  }
+  getCustomerName(customerId: number): string {
+    if (this.customerData) {
+      const customer = this.customerData.find((a: any) => a.id === customerId);
+      console.log(customer);
+      return customer!=null ? `${customer.firstName} ${customer.lastName}` : 'Customer Not Found';
+    } else {
+      return 'Customer Data Not Loaded';
+    }
   }
   
 }

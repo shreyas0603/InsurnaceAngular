@@ -82,4 +82,6 @@ body {
   div{
     color: red;
   }
-  
+  ::placeholder{
+    color: red;
+  }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TemporaryDataService } from '../service/temporary-data.service';
+import { InsuranceService } from '../service/insurance.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-navbar',
@@ -8,8 +10,20 @@ import { TemporaryDataService } from '../service/temporary-data.service';
 })
 export class CustomerNavbarComponent {
 
-  constructor(private temporarydata:TemporaryDataService){}
+  insuranceTypeData:Array<any>
+  constructor(private insuranceService:InsuranceService,private temporarydata:TemporaryDataService,private router:Router){
+    this.insuranceTypeData=new Array<any>()
+    insuranceService.getInsuranceType().subscribe({
+      next:(data)=>{
+        this.insuranceTypeData=data
+      }
+    })
 
+  }
+  setInsuranceTypeId(id:number){
+    this.temporarydata.insuranceTypeId=id
+    this.router.navigateByUrl('/customerInsurancePlan')
+  }
   deleteToken(){
     // localStorage.removeItem('token')
     localStorage.clear()

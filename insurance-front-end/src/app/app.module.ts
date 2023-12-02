@@ -65,6 +65,7 @@ import { CustomerNavbarComponent } from './customer-navbar/customer-navbar.compo
 import { CustomerComponentComponent } from './customer-component/customer-component.component';
 import { AddQueryComponent } from './add-query/add-query.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { CustomerInsurancePlanComponent } from './customer-insurance-plan/customer-insurance-plan.component';
 // import { AddLocationsComponent } from './add-locations/add-locations.component';
 
 @NgModule({
@@ -124,6 +125,7 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
     CustomerComponentComponent,
     AddQueryComponent,
     AddCustomerComponent,
+    CustomerInsurancePlanComponent,
     // AddLocationsComponent
   ],
   imports: [

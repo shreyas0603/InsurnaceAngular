@@ -21,7 +21,14 @@ export class TemporaryDataService {
   private insuranceSchemeCount:number=0
   private locationCount:number=0
   private customerInsuranceAccount:number=0
+  private _insuranceTypeId:number=0
 
+  set insuranceTypeId(id:number){
+    this._insuranceTypeId=id
+  }
+  get insuranceTypeId():number{
+    return this._insuranceTypeId
+  }
   getCustomerInsuranceAccount(){
     return this.customerInsuranceAccount
   }

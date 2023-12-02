@@ -42,6 +42,7 @@ import { CustomerComponentComponent } from './customer-component/customer-compon
 import { CustomerChangePasswordComponent } from './customer-change-password/customer-change-password.component';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { AddQueryComponent } from './add-query/add-query.component';
+import { CustomerInsurancePlanComponent } from './customer-insurance-plan/customer-insurance-plan.component';
 // import { AddAgentComponent } from './add-agent/add-agent.component';
 
 const routes: Routes = [
@@ -133,6 +134,10 @@ const routes: Routes = [
   {
     path:'updateCustomer',
     component:UpdateCustomerComponent
+  },
+  {
+    path:'customerInsurancePlan',
+    component:CustomerInsurancePlanComponent
   },
   {
     path:'getCustomerInsuranceAccount',

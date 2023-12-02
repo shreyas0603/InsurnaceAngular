@@ -15,7 +15,7 @@ export class AdminHomePageComponent {
   token:string | null=null
    agentCount:number=0
    employeeCount:number=0
-   customerCount:number=0
+   insurancePlanCount:number=0
    insuranceTypeCount:number=0
    insuranceSchemeCount:number=0
    locationCount:number=0
@@ -32,8 +32,8 @@ export class AdminHomePageComponent {
       this.employeeCount=data.length
       console.log(this.agentCount)
     })
-    insuranceService.getCustomer().subscribe((data)=>{
-      this.customerCount=data.length
+    insuranceService.getInsurancePlan().subscribe((data)=>{
+      this.insurancePlanCount=data.length
       console.log(this.agentCount)
     })
     insuranceService.getInsuranceType().subscribe((data)=>{

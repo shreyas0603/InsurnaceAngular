@@ -5,6 +5,7 @@ import { InsuranceService } from '../service/insurance.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TemporaryDataService } from '../service/temporary-data.service';
 import { Router } from '@angular/router';
+import { DataService } from '../service/data.service';
 
 
 @Component({
@@ -14,55 +15,60 @@ import { Router } from '@angular/router';
 })
 export class GetAgentCustomerComponent {
 
-  customerData:any;
-  page = 1;
-	pageSize = 4;
+  customerData:Array<any>;
+  page: number = 1;
+  totalRecords:number=0 
   customers:any;
   collectionSize=0;
-  insurnaceService:InsuranceService;
-  headers:any;
-  paginator: any={
-    length:0,
-    pageIndex:0
-  }
-  currentPage=1
-  dataSource:any
-  removeCustomer:any
+ 
   userRole:string=''
   locationData:any
   agentData:any
   
   
-  constructor(private customerinfo:InsuranceService,protected temporaryData:TemporaryDataService,private router:Router){
+  constructor(private customerinfo:InsuranceService,protected temporaryData:TemporaryDataService,private router:Router,private datas:DataService){
+    debugger
+    this.customerData=new Array<any>()
     this.userRole=temporaryData.getRole()
     console.log(this.userRole)
-    this.insurnaceService=customerinfo
+    // this.insurnaceService=customerinfo
     customerinfo.getCustomer().subscribe((data)=>{
       this.customerData=data
-      
+      this.totalRecords=data.length
+      console.log(this.totalRecords)
       console.log(this.userRole)
       console.log(this.customerData);
+      this.filterCustomer()
+    console.log('jdsc' +this.customerData)
       // this.collectionSize=this.customerData.length;
-      customerinfo.getLocation().subscribe({
-        next:(response)=>{
-          console.log(response)
-          this.locationData=response
-        },
-        error(errorResponse:HttpErrorResponse){
-          console.log(errorResponse)
-        }
-      })
-      customerinfo.getAgent().subscribe({
-        next:(response)=>{
-          this.agentData=response
-        },
-        error(errorResponse:HttpErrorResponse){
-          console.log(errorResponse)
-        }
-      })
+      // customerinfo.getLocation().subscribe({
+      //   next:(response)=>{
+      //     console.log(response)
+      //     this.locationData=response
+      //   },
+      //   error(errorResponse:HttpErrorResponse){
+      //     console.log(errorResponse)
+      //   }
+      // })
+      // customerinfo.getAgent().subscribe({
+      //   next:(response)=>{
+      //     this.agentData=response
+      //   },
+      //   error(errorResponse:HttpErrorResponse){
+      //     console.log(errorResponse)
+      //   }
+      // })
     })
-    customerinfo
+    
+    
+    // customerinfo
     // this.refreshCountries();
+  }
+  filterCustomer(){
+    if(localStorage.getItem('role')=="Agent"){
+      this.customerData=this.customerData.filter(x=>x.agentId===this.datas.userId)
+      console.log('jdsc' + this.customerData)
+    }
   }
   setCount(count:number){
    

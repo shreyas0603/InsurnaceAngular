@@ -134,6 +134,7 @@ export class CommonLoginComponent {
   
           
           this.temporaryData.setLoginId(this.data.userId)
+          this.temporaryData.setRole('Agent')
          
              this.router.navigateByUrl("/agent")
           

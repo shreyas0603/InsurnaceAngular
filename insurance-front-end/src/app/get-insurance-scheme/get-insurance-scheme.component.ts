@@ -11,13 +11,17 @@ import { TemporaryDataService } from '../service/temporary-data.service';
 })
 export class GetInsuranceSchemeComponent {
 
-  insuranceSchemeData:any;
+  insuranceSchemeData:Array<any>;
   insuranceTypeData:any;
+  page: number = 1;
+  totalRecords:number=0
   constructor(private insuranceService:InsuranceService, private router: Router,protected temporaryData:TemporaryDataService){
-    
+    this.insuranceSchemeData=new Array<any>()
     insuranceService.getInsuranceScheme().subscribe({
       next:(data)=>{
       this.insuranceSchemeData=data
+      this.totalRecords=data.length
+      console.log(this.totalRecords)
       console.log(this.insuranceSchemeData)
       // debugger
       
@@ -35,6 +39,11 @@ export class GetInsuranceSchemeComponent {
     }
   })
 }
+pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
+  }
 // insuranceTypeName(id:number){
 //   debugger
 //   this.insuranceService.getInsuranceTypeById(id).subscribe({

@@ -1,6 +1,10 @@
 
 <app-admin-navbar></app-admin-navbar>
-<h4 align="center">Insurance Plan Details : </h4> 
+<h2 align="center" style="margin: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	Insurance Plan Details : 
+	<button style="float: right;  " class="btn btn-primary" routerLink="/addInsurancePlan">Add InsurancePlan</button>
+
+</h2> 
 <div>
 	<!-- <div style="float: right;">
 		<button  class="btn btn-lg btn-outline-primary" (click)="addUrl()">Add Student</button>&nbsp;
@@ -25,7 +29,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let insurancePlan of insurancePlanData;index as i">
+		<tr *ngFor="let insurancePlan of insurancePlanData
+		| paginate:{
+			id:'listing_pagination',
+      itemsPerPage:pageSize,
+      currentPage:page,
+      totalItems:totalRecords
+    };index as i">
 			<!-- <td>{{insuranceTypeData.insuranceTypeName}}</td> -->
 			<td>
 				{{ insurancePlan.minPolicyTerm}}
@@ -56,4 +66,19 @@
 		</tr>
 	</tbody>
 </table>
+<div align="center">
+	<pagination-controls
+	id="listing_pagination"
+	[maxSize]="5"
+	[directionLinks]="true"
+	
+	(pageChange)="page =$event"
+	>
+	</pagination-controls>
+	</div>
+	<select class="form-select" style="width: auto" (change)="changePageSize($event)">
+		<option [value]="5">5 items per page</option>
+		<option [value]="10">10 items per page</option>
+		<option [value]="15">15 items per page</option>
+	</select>
 </div>

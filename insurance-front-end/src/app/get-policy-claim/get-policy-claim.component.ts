@@ -10,19 +10,26 @@ import { Router } from '@angular/router';
 })
 export class GetPolicyClaimComponent {
 
-  claimData:any;
-  page = 1;
-	pageSize = 4;
-  customers:any;
-  collectionSize=0;
+  claimData:Array<any>;
+ 
+  page: number = 1;
+  totalRecords:number=0
   userRole:string=''
   constructor(claiminfo:InsuranceService,private temporaryData:TemporaryDataService,private router:Router){
+    this.claimData=new Array<any>()
     this.userRole=temporaryData.getRole()
     claiminfo.getPolicyClaim().subscribe((data)=>{
       this. claimData=data
       console.log(this. claimData);
+      this.totalRecords=data.length
+      console.log(this.totalRecords)
       // this.collectionSize=this.customerData.length;
     })
+    // claiminfo.getPolicyClaim().subscribe((data)=>{
+    //   this. claimData=data
+    //   console.log(this. claimData);
+    //   // this.collectionSize=this.customerData.length;
+    // })
   }
   ngOnInit():void{
     // debugger

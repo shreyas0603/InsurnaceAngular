@@ -1,6 +1,9 @@
 
 <app-admin-navbar></app-admin-navbar>
-<h4 align="center">Insurance Type Details : </h4> 
+<h2 align="center" style="margin: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	Insurance Type Details : 
+	<button style="float: right;  " class="btn btn-primary" routerLink="/addInsuranceType">Add insuranceType</button>
+</h2> 
 <div>
 	<!-- <div style="float: right;">
 		<button  class="btn btn-lg btn-outline-primary" (click)="addUrl()">Add Student</button>&nbsp;
@@ -22,7 +25,7 @@
 		<tr *ngFor="let insuranceType of insuranceTypeData
 		| paginate:{
 			id:'listing_pagination',
-      itemsPerPage:5,
+      itemsPerPage:pageSize,
       currentPage:page,
       totalItems:totalRecords
     };index as i" >
@@ -51,6 +54,11 @@
 	>
 	</pagination-controls>
 	</div>
+	<select class="form-select" style="width: auto" (change)="changePageSize($event)">
+		<option [value]="5">5 items per page</option>
+		<option [value]="10">10 items per page</option>
+		<option [value]="15">15 items per page</option>
+	</select>
 <!-- <button align="left" class="btn btn-primary" #table>Previous</button>
 <button align="right" class="btn btn-primary" >Next</button> -->
 </div>

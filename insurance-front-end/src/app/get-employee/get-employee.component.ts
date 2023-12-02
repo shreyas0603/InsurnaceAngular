@@ -10,18 +10,26 @@ import { Router } from '@angular/router';
 })
 export class GetEmployeeComponent {
 
-  employeeData:any;
-  page = 1;
-	pageSize = 4;
+  employeeData:Array<any>;
+  page: number = 1;
+  totalRecords:number=0 
   customers:any;
   collectionSize=0;
   
   constructor(private employeeinfo:InsuranceService,protected temporaryData:TemporaryDataService, private router: Router){
+    this.employeeData=new Array<any>()
     employeeinfo.getEmployee().subscribe((data)=>{
       this. employeeData=data
+      this.totalRecords=data.length
+      console.log(this.totalRecords)
       console.log(this.employeeData);
       // this.collectionSize=this.customerData.length;
     })
+  }
+  pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
   }
   ngOnInit():void{
     // debugger

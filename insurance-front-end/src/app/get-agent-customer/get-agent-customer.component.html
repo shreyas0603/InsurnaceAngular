@@ -61,6 +61,7 @@ th {
     <app-agent-navbar></app-agent-navbar>
   </div>
   <h1 >View Agent Customer</h1>
+  <!-- <button class="btn btn-primary" routerLink="/addAgent"></button> -->
 
   <table class="table table-striped">
 	<thead>
@@ -82,7 +83,12 @@ th {
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let customer of customerData;index as i">
+		<tr *ngFor="let customer of customerData | paginate:{
+			id:'listing_pagination',
+      itemsPerPage:5,
+      currentPage:page,
+      totalItems:totalRecords
+    };index as i">
             <!-- <td>{{ customer.id }}</td> -->
 			<td>
 				{{ customer.firstName }} {{customer.lastName}}
@@ -94,7 +100,8 @@ th {
             <td>{{ customer.nomineeName }}</td>
             <td>{{ customer.nomineeRelation}}</td>
             <!-- <td>{{customer.password}}</td> -->
-            <td>{{locationData[i].city}},{{locationData[i].state}}</td>
+            <!-- <td>{{locationData[i].city}},{{locationData[i].state}}</td> -->
+            <td>{{customer.locationId}}</td>
             <td>{{customer.agentId}}</td>
             <td *ngIf="userRole=='Admin'">
               
@@ -106,7 +113,16 @@ th {
 		</tr>
 	</tbody>
 </table>
-
+<div align="center">
+	<pagination-controls
+	id="listing_pagination"
+	[maxSize]="5"
+	[directionLinks]="true"
+	
+	(pageChange)="page =$event"
+	>
+	</pagination-controls>
+	</div>
 
 <!-- <div class="d-flex justify-content-between p-2">
 	<ngb-pagination

@@ -1,6 +1,10 @@
 
 <app-admin-navbar></app-admin-navbar>
-<h4 align="center">Insurance Scheme Details : </h4> 
+<h2 align="center" style="margin: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	Insurance Scheme Details : 
+	<button style="float: right;  " class="btn btn-primary" routerLink="/addInsuranceScheme">Add InsuranceScheme</button>
+
+</h2> 
 <div>
 	<!-- <div style="float: right;">
 		<button  class="btn btn-lg btn-outline-primary" (click)="addUrl()">Add Student</button>&nbsp;
@@ -23,7 +27,13 @@
 	</thead>
 	<tbody>
 		
-		<tr *ngFor="let insuranceScheme of insuranceSchemeData;index as i"   >
+		<tr *ngFor="let insuranceScheme of insuranceSchemeData
+		| paginate:{
+			id:'listing_pagination',
+      itemsPerPage:pageSize,
+      currentPage:page,
+      totalItems:totalRecords
+    };index as i"   >
 			<!-- {{findInsuranceTypeName(insuranceSchemeData.insuranceTypeId)}} -->
 			<!-- <div *ngFor="let insuranceType of insuranceTypeData"></div> -->
 			<!-- <span>{{findInsuranceTypeName(insuranceScheme.insuranceTypeId)}}</span> -->
@@ -57,4 +67,20 @@
 		</tr>
 	</tbody>
 </table>
+<div align="center">
+	<pagination-controls
+	id="listing_pagination"
+	[maxSize]="5"
+	[directionLinks]="true"
+	
+	(pageChange)="page =$event"
+	>
+	</pagination-controls>
+	</div>
+	<select class="form-select" style="width: auto" (change)="changePageSize($event)">
+		<option [value]="5">5 items per page</option>
+		<option [value]="10">10 items per page</option>
+		<option [value]="15">15 items per page</option>
+	</select>
 </div>
+

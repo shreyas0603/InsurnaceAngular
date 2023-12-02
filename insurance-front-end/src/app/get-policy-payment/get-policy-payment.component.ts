@@ -11,17 +11,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class GetPolicyPaymentComponent {
 
-  paymentData:any;
-  page = 1;
-	pageSize = 4;
-  customers:any;
-  collectionSize=0;
+  paymentData:Array<any>;;
+  page: number = 1;
+  totalRecords:number=0
   userRole:string=''
   customerData:any
   constructor(private paymentinfo:InsuranceService,private temporaryData:TemporaryDataService,private router:Router){
+    this.paymentData=new Array<any>()
     this.userRole=temporaryData.getRole()
     paymentinfo.getPolicyPayements().subscribe((data)=>{
       this. paymentData=data
+      this.totalRecords=data.length
       console.log(this. paymentData);
       // this.collectionSize=this.customerData.length;
     })

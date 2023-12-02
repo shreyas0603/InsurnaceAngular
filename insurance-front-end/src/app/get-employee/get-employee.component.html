@@ -68,7 +68,9 @@ th {
 </head>
 <body>
  <app-admin-navbar></app-admin-navbar>
-  <h1 >View Employee</h1>
+  <h1 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View Employee
+    <button style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addEmployee">Add Employee</button>
+  </h1>
 
   <table class="table table-striped">
 	<thead>
@@ -87,7 +89,12 @@ th {
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let employee of employeeData;index as i">
+		<tr *ngFor="let employee of employeeData | paginate:{
+			id:'listing_pagination',
+      itemsPerPage:pageSize,
+      currentPage:page,
+      totalItems:totalRecords
+    };index as i">
             <td>{{ employee.id }}</td>
 			<td>{{ employee.firstName}}</td>
             <td>{{employee.lastName}}</td>
@@ -99,8 +106,22 @@ th {
             {{temporaryData.setEmployeeCount(i+1)}}
 		</tr>
 	</tbody>
-</table>
-
+</table><br>
+<div align="center">
+	<pagination-controls
+	id="listing_pagination"
+	[maxSize]="5"
+	[directionLinks]="true"
+	
+	(pageChange)="page =$event"
+	>
+	</pagination-controls>
+	</div>
+  <select class="form-select" style="width: auto" (change)="changePageSize($event)">
+		<option [value]="5">5 items per page</option>
+		<option [value]="10">10 items per page</option>
+		<option [value]="15">15 items per page</option>
+	</select>
 <!-- <div class="d-flex justify-content-between p-2">
 	<ngb-pagination
 		[collectionSize]="collectionSize"

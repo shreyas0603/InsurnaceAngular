@@ -12,12 +12,16 @@ import { TemporaryDataService } from '../service/temporary-data.service';
 export class GetInsurancePlanComponent {
 
   insuranceSchemeData:any;
-  insurancePlanData:any;
+  insurancePlanData:Array<any>;
+  page: number = 1;
+  totalRecords:number=0 
   constructor(private insuranceService:InsuranceService,private temporaryData:TemporaryDataService, private router: Router){
-    
+    this.insurancePlanData=new Array<any>()
     insuranceService.getInsurancePlan().subscribe({
       next:(data)=>{
       this.insurancePlanData=data
+      this.totalRecords=data.length
+      console.log(this.totalRecords)
       console.log(this.insurancePlanData)
       // this.findInsuranceTypeName(this.insuranceSchemeData.insuranceTypeId);
     },
@@ -25,6 +29,11 @@ export class GetInsurancePlanComponent {
       console.log(errorResponse)
     }
     })
+  }
+  pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
   }
   ngOnInit():void{
     // debugger

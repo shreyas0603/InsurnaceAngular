@@ -76,7 +76,7 @@ th {
   <div *ngIf="userRole=='Customer'">
     <app-customer-navbar></app-customer-navbar>
   </div>
-  <h1 >View Customer Insurance Account</h1>
+  <h1 style="color: grey;">View Customer Insurance Account</h1>
 
   <table class="table table-striped">
 	<thead>
@@ -99,7 +99,12 @@ th {
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let account of accountData;index as i">
+		<tr *ngFor="let account of accountData | paginate:{
+			id:'listing_pagination',
+      itemsPerPage:pageSize,
+      currentPage:page,
+      totalItems:totalRecords
+    };index as i">
             <td>{{ customerData[i].userName }}</td>
 			<td>{{ account.id}}</td>
             <td>{{ account.insuranceCreationDate}}</td>
@@ -118,7 +123,21 @@ th {
 		</tr>
 	</tbody>
 </table>
-
+<div align="center">
+	<pagination-controls
+	id="listing_pagination"
+	[maxSize]="5"
+	[directionLinks]="true"
+	
+	(pageChange)="page =$event"
+	>
+	</pagination-controls>
+	</div>
+  <select class="form-select" style="width: auto" (change)="changePageSize($event)">
+		<option [value]="5">5 items per page</option>
+		<option [value]="10">10 items per page</option>
+		<option [value]="15">15 items per page</option>
+	</select>
 <!-- <div class="d-flex justify-content-between p-2">
 	<ngb-pagination
 		[collectionSize]="collectionSize"

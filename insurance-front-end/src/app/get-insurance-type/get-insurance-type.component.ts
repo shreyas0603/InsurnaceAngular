@@ -12,7 +12,7 @@ import { TemporaryDataService } from '../service/temporary-data.service';
 export class GetInsuranceTypeComponent {
 
   insuranceTypeData:Array<any>
-  // pageSize:number=0;
+  
   // numberOfRecords:number=5
   
   //as per video
@@ -23,14 +23,19 @@ export class GetInsuranceTypeComponent {
   constructor(private insuranceService:InsuranceService, private router: Router,protected temporaryData:TemporaryDataService){
     this.insuranceTypeData=new Array<any>()
   }
+  pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
+  }
   getInsuranceData(){
     this.insuranceService.getInsuranceType().subscribe(
       {next:
       (data)=>{
       this.insuranceTypeData=data
       console.log(this.insuranceTypeData)
-      this.totalRecords=data.length
-      console.log(this.totalRecords)
+        this.totalRecords=data.length
+        console.log(this.totalRecords)
       // debugger
     },
     error:(errorResponse:HttpErrorResponse)=>{

@@ -32,11 +32,12 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
                   Insurance Plans
                 </a>
-                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/agentCustomer">Enter Plan Name</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCustomerInsuranceAccount">Enter Plan Name</a></li>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                  <li *ngFor="let items of insuranceTypeData"><a ngbDropdownItem class="dropdown-item" (click)="setInsuranceTypeId(items.id)">{{items.insuranceTypeName}}</a></li>
+                  <!-- <option value="" routerLink="/">{{items.insuranceTypeName}}</option> -->
+                  <!-- <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCustomerInsuranceAccount">Enter Plan Name</a></li>
                   <li><a ngbDropdownItem class="dropdown-item" routerLink="/getPolicyPayment">Enter Plan Name</a></li>
-                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getPolicyClaim">Enter Plan Name</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getPolicyClaim">Enter Plan Name</a></li> -->
                 </ul>
               </li>
     

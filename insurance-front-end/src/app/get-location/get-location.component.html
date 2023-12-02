@@ -68,7 +68,11 @@ th {
 </head>
 <body>
   <app-admin-navbar></app-admin-navbar>
-  <h1 >View Location</h1>
+  <h1 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    View Location
+    <button style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addLocation">Add Location</button>
+
+  </h1>
 
   <table class="table table-striped">
 	<thead>
@@ -87,7 +91,13 @@ th {
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let location of locationData; index as i">
+		<tr *ngFor="let location of locationData
+    | paginate:{
+			id:'listing_pagination',
+      itemsPerPage:5,
+      currentPage:page,
+      totalItems:totalRecords
+    };index as i">
             <td>{{ location.id }}</td>
 			<td>{{ location.state}}</td>
             <td>{{location.city}}</td>
@@ -99,7 +109,16 @@ th {
 		</tr>
 	</tbody>
 </table>
-
+<div align="center">
+	<pagination-controls
+	id="listing_pagination"
+	[maxSize]="5"
+	[directionLinks]="true"
+	
+	(pageChange)="page =$event"
+	>
+	</pagination-controls>
+	</div>
 <!-- <div class="d-flex justify-content-between p-2">
 	<ngb-pagination
 		[collectionSize]="collectionSize"

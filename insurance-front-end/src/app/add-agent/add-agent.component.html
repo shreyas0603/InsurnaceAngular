@@ -17,7 +17,7 @@
       <form [formGroup]="addAgent" (ngSubmit)="addNewAgent(addAgent.value)"  >
         <!-- <p>Kindly enter the credentials</p> -->
         <div class="form-group">
-          <input type="text" id="firstName" name="username" placeholder="Enter your FirstName" formControlName="firstName" required>
+          <input type="text" id="firstName" name="username" placeholder="Enter your FirstName *" formControlName="firstName" required>
           <div *ngIf="addAgent.get('firstName')?.hasError('required') && addAgent.get('firstName')?.touched">
             FirstName is mandatory.
         </div>
@@ -47,7 +47,8 @@
           <!-- <div align="left" *ngIf="isUnique === true">Username is unique.</div> -->
         </div>
           <div class="form-group">
-              <input type="password" id="password" name="password" placeholder="Enter your password" formControlName="password">
+              <input type="password" id="password" name="password" placeholder="Enter your password" formControlName="password"   >
+              
               <div *ngIf="addAgent.get('password')?.hasError('required') && addAgent.get('password')?.touched">
                 Password is mandatory.
             </div>
@@ -60,6 +61,7 @@
               <input type="password" id="password" name="password" placeholder="Confirm Password" formControlName="password">
           </div> -->
           <div class="form-group">
+            
               <input type="number" id="mobileNumber" name="username" placeholder="Enter your MobileNumber" formControlName="mobileNumber">
               <div *ngIf="addAgent.get('mobileNumber')?.hasError('required') && addAgent.get('mobileNumber')?.touched">
                 mobileNumber is mandatory.
@@ -80,7 +82,7 @@
           
   
   
-        <button type="submit" [disabled]="addAgent">Submit</button>
+        <button type="submit" >Submit</button>
       </form>
     </div>
 </body>

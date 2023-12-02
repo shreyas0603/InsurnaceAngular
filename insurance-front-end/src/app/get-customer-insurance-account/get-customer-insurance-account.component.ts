@@ -11,21 +11,24 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class GetCustomerInsuranceAccountComponent {
 
-  accountData:any;
-  page = 1;
-	pageSize = 4;
+  accountData:Array<any>;
+  page: number = 1;
+  totalRecords:number=0 
   customers:any;
   collectionSize=0;
   userRole:string=''
   customerData:any
   customerloginId:number=0
   constructor(private accountinfo:InsuranceService,protected temporaryData:TemporaryDataService, private router: Router){
+    this.accountData=new Array<any>()
     this.userRole=temporaryData.getRole()
     this.customerloginId=temporaryData.getLoginId()
     if(this.userRole=='Admin' || this.userRole=='Agent'){
 
       accountinfo.getCustomerInsuranceAccount().subscribe((data)=>{
         this. accountData=data
+        this.totalRecords=data.length
+      console.log(this.totalRecords)
         console.log(this. accountData);
         // this.collectionSize=this.customerData.length;
         accountinfo.getCustomer().subscribe({
@@ -42,10 +45,13 @@ export class GetCustomerInsuranceAccountComponent {
       accountinfo.getCustomerInsuranceAccountByCustomerId(this.customerloginId).subscribe({
         next:(response)=>{
           this.accountData=response
+          this.totalRecords=response.length
+      console.log(this.totalRecords)
           console.log(this.accountData)
           accountinfo.getCustomer().subscribe({
             next:(response)=>{
               this.customerData=response
+              
             },
             error(errorResponse:HttpErrorResponse){
               console.log(errorResponse)
@@ -57,6 +63,11 @@ export class GetCustomerInsuranceAccountComponent {
         }
       })
     }
+  }
+  pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
   }
   ngOnInit():void{
     // debugger
