@@ -7,8 +7,9 @@ body {
     background-size: 600% 600%;
     animation: gradientAnimation 10s ease infinite;
     
-    height: 170vh;
+    height: 120vh;
   }
+  
   
   @keyframes gradientAnimation {
     0% {
@@ -26,6 +27,7 @@ body {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* padding: 30px; */
     margin: 20px auto;
     padding: 20px;
     text-align: center;
@@ -86,4 +88,3 @@ body {
   span{
     color: red;
   }
-  

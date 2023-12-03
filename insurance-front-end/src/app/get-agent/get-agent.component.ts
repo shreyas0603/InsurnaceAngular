@@ -27,6 +27,11 @@ export class GetAgentComponent {
       // this.collectionSize=this.customerData.length;
     })
   }
+  pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
+  }
   ngOnInit():void{
     // debugger
     var token=localStorage.getItem('token')

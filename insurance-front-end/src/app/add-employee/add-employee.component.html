@@ -17,7 +17,8 @@
       <form [formGroup]="addEmployee" (ngSubmit)="addNewEmployee(addEmployee.value)"  >
         <!-- <p>Kindly enter the credentials</p> -->
         <div class="form-group">
-          <input type="text" id="firstName" name="username" placeholder="Enter your FirstName" formControlName="firstName" required>
+          <label for="username">First Name <span>*</span></label>
+          <input type="text" id="firstName" name="username" placeholder="" formControlName="firstName" required>
           <div *ngIf="addEmployee.get('firstName')?.hasError('required') && addEmployee.get('firstName')?.touched">
             FirstName is mandatory.
         </div>
@@ -26,7 +27,8 @@
         </div>
         </div>
         <div class="form-group">
-          <input type="text" id="lastName" name="username" placeholder="Enter your LastName" formControlName="lastName" required>
+          <label for="username">Last Name <span>*</span></label>
+          <input type="text" id="lastName" name="username" placeholder="" formControlName="lastName" required>
           <div *ngIf="addEmployee.get('lastName')?.hasError('required') && addEmployee.get('lastName')?.touched">
             lastName is mandatory.
         </div>
@@ -36,7 +38,8 @@
         </div>
         <div class="form-group">
           <!-- <label for="username">Username</label> -->
-          <input type="text" id="userName" name="username" placeholder="Enter your username" formControlName="userName" required>
+          <label for="username">User Name <span>*</span></label>
+          <input type="text" id="userName" name="username" placeholder="" formControlName="userName" required>
           <div *ngIf="addEmployee.get('userName')?.hasError('required') && addEmployee.get('userName')?.touched">
             userName is mandatory.
           </div>
@@ -46,7 +49,8 @@
           <div align="left"  *ngIf="isUnique === false">Username is not unique.</div>
         </div>
         <div class="form-group">
-              <input type="password" id="password" name="password" placeholder="Enter your password" formControlName="password" required>
+          <label for="username">Password <span>*</span></label>
+              <input type="password" id="password" name="password" placeholder="" formControlName="password" required>
               <div *ngIf="addEmployee.get('password')?.hasError('required') && addEmployee.get('password')?.touched">
                 Password is mandatory.
             </div>

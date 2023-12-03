@@ -7,7 +7,7 @@ body {
     background-size: 600% 600%;
     animation: gradientAnimation 10s ease infinite;
     
-    height: 110vh;
+    height: 130vh;
   }
   
   @keyframes gradientAnimation {
@@ -82,5 +82,8 @@ body {
   }
   label{
     color:  #3498db;
+  }
+  span{
+    color: red;
   }
   

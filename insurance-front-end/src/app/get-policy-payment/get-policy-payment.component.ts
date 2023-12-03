@@ -3,6 +3,7 @@ import { InsuranceService } from '../service/insurance.service';
 import { TemporaryDataService } from '../service/temporary-data.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-get-policy-payment',
@@ -11,28 +12,59 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class GetPolicyPaymentComponent {
 
-  paymentData:Array<any>;;
+  paymentData:Array<any>;
+  notFilteredPayment:Array<any>
   page: number = 1;
   totalRecords:number=0
   userRole:string=''
-  customerData:any
-  constructor(private paymentinfo:InsuranceService,private temporaryData:TemporaryDataService,private router:Router){
+  customerData:Array<any>
+  constructor(private paymentinfo:InsuranceService,private temporaryData:TemporaryDataService,private router:Router, private data:DataService){
     this.paymentData=new Array<any>()
+    this.notFilteredPayment=new Array<any>()
+    this.customerData=new Array<any>()
     this.userRole=temporaryData.getRole()
     paymentinfo.getPolicyPayements().subscribe((data)=>{
-      this. paymentData=data
+      this. notFilteredPayment=data
       this.totalRecords=data.length
-      console.log(this. paymentData);
+      console.log(this. notFilteredPayment);
       // this.collectionSize=this.customerData.length;
     })
     paymentinfo.getCustomer().subscribe({
       next:(response)=>{
         this.customerData=response
+        this.filterCustomer()
       },
       error(errorResponse:HttpErrorResponse){
         console.log(errorResponse)
       }
     })
+  }
+  filterCustomer(){
+    // var agent=this.agentData.find((a: any) => a.userId === this.dataService.userId)
+    if((this.userRole=="Agent")){
+      this.customerData=this.customerData.filter(x=>x.agentId === this.data.userId)
+      console.log('filtered Customer' )
+      console.log(this.customerData)
+      
+      this.filterPayment()
+    }
+  }
+  filterPayment(){
+    debugger
+    for(let c of this.customerData){
+      var filter = new Array<any>()
+      filter= this.notFilteredPayment.filter(x=>x.customerId === c.id)
+      if(filter.length>0){
+        for(let f of filter){
+          this.paymentData.push(f)
+        }
+      }
+      console.log('filtered account' )
+      console.log(this.paymentData)
+    
+    }
+    this.totalRecords=this.paymentData.length
+    console.log(this.totalRecords)
   }
   ngOnInit():void{
     // debugger

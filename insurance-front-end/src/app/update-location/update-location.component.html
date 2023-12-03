@@ -19,10 +19,10 @@
         <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
         <input type="hidden"   formControlName="id" [(ngModel)]="locationId">
         <!-- <h1>{{insuranceTypeId}}</h1> -->
-        <label for="username">state</label>
+        <label for="username">State <span>*</span></label>
         <input type="text" id="username" name="username" 
          formControlName="state" [(ngModel)]="locationData.state">
-         <label for="username">City</label>
+         <label for="username">City <span>*</span></label>
          <input type="text" id="username" name="username"
          formControlName="city" [(ngModel)]="locationData.city">
       </div>

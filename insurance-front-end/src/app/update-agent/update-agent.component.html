@@ -15,23 +15,23 @@
     <form [formGroup]="agentForm" (ngSubmit)="updateInsuranceType(agentForm.value)" >
       <!-- <p>Kindly enter the credentials</p> -->
       <div class="form-group">
-        <label for="username">First Name</label>
+        <label for="username">First Name <span>*</span></label>
         <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
         <input type="hidden"   formControlName="id" [(ngModel)]="agentId">
         <!-- <h1>{{agentId}}</h1> -->
         <input type="text" formControlName="firstName" [(ngModel)]="agentData.firstName">
-        <label for="username">Last Name</label>
+        <label for="username">Last Name <span>*</span></label>
         <input type="text" formControlName="lastName" [(ngModel)]="agentData.lastName">
-        <label for="username">User Name</label>
+        <label for="username">User Name <span>*</span></label>
         <input type="text" formControlName="userName" [(ngModel)]="agentData.userName">
         <input type="hidden" formControlName="password" [(ngModel)]="agentData.password">
-        <label for="username">Mobile Number</label>
+        <label for="username">Mobile Number <span>*</span></label>
         <input type="text" formControlName="mobileNumber" [(ngModel)]="agentData.mobileNumber">
-        <label for="username">Email</label>
+        <label for="username">Email <span>*</span></label>
         <input type="text" formControlName="email" [(ngModel)]="agentData.email">
-        <label for="username">commision</label>
+        <label for="username">commision <span>*</span></label>
         <input type="text" formControlName="commision" [(ngModel)]="agentData.commision">
-        <label for="username">totalCommision</label>
+        <label for="username">totalCommision <span>*</span></label>
         <input type="text" formControlName="totalCommision" [(ngModel)]="agentData.totalCommision">
       </div>
       

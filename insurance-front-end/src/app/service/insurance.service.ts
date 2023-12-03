@@ -231,5 +231,7 @@ export class InsuranceService {
   addCommisionWithdrawal(data:any){
     return this.http.post(this.url+"/CommisionWithdrawal",data)
   }
-  
+  addFiles(data:any){
+    return this.http.post(this.url+"/Documents/Upload",data)
+  }
 }

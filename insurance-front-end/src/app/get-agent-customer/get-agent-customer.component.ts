@@ -20,15 +20,17 @@ export class GetAgentCustomerComponent {
   totalRecords:number=0 
   customers:any;
   collectionSize=0;
- 
+  locationData:Array<any>
   userRole:string=''
-  locationData:any
-  agentData:any
+  // locationData:any
+  agentData:Array<any>
   
   
   constructor(private customerinfo:InsuranceService,protected temporaryData:TemporaryDataService,private router:Router,private datas:DataService){
-    debugger
+    // debugger
+    this.locationData=new Array<any>()
     this.customerData=new Array<any>()
+    this.agentData=new Array<any>()
     this.userRole=temporaryData.getRole()
     console.log(this.userRole)
     // this.insurnaceService=customerinfo
@@ -50,24 +52,64 @@ export class GetAgentCustomerComponent {
       //     console.log(errorResponse)
       //   }
       // })
-      // customerinfo.getAgent().subscribe({
-      //   next:(response)=>{
-      //     this.agentData=response
-      //   },
-      //   error(errorResponse:HttpErrorResponse){
-      //     console.log(errorResponse)
-      //   }
-      // })
+      debugger
+      customerinfo.getAgent().subscribe({
+        next:(response)=>{
+          this.agentData=response
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
+      })
     })
-    
+    // customerinfo.getAgent().subscribe((data)=>{
+    //   debugger
+    //   this.agentData=data
+    // })
+ 
+    customerinfo.getLocation().subscribe((data)=>{
+      this.locationData=data
+    })
     
     // customerinfo
     // this.refreshCountries();
+  }
+  pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
+  }
+  getLocationName(locationId:number):string{
+    if(this.locationData){
+      console.log(this.locationData);
+     
+      const location=this.locationData.find((a:any)=>a.id===locationId)
+      console.log(location);
+      return location!=null ? `${location.state}, ${location.city}` : 'location Not Found';
+    }
+    else{
+      return 'Location Data Not Loaded';
+    }
+  }
+  getAgentName(agentId:number):string{
+ 
+  //  debugger
+    if(this.agentData){
+      console.log(this.agentData);
+     
+      const agent=this.agentData.find((a:any)=>a.id===agentId)
+      console.log(agent);
+      return agent!=null ? `${agent.firstName} ${agent.lastName}` : 'Agent Not Found';
+    }
+    else{
+      return 'Agent Data Not Loaded';
+    }
   }
   filterCustomer(){
     if(localStorage.getItem('role')=="Agent"){
       this.customerData=this.customerData.filter(x=>x.agentId===this.datas.userId)
       console.log('jdsc' + this.customerData)
+      this.totalRecords=this.customerData.length
     }
   }
   setCount(count:number){

@@ -51,6 +51,7 @@ body {
   }
   
   label {
+    color: #3498db;
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
@@ -80,6 +81,9 @@ body {
     background: #2980b9;
   }
   div{
+    color: red;
+  }
+  span{
     color: red;
   }
   

@@ -19,23 +19,23 @@
         <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
         <input type="hidden"   formControlName="id" [(ngModel)]="planId">
         <!-- <h1>{{insuranceTypeId}}</h1> -->
-        <label for="username">minPolicyTerm</label>
+        <label for="username">Min Policy Term <span>*</span></label>
         <input type="text" id="username" name="username" 
          formControlName="minPolicyTerm" [(ngModel)]="planData.minPolicyTerm">
-         <label for="username">maxPolicyTerm</label>
+         <label for="username">Max Policy Term <span>*</span></label>
          <input type="text" id="username" name="username"
          formControlName="maxPolicyTerm" [(ngModel)]="planData. maxPolicyTerm">
-         <label for="username">MinAge</label>
+         <label for="username">Min Age <span>*</span></label>
          <input type="text" id="username" name="username"
          formControlName="minAge" [(ngModel)]="planData.minAge">
-         <label for="username">MaxAge</label>
+         <label for="username">Max Age <span>*</span></label>
          <input type="text" id="username" name="username"
          formControlName="maxAge" [(ngModel)]="planData.maxAge">
-         <label for="username">minInvestmentAmount</label>
+         <label for="username">Min Investment Amount <span>*</span></label>
          <input type="text" formControlName="minInvestmentAmount" [(ngModel)]="planData.minInvestmentAmount">
-         <label for="username">maxInvestmentAmount</label>
+         <label for="username">Max Investment Amount <span>*</span></label>
          <input type="text" formControlName="maxInvestmentAmount" [(ngModel)]="planData.maxInvestmentAmount">
-         <label for="username">profitRatioPercentage</label>
+         <label for="username">Profit Ratio Percentage <span>*</span></label>
          <input type="text" formControlName="profitRatioPercentage" [(ngModel)]="planData.profitRatioPercentage">
          <input type="hidden" formControlName="insuranceSchemeId" [(ngModel)]="planData. insuranceSchemeId">
          

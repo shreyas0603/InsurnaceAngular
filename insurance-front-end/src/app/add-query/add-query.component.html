@@ -8,9 +8,10 @@
   <title>Login Page</title>
 </head>
 <body>
-    <app-admin-navbar></app-admin-navbar>
+    <!-- <app-admin-navbar></app-admin-navbar> -->
+    <app-customer-navbar></app-customer-navbar>
   <div class="login-container">
-    <h1>Add Location</h1>
+    <h1>Add Query</h1>
     <!-- -->
     <form [formGroup]="addQuery" (ngSubmit)="addNewQuery(addQuery.value)"  >
       <!-- <p>Kindly enter the credentials</p> -->
@@ -21,18 +22,21 @@
          </option>
       </select> -->
       <div class="form-group">
-        <input type="text" id="queryTitle" name="queryTitle" placeholder="Enter Query Title" formControlName="queryTitle" required>
+        <label > Query Title <span>*</span></label>
+        <input type="text" id="queryTitle" name="queryTitle" placeholder="" formControlName="queryTitle" required>
         <div *ngIf="addQuery.get('queryTitle')?.hasError('required') && addQuery.get('queryTitle')?.touched">
             Query Title is mandatory.
       </div>
       </div>
       <div class="form-group">
-        <input type="text" id="queryMessage" name="queryMessage" placeholder="Enter Query Message" formControlName="queryMessage" required>
+        <label > Query Message <span>*</span></label>
+        <input type="text" id="queryMessage" name="queryMessage" placeholder="" formControlName="queryMessage" required>
         <div *ngIf="addQuery.get('queryMessage')?.hasError('required') && addQuery.get('queryMessage')?.touched">
             Query Message is mandatory.
       </div>
       </div>
       <div class="form-group">
+        <label > Query Date <span>*</span></label>
         <input type="date" id="queryDate" name="queryDate" placeholder="Enter Query Date" formControlName="queryDate" required>
         <div *ngIf="addQuery.get('queryDate')?.hasError('required') && addQuery.get('queryDate')?.touched">
             Query Date is mandatory.

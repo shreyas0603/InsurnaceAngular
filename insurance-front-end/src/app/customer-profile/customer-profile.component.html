@@ -21,38 +21,38 @@
     <form [formGroup]="addCustomer" (ngSubmit)="updateCustomer(addCustomer.value) ">
       <!-- <p>Kindly enter the credentials</p> -->
       <div class="form-group">
-        <label for=""> firstName</label>
+        <label for=""> First Name <span>*</span></label>
         <input type="hidden" formControlName="id" [(ngModel)]="customerData.id" >
         <input type="text" id="firstName" name="username" formControlName="firstName" [(ngModel)]="customerData.firstName">
       </div>
       <div class="form-group">
-        <label for="">lastName</label>
+        <label for="">Last Name <span>*</span></label>
         <input type="text"  placeholder="Enter your LastName" formControlName="lastName"  [(ngModel)]="customerData.lastName">
       </div>
       <div class="form-group">
-        <label for="">Date Of Birth</label>
+        <label for="">Date Of Birth <span>*</span></label>
         <input type="date"  placeholder="Enter your LastName" formControlName="dateOfBirth"  [(ngModel)]="customerData.dateOfBirth">
       </div>
       <div class="form-group">
         <!-- <label for="username">Username</label> -->
-        <label for="">userName</label>
-        <input type="text" id="userName" name="username" placeholder="Enter your username" formControlName="userName"  [(ngModel)]="customerData.userName">
+        <!-- <label for="">userName </label> -->
+        <input type="hidden" id="userName" name="username" placeholder="Enter your username" formControlName="userName"  [(ngModel)]="customerData.userName">
         <input type="hidden" formControlName="password" [(ngModel)]="customerData.password" >
 
-        <label for="">Mobile Number</label>
+        <label for="">Mobile Number <span>*</span></label>
         <input type="text"  placeholder="Enter your LastName" formControlName="mobileNumber"  [(ngModel)]="customerData.mobileNumber">
         
-        <label for="">Email</label>
+        <label for="">Email <span>*</span></label>
         <input type="text"  placeholder="Enter your LastName" formControlName="email"  [(ngModel)]="customerData.email">
         
-        <label for="">Nominee Name</label>
+        <label for="">Nominee Name <span>*</span></label>
         <input type="text"  placeholder="Enter your LastName" formControlName="nomineeName"  [(ngModel)]="customerData.nomineeName">
         
-        <label for="">Nominee Relation</label>
+        <label for="">Nominee Relation <span>*</span></label>
         <input type="text"  placeholder="Enter your LastName" formControlName="nomineeRelation"  [(ngModel)]="customerData.nomineeRelation">
 
         <div class="form-group">
-          <label>Locatioon</label>
+          <label>Location <span>*</span></label>
           <select  id="account-type" name="account-type" aria-placeholder="Insurance Type" formControlName="locationId" [(ngModel)]="customerData.locationId">
             
             <option value="" disabled selected  >{{locationIdData.city}},{{locationIdData.state}}</option>

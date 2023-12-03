@@ -14,55 +14,63 @@
     <!-- " -->
     <form [formGroup]="insurancePlanForm" (ngSubmit)="addInsuranceScheme(insurancePlanForm.value)" >
       <!-- <p>Kindly enter the credentials</p> -->
-      <label >insurance Scheme</label>
+      <label >Insurance Scheme <span>*</span></label>
       <div class="form-group">
       <select  id="account-type" name="account-type" formControlName="accountType">
         
-        <option [ngValue]="null"  disabled >Choose Insurance Scheme</option>
+        <!-- <option  disabled selected>Choose Insurance Scheme</option> -->
+        <option value="" disabled selected>Choose your profile</option>
         <option *ngFor="let insuranceScheme of insuranceSchemeData" value="{{insuranceScheme.id}}" >{{insuranceScheme.insuranceSchemeName}}
-        </option>
+        </option> 
         
       </select>
     </div>
     <div class="form-group">
-      <input type="number"  placeholder="Enter minimum policy term" formControlName="minPolicyTerm" required>
+      <label for="username">Min Policy Term <span>*</span></label>
+      <input type="number"  placeholder="" formControlName="minPolicyTerm" required>
       <div *ngIf="insurancePlanForm.get('minPolicyTerm')?.hasError('required') && insurancePlanForm.get('minPolicyTerm')?.touched">
         minPolicyTerm is mandatory.
     </div>
     </div>
     <div class="form-group">
-      <input type="number"  placeholder="Enter maximum policy term" formControlName="maxPolicyTerm" required>
+      <label for="username">Max Policy Term <span>*</span></label>
+      <input type="number"  placeholder="" formControlName="maxPolicyTerm" required>
       <div *ngIf="insurancePlanForm.get('maxPolicyTerm')?.hasError('required') && insurancePlanForm.get('maxPolicyTerm')?.touched">
         maxPolicyTerm is mandatory.
     </div>
     </div>
     <div class="form-group">
       <!-- <label for="username">Username</label> -->
-      <input type="number"  placeholder="Enter minimum age" formControlName="minAge" required>
+      <label for="username">Min Age <span>*</span></label>
+      <input type="number"  placeholder="" formControlName="minAge" required>
       <div *ngIf="insurancePlanForm.get('minAge')?.hasError('required') && insurancePlanForm.get('minAge')?.touched">
         minAge is mandatory.
     </div>
     </div>
     <div class="form-group">
-          <input type="number"  placeholder="Enter maximum age" formControlName="maxAge" required>
+      <label for="username">Max Age <span>*</span></label>
+          <input type="number"  placeholder="" formControlName="maxAge" required>
           <div *ngIf="insurancePlanForm.get('maxAge')?.hasError('required') && insurancePlanForm.get('maxAge')?.touched">
             maxAge is mandatory.
         </div>
         </div>
       <div class="form-group">
-          <input type="number"  placeholder="Enter minimum investment amount" formControlName="minInvestmentAmount" required>
+        <label for="username">Min Investment Amount <span>*</span></label>
+          <input type="number"  placeholder="" formControlName="minInvestmentAmount" required>
           <div *ngIf="insurancePlanForm.get('minInvestmentAmount')?.hasError('required') && insurancePlanForm.get('minInvestmentAmount')?.touched">
             minInvestmentAmount is mandatory.
         </div>
         </div>
       <div class="form-group">
-          <input type="number" placeholder="Enter maximum investment amount" formControlName="maxInvestmentAmount" required>
+        <label for="username">Max Investment Amount <span>*</span></label>
+          <input type="number" placeholder="" formControlName="maxInvestmentAmount" required>
           <div *ngIf="insurancePlanForm.get('maxInvestmentAmount')?.hasError('required') && insurancePlanForm.get('maxInvestmentAmount')?.touched">
             maxInvestmentAmount is mandatory.
         </div>
         </div>
       <div class="form-group">
-        <input type="number"  placeholder="Enter profit ratio (in %)" formControlName="profitRatioPercentage" required>
+        <label for="username">Profit Ratio Percentage <span>*</span></label>
+        <input type="number"  placeholder="" formControlName="profitRatioPercentage" required>
         <div *ngIf="insurancePlanForm.get('profitRatioPercentage')?.hasError('required') && insurancePlanForm.get('profitRatioPercentage')?.touched">
           profitRatioPercentage is mandatory.
       </div>

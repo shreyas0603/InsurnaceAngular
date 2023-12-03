@@ -15,8 +15,8 @@
     <form [formGroup]="insuranceTypeForm" (ngSubmit)="addInsuranceType(insuranceTypeForm.value)" >
       <!-- <p>Kindly enter the credentials</p> -->
       <div class="form-group">
-        <label for="username">Insurance Type Name</label>
-        <input type="text" id="insuranceTypeName" name="insuranceTypeName" placeholder="Enter insurance type name" formControlName="insuranceTypeName" required>
+        <label for="username">Insurance Type Name <span>*</span></label>
+        <input type="text" id="insuranceTypeName" name="insuranceTypeName" placeholder="" formControlName="insuranceTypeName" required>
         <div *ngIf="insuranceTypeForm.get('insuranceTypeName')?.hasError('required') && insuranceTypeForm.get('insuranceTypeName')?.touched">
           insuranceTypeName is mandatory.
       </div>

@@ -62,7 +62,7 @@ th {
   </div>
   <h1 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     View Agent Commision 
-    <button style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addCommmisionWithdrawal">Withdraw Commision</button>
+    <button *ngIf="userRole=='Agent'" style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addCommmisionWithdrawal">Withdraw Commision</button>
 
   </h1>
 

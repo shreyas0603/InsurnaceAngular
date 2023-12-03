@@ -85,4 +85,7 @@ body {
   label{
     color:  #3498db;
   }
+  span{
+    color:  red;
+  }
   

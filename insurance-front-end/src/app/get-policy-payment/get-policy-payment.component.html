@@ -102,13 +102,14 @@ th {
       currentPage:page,
       totalItems:totalRecords
     };index as i">
-            <td>{{ customerData[i].userName }}</td>
+            <td>{{ payment.customerId }}</td>
 			<td>{{ payment.insurancePlanId}}</td>
             <td>{{ payment.paidAmount}}</td>
             <td>{{ payment.taxAmount}}</td> 
             <td>{{payment.totalAmount}}</td><!--paid amount +TaxAmount-->
             <td>{{ payment.paidDate}}</td>
             <td>{{ payment.transactionType}}</td>
+            <!-- <td>{{payment.id}}</td> -->
             <!-- <td>
               <button (click)="setId(payment.id)">Edit</button>
 				<button (click)="deleteData(payment.id)">Delete</button>

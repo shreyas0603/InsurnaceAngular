@@ -14,11 +14,11 @@
     <!--  -->
     <form [formGroup]="insuranceSchemeForm" (ngSubmit)="addInsuranceScheme(insuranceSchemeForm.value)" >
       <!-- <p>Kindly enter the credentials</p> -->
-      <label >insurance Type</label>
+      <label >insurance Type <span>*</span></label>
       <div class="form-group">
       <select  id="account-type" name="account-type" aria-placeholder="Insurance Type" formControlName="insuranceTypeId">
         
-        <option value="" disabled selected>Choose Insurance Type</option>
+        <option value="" disabled selected>Choose Insurance Type </option>
         <!-- <option>null</option> -->
         <option *ngFor="let insuranceType of insuranceTypeData" value="{{insuranceType.id}}">{{insuranceType.insuranceTypeName}}
          </option>
@@ -26,20 +26,22 @@
       </select>
     </div>
     <div class="form-group">
-      <input type="text" placeholder="Enter insurance scheme name" formControlName="insuranceSchemeName">
+      <label for="username">Insurance Scheme Name <span>*</span></label>
+      <input type="text" placeholder="" formControlName="insuranceSchemeName">
       <div *ngIf="insuranceSchemeForm.get('insuranceSchemeName')?.hasError('required') && insuranceSchemeForm.get('insuranceSchemeName')?.touched">
         insuranceSchemeName is mandatory.
     </div>
     </div>
     <div class="form-group">
-      <input type="number"  placeholder="Enter commission for new registration" formControlName="newRegistrastionCommision" required>
+      <label for="username">New Registrastion Commision <span>*</span></label>
+      <input type="number"  placeholder="" formControlName="newRegistrastionCommision" required>
       <div *ngIf="insuranceSchemeForm.get('newRegistrastionCommision')?.hasError('required') && insuranceSchemeForm.get('newRegistrastionCommision')?.touched">
         newRegistrastionCommision is mandatory.
     </div>
     </div>
     <div class="form-group">
-      <!-- <label for="username">Username</label> -->
-      <input type="number"placeholder="Enter commission for installment payment" formControlName="installmentPaymentCommision" required>
+      <label for="username">Installment Payment Commision <span>*</span></label>
+      <input type="number"placeholder="" formControlName="installmentPaymentCommision" required>
       <div *ngIf="insuranceSchemeForm.get('installmentPaymentCommision')?.hasError('required') && insuranceSchemeForm.get('installmentPaymentCommision')?.touched">
         installmentPaymentCommision is mandatory.
     </div>
@@ -49,7 +51,8 @@
           <input type="image" id="password" name="password" placeholder="choose file" formControlName="password">
       </div> -->
       <div class="form-group">
-          <input type="text" placeholder="Enter details of insurance scheme" formControlName="details" required>
+        <label for="username">Details <span>*</span></label>
+          <textarea style="width: 100%; height: 100%;" type="text" placeholder="" formControlName="details" required></textarea>
           <div *ngIf="insuranceSchemeForm.get('details')?.hasError('required') && insuranceSchemeForm.get('details')?.touched">
             details is mandatory.
         </div>

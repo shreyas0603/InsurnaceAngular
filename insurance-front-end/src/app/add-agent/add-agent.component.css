@@ -7,7 +7,7 @@ body {
     background-size: 600% 600%;
     animation: gradientAnimation 10s ease infinite;
     
-    height: 120vh;
+    height: 140vh;
   }
   
   
@@ -51,6 +51,7 @@ body {
   }
   
   label {
+    color: #3498db;
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
@@ -82,6 +83,7 @@ body {
   div{
     color: red;
   }
-  ::placeholder{
+  
+  span{
     color: red;
   }

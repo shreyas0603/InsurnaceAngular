@@ -3,6 +3,7 @@ import { InsuranceService } from '../service/insurance.service';
 import { TemporaryDataService } from '../service/temporary-data.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-get-customer-insurance-account',
@@ -12,28 +13,34 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class GetCustomerInsuranceAccountComponent {
 
   accountData:Array<any>;
+  notFilteredAccounts:Array<any>
   page: number = 1;
   totalRecords:number=0 
   customers:any;
   collectionSize=0;
   userRole:string=''
-  customerData:any
+  customerData:Array<any>
   customerloginId:number=0
-  constructor(private accountinfo:InsuranceService,protected temporaryData:TemporaryDataService, private router: Router){
+  constructor(private accountinfo:InsuranceService,protected temporaryData:TemporaryDataService, private router: Router, private data:DataService){
     this.accountData=new Array<any>()
+    this.notFilteredAccounts=new Array<any>()
+    this.customerData=new Array<any>()
     this.userRole=temporaryData.getRole()
     this.customerloginId=temporaryData.getLoginId()
     if(this.userRole=='Admin' || this.userRole=='Agent'){
 
       accountinfo.getCustomerInsuranceAccount().subscribe((data)=>{
-        this. accountData=data
+        this. notFilteredAccounts=data
         this.totalRecords=data.length
       console.log(this.totalRecords)
-        console.log(this. accountData);
+        console.log(this.notFilteredAccounts);
         // this.collectionSize=this.customerData.length;
         accountinfo.getCustomer().subscribe({
           next:(response)=>{
             this.customerData=response
+            console.log('customers' )
+            console.log(this.customerData)
+            this.filterCustomer()
           },
           error(errorResponse:HttpErrorResponse){
             console.log(errorResponse)
@@ -82,6 +89,32 @@ export class GetCustomerInsuranceAccountComponent {
       alert('Please Login As Admin Or Agent')
       this.router.navigateByUrl('/login')
     }
+  }
+  filterCustomer(){
+    // var agent=this.agentData.find((a: any) => a.userId === this.dataService.userId)
+    if((this.userRole=="Agent")){
+      this.customerData=this.customerData.filter(x=>x.agentId === this.data.userId)
+      console.log('filtered Customer' )
+      console.log(this.customerData)
+      
+      this.filterInsuranceAccount()
+    }
+  }
+  filterInsuranceAccount(){
+    debugger
+    for(let c of this.customerData){
+      var filter = new Array<any>()
+      filter= this.notFilteredAccounts.filter(x=>x.customerId === c.id)
+      if(filter.length>0){
+        for(let f of filter){
+          this.accountData.push(f)
+        }
+      }
+      console.log('filtered account' )
+      console.log(this.accountData)
+    
+    }
+    this.totalRecords=this.accountData.length
   }
   setId(id:number){
     console.log(id)

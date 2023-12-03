@@ -19,18 +19,18 @@
         <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
         <input type="hidden"   formControlName="id" [(ngModel)]="schemeId">
         <!-- <h1>{{insuranceTypeId}}</h1> -->
-        <label for="username">insuranceSchemeName</label>
+        <label for="username">Insurance Scheme Name <span>*</span></label>
         <input type="text" id="username" name="username" 
          formControlName="insuranceSchemeName" [(ngModel)]="schemeData.insuranceSchemeName">
-         <label for="username">newRegistrastionCommision</label>
+         <label for="username">New Registrastion Commision <span>*</span></label>
          <input type="text" id="username" name="username"
          formControlName="newRegistrastionCommision" [(ngModel)]="schemeData.newRegistrastionCommision">
-         <label for="username">installmentPaymentCommision</label>
+         <label for="username">Installment Payment Commision <span>*</span></label>
          <input type="text" id="username" name="username"
          formControlName="installmentPaymentCommision" [(ngModel)]="schemeData.installmentPaymentCommision">
-         <label for="username">details</label>
-         <input type="text" id="username" name="username"
-         formControlName="details" [(ngModel)]="schemeData.details">
+         <label for="username">Details <span>*</span></label>
+         <textarea style="width: 100%; height: 100%;" type="text" id="username" name="username"
+         formControlName="details" [(ngModel)]="schemeData.details"></textarea>
          <input type="hidden" formControlName="insuranceTypeId" [(ngModel)]="schemeData.insuranceTypeId">
       </div>
       

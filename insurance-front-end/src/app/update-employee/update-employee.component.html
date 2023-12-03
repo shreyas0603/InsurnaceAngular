@@ -19,13 +19,13 @@
         <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
         <input type="hidden"   formControlName="id" [(ngModel)]="employeeId">
         <!-- <h1>{{insuranceTypeId}}</h1> -->
-        <label for="username">firstName</label>
+        <label for="username">First Name <span>*</span></label>
         <input type="text" id="username" name="username" 
          formControlName="firstName" [(ngModel)]="employeeData.firstName">
-         <label for="username">lastName</label>
+         <label for="username">Last Name <span>*</span></label>
          <input type="text" id="username" name="username"
          formControlName="lastName" [(ngModel)]="employeeData.lastName">
-         <label for="username">userName</label>
+         <label for="username">User Name <span>*</span></label>
          <input type="text" id="username" name="username"
          formControlName="userName" [(ngModel)]="employeeData.userName">
          <input type="hidden" id="username" name="username"

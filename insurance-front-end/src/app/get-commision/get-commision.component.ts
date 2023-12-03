@@ -3,6 +3,7 @@ import { InsuranceService } from '../service/insurance.service';
 import { TemporaryDataService } from '../service/temporary-data.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-get-commision',
@@ -22,11 +23,19 @@ export class GetCommisionComponent {
   insurancePlanData:any
   agentData:any
   customerData:any
-  constructor(private commisioninfo:InsuranceService,private temporaryData:TemporaryDataService, private router: Router){
+  constructor(private commisioninfo:InsuranceService,private temporaryData:TemporaryDataService, private router: Router, private data:DataService){
     this.userRole=temporaryData.getRole()
     commisioninfo.getCommision().subscribe((data)=>{
       this. commisionData=data
       console.log(this. commisionData);
+        // var agent=this.agentData.find((a: any) => a.userId === this.dataService.userId)
+        if((this.userRole=="Agent")){
+          this.commisionData=this.commisionData.filter((x:any)=>x.agentId === this.data.userId)
+          console.log('filtered comm' )
+          console.log(this.commisionData)
+          
+        }
+      
       
       commisioninfo.getCustomer().subscribe({
         next:(response)=>{

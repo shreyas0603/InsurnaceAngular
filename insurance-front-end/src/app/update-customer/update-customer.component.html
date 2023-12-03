@@ -19,26 +19,26 @@
         <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
         <input type="hidden"   formControlName="id" [(ngModel)]="customerId">
         <!-- <h1>{{insuranceTypeId}}</h1> -->
-        <label >dateOfBirth</label>
+        <label >Date Of Birth <span>*</span></label>
         <input type="text" 
          formControlName="dateOfBirth" [(ngModel)]="customerData.dateOfBirth">
-         <label >userName</label>
+         <label >User Name <span>*</span></label>
          <input type="text" 
          formControlName="userName" [(ngModel)]="customerData.userName">
-         <label >firstName</label>
+         <label >First Name <span>*</span></label>
          <input type="text" 
          formControlName="firstName" [(ngModel)]="customerData.firstName">
-         <label >lastName</label>
+         <label >Last Name <span>*</span></label>
          <input type="text" 
          formControlName="lastName" [(ngModel)]="customerData.lastName">
          <input type="hidden" formControlName="password" [(ngModel)]="customerData.password">
-         <label >mobileNumber</label>
+         <label >Mobile Number <span>*</span></label>
          <input type="text" formControlName="mobileNumber" [(ngModel)]="customerData.mobileNumber">
-         <label >email</label>
+         <label >Email <span>*</span></label>
          <input type="text" formControlName="email" [(ngModel)]="customerData.email">
-         <label >nomineeName</label>
+         <label >Nominee Name <span>*</span></label>
          <input type="text" formControlName="nomineeName" [(ngModel)]="customerData.nomineeName">
-         <label>nomineeRelation</label>
+         <label>Nominee Relation <span>*</span></label>
          <input type="text" formControlName="nomineeRelation" [(ngModel)]="customerData.nomineeRelation">
          <input type="hidden" formControlName="locationId" [(ngModel)]="customerData.locationId">
          <input type="hidden" formControlName="agentId" [(ngModel)]="customerData.agentId">

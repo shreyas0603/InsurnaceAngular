@@ -15,18 +15,18 @@
     <form [formGroup]="insurnaceAccountForm" (ngSubmit)="updateCustomerAccount(insurnaceAccountForm.value)" >
       <!-- <p>Kindly enter the credentials</p> -->
       <div class="form-group">
-        <label for="username">Insurance Creation Date</label>
+        <label for="username">Insurance Creation Date <span>*</span></label>
         <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
         <input type="hidden"   formControlName="id" [(ngModel)]="accountId">
         <!-- <h1>{{agentId}}</h1> -->
         <input type="text" formControlName="insuranceCreationDate" [(ngModel)]="accountData.insuranceCreationDate">
-        <label for="username">Maturity Date</label>
+        <label for="username">Maturity Date <span>*</span></label>
         <input type="text" formControlName="maturityDate" [(ngModel)]="accountData.maturityDate">
-        <label for="username">Policy Term</label>
-        <input type="text" formControlName="policyTerm" [(ngModel)]="accountData.PolicyTerm">
-        <label for="username">TotalPremium</label>
+        <label for="username">Policy Term <span>*</span></label>
+        <input type="text" formControlName="policyTerm" [(ngModel)]="accountData.policyTerm">
+        <label for="username">Total Premium <span>*</span></label>
         <input type="text" formControlName="totalPremium" [(ngModel)]="accountData.totalPremium">
-        <label for="username">Profit Ratio</label>
+        <label for="username">Profit Ratio <span>*</span></label>
         <input type="text" formControlName="profitRatio" [(ngModel)]="accountData.profitRatio">
         <!-- <label for="username">sumAssured</label> -->
         <input type="hidden" formControlName="sumAssured" [(ngModel)]="accountData.sumAssured">

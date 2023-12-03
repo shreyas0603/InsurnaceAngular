@@ -11,7 +11,7 @@
     <!-- <app-admin-navbar></app-admin-navbar><br> -->
     <app-agent-navbar></app-agent-navbar>
   <div class="login-container">
-    <h1>Update Customer Insurance Account</h1>
+    <h1>Request Withdrawal Amount</h1>
     <!--  -->
     <form [formGroup]="addWithrawal" (ngSubmit)="addCommisionWithdrawal(addWithrawal.value)" >
       <!-- <p>Kindly enter the credentials</p> -->
@@ -20,15 +20,15 @@
         <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
        
         <!-- <h1>{{insuranceTypeId}}</h1> -->
-        <label for="username">AddrequestDate</label>
+        <label for="username">Request Date <span>*</span></label>
         <input type="date" id="username" name="username"
          formControlName="requestDate">
-         <label for="username">Total Commision Amount</label>
+         <label for="username">Total Commision Amount </label>
          <input type="text" id="username" name="username" placeholder=" {{calculateTotal()}} {{makeTotalZero()}}" disabled  >
            <br>
            <!-- <label >{{calculateTotal()}} {{makeTotalZero()}}</label>  -->
  
-         <label for="username"> withdrawalAmount</label>
+         <label for="username"> withdrawalAmount <span>*</span></label>
          <input type="text" id="username" name="username"
          formControlName="withdrawalAmount">
  

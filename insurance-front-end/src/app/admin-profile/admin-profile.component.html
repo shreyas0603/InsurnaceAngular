@@ -21,12 +21,12 @@
     <form [formGroup]="addAdmin" (ngSubmit)="updateAdmin(addAdmin.value) ">
       <!-- <p>Kindly enter the credentials</p> -->
       <div class="form-group">
-        <label for=""> firstName</label>
+        <label for=""> First Name <span>*</span></label>
         <input type="hidden" formControlName="id" [(ngModel)]="adminId" >
         <input type="text" id="firstName" name="username" formControlName="firstName" [(ngModel)]="adminData.firstName">
       </div>
       <div class="form-group">
-        <label for="">lastName</label>
+        <label for="">Last Name <span>*</span></label>
         <input type="text" id="lastName" name="username" placeholder="Enter your LastName" formControlName="lastName"  [(ngModel)]="adminData.lastName">
       </div>
       <div class="form-group">

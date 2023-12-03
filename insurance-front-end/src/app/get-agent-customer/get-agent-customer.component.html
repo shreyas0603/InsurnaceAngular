@@ -85,7 +85,7 @@ th {
 	<tbody>
 		<tr *ngFor="let customer of customerData | paginate:{
 			id:'listing_pagination',
-      itemsPerPage:5,
+      itemsPerPage:pageSize,
       currentPage:page,
       totalItems:totalRecords
     };index as i">
@@ -101,8 +101,9 @@ th {
             <td>{{ customer.nomineeRelation}}</td>
             <!-- <td>{{customer.password}}</td> -->
             <!-- <td>{{locationData[i].city}},{{locationData[i].state}}</td> -->
-            <td>{{customer.locationId}}</td>
-            <td>{{customer.agentId}}</td>
+            <td>{{getLocationName(customer.locationId)}}</td>
+            <td>{{getAgentName(customer.agentId)}}</td>
+            <!-- <td>{{customer.agentId}}</td> -->
             <td *ngIf="userRole=='Admin'">
               
               <button  class="btn btn-primary" (click)="setId(customer.id)">Edit</button>&nbsp;
@@ -123,6 +124,12 @@ th {
 	>
 	</pagination-controls>
 	</div>
+  
+  <select class="form-select" style="width: auto" (change)="changePageSize($event)">
+		<option [value]="5">5 items per page</option>
+		<option [value]="10">10 items per page</option>
+		<option [value]="15">15 items per page</option>
+	</select>
 
 <!-- <div class="d-flex justify-content-between p-2">
 	<ngb-pagination
