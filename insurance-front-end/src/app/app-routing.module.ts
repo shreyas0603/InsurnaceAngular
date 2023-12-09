@@ -44,6 +44,11 @@ import { CustomerProfileComponent } from './customer-profile/customer-profile.co
 import { AddQueryComponent } from './add-query/add-query.component';
 import { CustomerInsurancePlanComponent } from './customer-insurance-plan/customer-insurance-plan.component';
 import { AddDocumentComponent } from './add-document/add-document.component';
+import { GetDocumentComponent } from './get-document/get-document.component';
+import { OpenDocumentComponent } from './open-document/open-document.component';
+import { CustomerInsuranceSchemeComponent } from './customer-insurance-scheme/customer-insurance-scheme.component';
+import { CustomerAddInsuranceAccountComponent } from './customer-add-insurance-account/customer-add-insurance-account.component';
+import { CustomerPaymentComponent } from './customer-payment/customer-payment.component';
 // import { AddAgentComponent } from './add-agent/add-agent.component';
 
 const routes: Routes = [
@@ -141,8 +146,28 @@ const routes: Routes = [
     component:AddDocumentComponent
   },
   {
+    path:'getDocument',
+    component:GetDocumentComponent
+  },
+  {
+    path:'openDocument',
+    component:OpenDocumentComponent
+  },
+  {
     path:'customerInsurancePlan',
     component:CustomerInsurancePlanComponent
+  },
+  {
+    path:'customerInsuranceScheme',
+    component:CustomerInsuranceSchemeComponent
+  },
+  {
+    path:'customerAddInsuranceAccount',
+    component:CustomerAddInsuranceAccountComponent
+  },
+  {
+    path:'customerPayment',
+    component:CustomerPaymentComponent
   },
   {
     path:'getCustomerInsuranceAccount',

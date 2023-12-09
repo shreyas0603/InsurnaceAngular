@@ -105,6 +105,7 @@ export class GetAgentCustomerComponent {
       return 'Agent Data Not Loaded';
     }
   }
+  
   filterCustomer(){
     if(localStorage.getItem('role')=="Agent"){
       this.customerData=this.customerData.filter(x=>x.agentId===this.datas.userId)

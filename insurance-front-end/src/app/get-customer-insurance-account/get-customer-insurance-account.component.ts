@@ -20,15 +20,27 @@ export class GetCustomerInsuranceAccountComponent {
   collectionSize=0;
   userRole:string=''
   customerData:Array<any>
+  insurancePlanData:Array<any>
+  insuranceSchemeData:Array<any>
   customerloginId:number=0
   constructor(private accountinfo:InsuranceService,protected temporaryData:TemporaryDataService, private router: Router, private data:DataService){
     this.accountData=new Array<any>()
     this.notFilteredAccounts=new Array<any>()
     this.customerData=new Array<any>()
+    this.insurancePlanData=new Array<any>()
+    this.insuranceSchemeData=new Array<any>()
     this.userRole=temporaryData.getRole()
     this.customerloginId=temporaryData.getLoginId()
-    if(this.userRole=='Admin' || this.userRole=='Agent'){
 
+    accountinfo.getInsurancePlan().subscribe((data)=>{
+      this.insurancePlanData=data
+    })
+    this.accountinfo.getInsuranceScheme().subscribe((data)=>{
+      this.insuranceSchemeData=data
+    })
+    // accountinfo.getInsuranceScheme().subscribe
+    if(this.userRole=='Admin' || this.userRole=='Agent'){
+      
       accountinfo.getCustomerInsuranceAccount().subscribe((data)=>{
         this. notFilteredAccounts=data
         this.totalRecords=data.length
@@ -71,6 +83,26 @@ export class GetCustomerInsuranceAccountComponent {
       })
     }
   }
+  getCustomerName(customerId: number): string {
+ 
+    if (this.customerData) {
+      const customer = this.customerData.find((a: any) => a.id === customerId);
+      console.log(customer);
+      return customer!=null ? `${customer.firstName} ${customer.lastName}` : 'Customer Not Found';
+    } else {
+      return 'Customer Data Not Loaded';
+    }
+  }
+  getInsuranceSchemeNameFromPlanId(id:number){
+    // debugger
+    const planData=this.insurancePlanData.find(x=>x.id===id)
+    console.log(planData)
+    
+    const insuranceSchemeName=this.insuranceSchemeData.find(x=>x.id===planData.insuranceSchemeId)
+    return insuranceSchemeName ?`${insuranceSchemeName.insuranceSchemeName}`:`insuranceScheme Not Found`;
+  
+
+  }
   pageSize:number=5;
   changePageSize(event:any){
     this.pageSize=event.target.value
@@ -98,6 +130,9 @@ export class GetCustomerInsuranceAccountComponent {
       console.log(this.customerData)
       
       this.filterInsuranceAccount()
+    }
+    else{
+    this.accountData=this.notFilteredAccounts
     }
   }
   filterInsuranceAccount(){

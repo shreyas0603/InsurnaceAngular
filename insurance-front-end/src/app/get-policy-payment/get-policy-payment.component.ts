@@ -66,6 +66,16 @@ export class GetPolicyPaymentComponent {
     this.totalRecords=this.paymentData.length
     console.log(this.totalRecords)
   }
+  getCustomerName(customerId: number): string {
+ 
+    if (this.customerData) {
+      const customer = this.customerData.find((a: any) => a.id === customerId);
+      console.log(customer);
+      return customer!=null ? `${customer.firstName} ${customer.lastName}` : 'Customer Not Found';
+    } else {
+      return 'Customer Data Not Loaded';
+    }
+  }
   ngOnInit():void{
     // debugger
     var token=localStorage.getItem('token')

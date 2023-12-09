@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+function _window() : any {
+  // return the global native browser window object
+  return window;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class InsuranceService {
-
+  
+  get nativeWindow() : any {
+    return _window();
+ }
   url="https://localhost:7114/api"
   constructor( private http:HttpClient) { }
   //Admin
@@ -231,7 +238,16 @@ export class InsuranceService {
   addCommisionWithdrawal(data:any){
     return this.http.post(this.url+"/CommisionWithdrawal",data)
   }
+  //Document
   addFiles(data:any){
     return this.http.post(this.url+"/Documents/Upload",data)
+  }
+  getDocumentById(id: number): Observable<any> {
+    return this.http.get(this.url+"/Documents/"+id);
+  }
+
+  getAllDocuments(): Observable<any> {
+    // const url = ${this.apiUrl}/document;
+    return this.http.get(this.url+"/Documents/getAll");
   }
 }

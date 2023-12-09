@@ -22,15 +22,24 @@ export class AddDocumentComponent {
 
   })
    customerId:number=0;
+   storeFile:any
   constructor(private insuranceservice: InsuranceService, private router: Router, private temporaryData: TemporaryDataService,private data:DataService) {
     this.customerId=data.userId
     console.log(this.customerId)
   }
 
-
+  onFileSelected(event: any) {
+    debugger
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.storeFile = file;
+    }
+  }
   addFiles(data:any){
-    // debugger
+    debugger
     console.log(data)
+    data.file=this.storeFile
+    
     this.insuranceservice.addFiles(data).subscribe({
       next:(result)=>{
         alert("files Added Successfully")

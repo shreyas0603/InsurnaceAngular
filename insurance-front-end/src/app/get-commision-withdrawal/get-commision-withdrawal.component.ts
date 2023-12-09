@@ -15,9 +15,12 @@ export class GetCommisionWithdrawalComponent {
   total:number=0;
   agentData:any
   userRole:string=''
+  customerData:Array<any>
  
   constructor(private locationinfo:InsuranceService,protected temporaryData:TemporaryDataService, private data:DataService){
     this.userRole=temporaryData.getRole()
+    this.customerData=new Array<any>()
+    
     locationinfo.getCommisonWithdrawal().subscribe((data)=>{
       this. withdrawalData=data
       console.log(this.withdrawalData);

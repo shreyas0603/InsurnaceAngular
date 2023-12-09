@@ -21,10 +21,12 @@ export class GetCommisionComponent {
   userRole:string=''
 
   insurancePlanData:any
-  agentData:any
-  customerData:any
+  agentData:Array<any>
+  customerData:Array<any>
   constructor(private commisioninfo:InsuranceService,private temporaryData:TemporaryDataService, private router: Router, private data:DataService){
     this.userRole=temporaryData.getRole()
+    this.customerData=new Array<any>()
+    this.agentData=new Array<any>()
     commisioninfo.getCommision().subscribe((data)=>{
       this. commisionData=data
       console.log(this. commisionData);
@@ -66,6 +68,31 @@ export class GetCommisionComponent {
       // this.collectionSize=this.customerData.length;
     })
   }
+  getAgentName(agentId:number):string{
+ 
+    //  debugger
+      if(this.agentData){
+        console.log(this.agentData);
+       
+        const agent=this.agentData.find((a:any)=>a.id===agentId)
+        console.log(agent);
+        return agent!=null ? `${agent.firstName} ${agent.lastName}` : 'Agent Not Found';
+      }
+      else{
+        return 'Agent Data Not Loaded';
+      }
+    }
+  getCustomerName(customerId: number): string {
+ 
+    if (this.customerData) {
+      const customer = this.customerData.find((a: any) => a.id === customerId);
+      console.log(customer);
+      return customer!=null ? `${customer.firstName} ${customer.lastName}` : 'Customer Not Found';
+    } else {
+      return 'Customer Data Not Loaded';
+    }
+  }
+
   ngOnInit():void{
     // debugger
     var token=localStorage.getItem('token')

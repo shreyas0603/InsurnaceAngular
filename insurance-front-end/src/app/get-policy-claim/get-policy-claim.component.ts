@@ -46,6 +46,16 @@ export class GetPolicyClaimComponent {
     //   // this.collectionSize=this.customerData.length;
     // })
   }
+  getCustomerName(customerId: number): string {
+ 
+    if (this.customerData) {
+      const customer = this.customerData.find((a: any) => a.id === customerId);
+      console.log(customer);
+      return customer!=null ? `${customer.firstName} ${customer.lastName}` : 'Customer Not Found';
+    } else {
+      return 'Customer Data Not Loaded';
+    }
+  }
   filterCustomer(){
     // var agent=this.agentData.find((a: any) => a.userId === this.dataService.userId)
     if((this.userRole=="Agent")){

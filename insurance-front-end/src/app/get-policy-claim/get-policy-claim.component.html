@@ -101,8 +101,8 @@ th {
       currentPage:page,
       totalItems:totalRecords
     };index as i">
-            <td>{{payment.customerId}}</td>
-			<td>{{payment.insurancePlanId}}</td>
+            <td>{{getCustomerName(payment.customerId)}}</td>
+			<td>{{payment.id}}</td>
             <td>{{ payment.withdrawalDate}}</td>
             <td>{{ payment.bankName}}</td> 
             <td>{{payment.withdrawalAmount}}</td><!--paid amount +TaxAmount-->

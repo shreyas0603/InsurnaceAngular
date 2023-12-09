@@ -176,6 +176,8 @@ export class CommonLoginComponent {
   
           //store user info in data service vars
           this.data.userId=this.user.userId
+          console.log('userId : '+this.data.userId);
+          
           this.data.userName=this.user.userName
   
           

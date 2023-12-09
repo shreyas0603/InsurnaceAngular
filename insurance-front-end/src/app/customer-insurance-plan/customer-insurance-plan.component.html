@@ -1,7 +1,166 @@
-<h1>{{insuranceTypeData[0].insuranceTypeName}}</h1>
+<!-- <h1>{{insuranceTypeData[0].insuranceTypeName}}</h1>
 <h1 >{{insuranceName}}</h1>
 <p class="card-text">No of Accounts: {{insuranceName}}</p>
 <p>{{insuranceName}}</p>
 <div *ngFor="let insuranceType of insuranceTypeData">
     <h1>{{insuranceType.insuranceTypeName }}</h1>
-</div>
+</div> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Description</title>
+    <style>
+        /* body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(-45deg, #673ab7, #2196F3, #673ab7, #2196F3);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        } */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+
+            background: linear-gradient(120deg, #3498db, #8e44ad, #3498db, #8e44ad);
+            background-size: 600% 600%;
+            animation: gradientAnimation 10s ease infinite;
+
+            height: auto;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        .insurance-type {
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .insurance-scheme {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .insurance-scheme:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #673ab7;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #2196F3;
+            margin-top: 10px;
+        }
+
+        .scheme-description {
+            margin-top: 15px;
+            color: #777;
+            text-align: center;
+        }
+
+        .buy-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #673ab7;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: #673ab7;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <app-customer-navbar></app-customer-navbar>
+    <h1 align="center">{{insuranceName}}</h1>
+
+    <div class="insurance-type">
+        <div class="insurance-scheme" *ngFor="let scheme of insuranceSchemeData">
+            <h3>{{scheme.insuranceSchemeName}}</h3>
+            <p class="scheme-description">{{scheme.details}}</p>
+            <button class="buy-button" (click)="setInsuranceSchemeId(scheme.id)">Check
+                {{scheme.insuranceSchemeName}}</button>
+        </div>
+
+
+        <!-- <div class="insurance-scheme">
+            <h2>Health Insurance</h2>
+            <h3>Comprehensive Health Plan</h3>
+            <p class="scheme-description">Extensive coverage including hospital stays, medications, and more.</p>
+            <button class="buy-button">Buy Comprehensive Health Plan</button>
+        </div>
+
+        <div class="insurance-scheme">
+            <h2>Car Insurance</h2>
+            <h3>Collision Coverage</h3>
+            <p class="scheme-description">Covers damage to your vehicle in case of a collision.</p>
+            <button class="buy-button">Buy Collision Coverage</button>
+        </div>
+
+        <div class="insurance-scheme">
+            <h2>Car Insurance</h2>
+            <h3>Liability Insurance</h3>
+            <p class="scheme-description">Covers costs if you're responsible for injuring someone or damaging their property.</p>
+            <button class="buy-button">Buy Liability Insurance</button>
+        </div> -->
+    </div>
+
+    <!-- Add more insurance types and schemes as needed -->
+
+</body>
+
+</html>

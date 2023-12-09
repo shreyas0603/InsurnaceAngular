@@ -85,12 +85,12 @@ th {
 		<tr *ngFor="let commision of commisionData;index as i">
             
 	    <!-- <td>{{ commision.insurancePlanId }} 	</td> -->
-      <td >{{commision.insurancePlanId}}</td>
-			<td>{{ commision.agentId}}</td>
+      <td >{{commision.id}}</td>
+			<td>{{getAgentName(commision.agentId)}}</td>
       <!-- <td>{{agentData[i].userName}}</td> -->
-            <td>{{ commision.customerId}}</td>
+            <td>{{getCustomerName(commision.customerId)}}</td>
             <!-- <td>{{customerData[i].userName}}</td> -->
-            <td>{{ commision.commisionAmount}}</td>
+            <td>{{commision.commisionAmount}}</td>
             
           </tr>
           <tr>

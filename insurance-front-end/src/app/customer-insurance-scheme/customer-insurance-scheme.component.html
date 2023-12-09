@@ -1,0 +1,98 @@
+<body>
+    <app-customer-navbar></app-customer-navbar>
+<div class="login-container">
+    <h1>{{insurnaceSchemeName}}</h1>
+<h4 align="center">{{insuranceSchemeData.details}}</h4>
+<br>
+<h3>Plan Details</h3>
+<div class="container mt-5">
+    <div class="vertical-table" >
+        <!-- *ngFor="let insuranceplan of insurancePlanData" -->
+      <div class="row">
+        <div class="col">Min Policy Term</div>
+        <!-- <input class="col" type="text" value="{{insuranceplan.minPolicyTerm}}"> -->
+        <div class="col">{{insurancePlanData[0].minPolicyTerm}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Max Policy Term</div>
+        <div class="col">{{insurancePlanData[0].maxPolicyTerm}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Min Age</div>
+        <div class="col">{{insurancePlanData[0].minAge}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Max Age</div>
+        <div class="col">{{insurancePlanData[0].maxAge}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Min Investment Amount</div>
+        <div class="col">{{insurancePlanData[0].minInvestmentAmount}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Max Investment Amount</div>
+        <div class="col">{{insurancePlanData[0].maxInvestmentAmount}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Profit Ratio Percentage</div>
+        <div class="col">{{insurancePlanData[0].profitRatioPercentage}}</div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <h3>Interest Calculator</h3>
+  <form  [formGroup]="scheme"  (ngSubmit)="calculateInterest(scheme.value)">
+
+    <div class="container mt-5">
+      <div class="vertical-table">
+        <div class="row">
+          <div class="col">No of Years</div>
+          <div class="col" > <input type="text" formControlName="years" ></div>
+        </div>
+        <div class="row">
+          <div class="col">Total Investment Amount</div>
+          <div class="col"><input type="text" formControlName="investmentAmt" ></div>
+        </div>
+        <div class="row">
+          <div class="col">Months</div>
+          <div class="col">
+            <input type="text" formControlName="months">
+            <!-- <select  id="account-type" name="account-type" formControlName="months">
+              <option value="" disabled selected>Choose your profile</option>
+              <option *ngFor="let prf of noMonths" [ngValue]="prf">
+                {{ prf }}
+               </option>
+             
+            </select> -->
+        </div>
+        
+    </div>
+</div>
+</div>
+<br>
+<button  align="center">Calculate</button>
+    
+    
+  </form>  
+
+  <div class="container mt-5">
+    <div class="vertical-table">
+      <div class="row">
+        <div class="col">Installment Amount</div>
+        <div class="col" > <input type="text" placeholder="{{calculateData.investmentAmt/divideYears}}" disabled></div>
+      </div>
+      <div class="row">
+        <div class="col">Interest Amount</div>
+        <div class="col"><input type="text" placeholder="{{calculateData.investmentAmt * 0.06}}" disabled></div>
+      </div>
+      <div class="row">
+        <div class="col">Total Amount</div>
+        <div class="col"><input type="text" placeholder="{{(calculateData.investmentAmt)*1 + (calculateData.investmentAmt * 0.06)}}" disabled></div>
+        
+    </div><br>
+    <button routerLink="/customerAddInsuranceAccount">Submit</button>
+    </div>
+  </div>
+
+</div>
+</body>

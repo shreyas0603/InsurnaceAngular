@@ -19,25 +19,51 @@ export class AgentComponentComponent {
   commisionWithdrawalCount:number=0
   policyPaymentsCount:number=0
   policyClaimsCount:number=0
-  constructor(protected temporaryData:TemporaryDataService,private router:Router, private data:DataService,private insuranceService:InsuranceService){
-    this.userName= data.userName
+  allCustomer:Array<any>
+  constructor(protected temporaryData:TemporaryDataService,private router:Router,private insuranceService:InsuranceService,private dataService:DataService){
+    this.userName= dataService.userName
+    this.allCustomer=new Array<any>()
     insuranceService.getCustomer().subscribe((data)=>{
-      this.agentCustomerCount=data.length
+      
+      this.allCustomer=data
+      this.allCustomer=this.allCustomer.filter((x:any)=>x.agentId==dataService.userId)
+      this.agentCustomerCount=this.allCustomer.length
     })
     insuranceService.getCustomerInsuranceAccount().subscribe((data)=>{
-      this.insuranceAccountCount=data.length
+      var arr=new Array<any>()
+      arr=data
+      for (let c of this.allCustomer){
+
+        this.insuranceAccountCount=this.insuranceAccountCount+ arr.filter(x=>x.customerId==c.id).length
+      }
     })
     insuranceService.getCommision().subscribe((data)=>{
-      this.commisionCount=data.length
+      var arr=new Array<any>()
+      arr=data
+      this.commisionCount=arr.filter(x=>x.agentId==dataService.userId).length
     })
     insuranceService.getCommisonWithdrawal().subscribe((data)=>{
-      this.commisionWithdrawalCount=data.length
+      var arr=new Array<any>()
+      arr=data
+      this.commisionWithdrawalCount=arr.filter(x=>x.agentId==dataService.userId).length
     })
     insuranceService.getPolicyPayements().subscribe((data)=>{
-      this.policyPaymentsCount=data.length
+      var arr=new Array<any>()
+      arr=data
+      for (let c of this.allCustomer){
+
+        this.policyPaymentsCount=this.policyPaymentsCount+ arr.filter(x=>x.customerId==c.id).length
+      }
+      // this.policyPaymentsCount=data.length
     })
     insuranceService.getPolicyClaim().subscribe((data)=>{
-      this.policyClaimsCount=data.length
+      var arr=new Array<any>()
+      arr=data
+      for (let c of this.allCustomer){
+
+        this.policyClaimsCount=this.policyClaimsCount+ arr.filter(x=>x.customerId==c.id).length
+      }
+      // this.policyClaimsCount=data.length
     })
   }
   ngOnInit():void{

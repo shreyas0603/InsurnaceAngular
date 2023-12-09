@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="customer-add-insurance-account.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head>
+<body>
+    <app-customer-navbar></app-customer-navbar>
+    <div class="login-container">
+      <h1>Insurnace-Account</h1>
+      
+        <form [formGroup]="account" (ngSubmit)="storeInsurnaceData(account.value)" >
+            <!-- <p>Kindly enter the credentials</p> -->
+            <div class="form-group">
+              <label for="username">Insurance Creation Date <span>*</span></label>
+              <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+             
+              <!-- <h1>{{agentId}}</h1> -->
+              <input type="text" formControlName="insuranceCreationDate" [(ngModel)]="date" readonly>
+              <label for="username">Maturity Date <span>*</span></label>
+              <input type="text" formControlName="maturityDate" [(ngModel)]="maturityDate" readonly>
+              <label for="username">Policy Term <span>*</span></label>
+              <input type="text" formControlName="policyTerm" [(ngModel)]="temporaryData.policyTerm" readonly>
+              <label for="username">Total Premium <span>*</span></label>
+              <input type="text" formControlName="totalPremium" [(ngModel)]="temporaryData.totalInvestmentAmt" readonly>
+              <label for="username">Profit Ratio <span>*</span></label>
+              <input type="text" formControlName="profitRatio" [(ngModel)]="(temporaryData.interestAmt*100)/temporaryData.totalInvestmentAmt" readonly>
+              <label for="username">sum Assured <span>*</span></label>
+              <input type="text" formControlName="sumAssured" [(ngModel)]="temporaryData.totalAmt" readonly>
+              <label for="username">Customer <span>*</span></label>
+              <!-- for display -->
+              <input type="text" value="{{getCustomerName(loginId)}}" readonly>
+              <!-- for actual use -->
+              <input type="hidden" formControlName="customerId"  [(ngModel)]="loginId">
+              <label for="username">Insurance Scheme <span>*</span></label>
+              <!-- for display -->
+              <input type="text" value="{{getInsuranceSchemeNameFromPlanId(temporaryData.planId)}}" readonly>
+              <!-- for actual use -->
+              <input type="hidden" formControlName="insurancePlanId" [(ngModel)]="temporaryData.planId">
+            </div>
+           
+            <button type="submit" routerLink="/customerPayment">Submit</button>
+          </form>
+     
+    </div>
+    
+</body>
+</html>
+
+
