@@ -86,7 +86,7 @@ th {
       <th scope="col">Is Approved</th>
       <th scope="col">Withdrawal Amount</th>  <!--account no-->
             <!-- <th scope="col">TotalAmount</th> -->
-         
+         <th scope="col" *ngIf="userRole=='Admin'">Action</th>
             <!-- <th scope="col">Status</th> -->   <!--can be added-->
            
     </tr>
@@ -98,10 +98,13 @@ th {
             <!-- <td>{{getAgentName(withdrawal.agentId)}}</td> -->
             <td>{{withdrawal.isApproved}}</td>
             <td>{{ withdrawal.withdrawalAmount}}</td>
+            <td *ngIf="userRole=='Admin'">
+              <button   class="btn btn-primary" (click)="updateApprove(withdrawal.id)">Approve</button>
+            </td>
     </tr>
         <tr>
             <td colspan="2">TotalWithdrawalAmount</td>
-            <td>{{calculateTotal()}} {{makeTotalZero()}}</td>
+            <td colspan="2">{{calculateTotal()}} {{makeTotalZero()}}</td>
           </tr>
   </tbody>
 </table>

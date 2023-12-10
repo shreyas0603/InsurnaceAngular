@@ -66,7 +66,9 @@ export class CustomerAddInsuranceAccountComponent {
   }
 
   storeInsurnaceData(data:any){
+    debugger
     this.temporaryData.insuraanceAccountData=data
+    this.router.navigateByUrl('/customerPayment')
   }
   getCustomerName(customerId: number): string {
  

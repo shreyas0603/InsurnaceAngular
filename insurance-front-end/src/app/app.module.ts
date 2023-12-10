@@ -72,6 +72,10 @@ import { OpenDocumentComponent } from './open-document/open-document.component';
 import { CustomerInsuranceSchemeComponent } from './customer-insurance-scheme/customer-insurance-scheme.component';
 import { CustomerAddInsuranceAccountComponent } from './customer-add-insurance-account/customer-add-insurance-account.component';
 import { CustomerPaymentComponent } from './customer-payment/customer-payment.component';
+import { EmployeeNavbarComponent } from './employee-navbar/employee-navbar.component';
+import { EmployeeComponentComponent } from './employee-component/employee-component.component';
+import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
+import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
 // import { AddLocationsComponent } from './add-locations/add-locations.component';
 
 @NgModule({
@@ -138,6 +142,10 @@ import { CustomerPaymentComponent } from './customer-payment/customer-payment.co
     CustomerInsuranceSchemeComponent,
     CustomerAddInsuranceAccountComponent,
     CustomerPaymentComponent,
+    EmployeeNavbarComponent,
+    EmployeeComponentComponent,
+    EmployeeProfileComponent,
+    EmployeeChangePasswordComponent,
     // AddLocationsComponent
   ],
   imports: [

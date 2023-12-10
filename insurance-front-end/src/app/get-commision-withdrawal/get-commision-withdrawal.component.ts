@@ -3,6 +3,7 @@ import { InsuranceService } from '../service/insurance.service';
 import { TemporaryDataService } from '../service/temporary-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DataService } from '../service/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-commision-withdrawal',
@@ -16,12 +17,17 @@ export class GetCommisionWithdrawalComponent {
   agentData:any
   userRole:string=''
   customerData:Array<any>
+  updateData:Array<any>
  
-  constructor(private locationinfo:InsuranceService,protected temporaryData:TemporaryDataService, private data:DataService){
+  constructor(private locationinfo:InsuranceService,protected temporaryData:TemporaryDataService, private data:DataService,private router:Router){
     this.userRole=temporaryData.getRole()
     this.customerData=new Array<any>()
+    this.updateData=new Array<any>()
     
-    locationinfo.getCommisonWithdrawal().subscribe((data)=>{
+    this.getWithdrawalData()
+  }
+  getWithdrawalData(){
+    this.locationinfo.getCommisonWithdrawal().subscribe((data)=>{
       this. withdrawalData=data
       console.log(this.withdrawalData);
       // this.collectionSize=this.customerData.length;
@@ -33,7 +39,6 @@ export class GetCommisionWithdrawalComponent {
       }
     })
   }
-  
   // getAgentName(id:number){
   //   debugger
   //   this.locationinfo.getAgentById(id).subscribe({
@@ -49,6 +54,19 @@ export class GetCommisionWithdrawalComponent {
   //   console.log(this.agentData.userName);
     
   // }
+  updateApprove(id:number){
+    // debugger
+    this.locationinfo.getCommisonWithdrawalById(id).subscribe((data)=>{
+      data.isApproved=true
+      this.updateData=data
+      this.locationinfo.updateCommisionWithdrawal(this.updateData).subscribe((response)=>{
+        // this.router.navigateByUrl('/getCommisionWithdrawal')
+        console.log(response)
+        this.getWithdrawalData()
+        // location.reload()
+      })
+    })
+  }
   calculateTotal() {
     // if (!this.commisionData) {
     //   return 0;

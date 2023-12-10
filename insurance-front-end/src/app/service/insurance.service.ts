@@ -123,6 +123,9 @@ export class InsuranceService {
     return this.http.delete(this.url+"/Location/"+id)
   }
   //customer-insurance-account
+  addCustomerInsuranceAccount(data:any){
+    return this.http.post(this.url+"/CustomerInsuranceAccount",data)
+  }
   getCustomerInsuranceAccount():Observable<any>{
     return this.http.get(this.url+"/CustomerInsuranceAccount")
   }
@@ -190,6 +193,9 @@ export class InsuranceService {
   getPolicyPayements():Observable<any>{
     return this.http.get(this.url+"/PolicyPayment")
   }
+  addPolicyPayments(data:any){
+    return this.http.post(this.url+"/PolicyPayment",data)
+  }
   updatePolicyPayments(data:any){
     return this.http.put(this.url+"/PolicyPayment",data)
   }
@@ -239,7 +245,12 @@ export class InsuranceService {
   getCommisonWithdrawal():Observable<any>{
     return this.http.get(this.url+"/CommisionWithdrawal")
   }
- 
+  getCommisonWithdrawalById(id:number):Observable<any>{
+    return this.http.get(this.url+"/CommisionWithdrawal/"+id)
+  }
+  updateCommisionWithdrawal(data:any){
+    return this.http.put(this.url+"/CommisionWithdrawal",data)
+  }
   addCommisionWithdrawal(data:any){
     return this.http.post(this.url+"/CommisionWithdrawal",data)
   }

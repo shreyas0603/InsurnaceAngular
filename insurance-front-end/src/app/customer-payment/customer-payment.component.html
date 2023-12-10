@@ -1,3 +1,83 @@
-<div class="container">
+<!-- <div class="container">
     <button (click)="pay()" class="btn btn-outline-dark btn-lg"><i class="fas fa-money-bill"></i> Pay Now</button>
+</div> -->
+<body>
+    <app-customer-navbar></app-customer-navbar>
+    <div class="login-container">
+            <h3>Policy Payments</h3>
+    <form  [formGroup]="payment"  (ngSubmit)="pay(payment.value)">
+
+        <div class="container mt-5">
+          <div class="vertical-table">
+            <div class="row">
+              <div class="col">Date</div>
+              <div class="col" > <input type="text" formControlName="paidDate" [(ngModel)]="date" readonly></div>
+            </div>
+            <div class="row">
+              <div class="col">Installment Amount</div>
+              <div class="col"><input type="text" formControlName="paidAmount" [(ngModel)]="temporaryData.installmentAmt" readonly></div>
+            </div>
+            <div class="row">
+              <div class="col">Tax Amount(6.0%)</div>
+              <div class="col">
+                <input type="text" formControlName="taxAmount" [(ngModel)]="taxAmt" readonly>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col">Total Amount</div>
+                <div class="col">
+                  <input type="text" formControlName="totalAmount" [(ngModel)]="totalAmt" readonly>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col">Transaction Type </div>
+                <div class="col">
+                  <input type="text" formControlName="transactionType" [(ngModel)]="transactionType" readonly>
+                  <input type="hidden" formControlName="customerId" [(ngModel)]="customerId" >
+                  <input type="hidden" formControlName="insurancePlanId" [(ngModel)]="temporaryData.planId">
+              </div>
+            </div>
+        </div>
+    </div>
+ 
+    <br>
+    <button  align="center">Pay Now</button>
+        
+        
+      </form> 
+<!-- <div class="container mt-5">
+    <div class="vertical-table" >
+       
+        <div class="col">Min Policy Term</div>
+        
+        <div class="col">{{insurancePlanData[0].minPolicyTerm}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Max Policy Term</div>
+        <div class="col">{{insurancePlanData[0].maxPolicyTerm}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Min Age</div>
+        <div class="col">{{insurancePlanData[0].minAge}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Max Age</div>
+        <div class="col">{{insurancePlanData[0].maxAge}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Min Investment Amount</div>
+        <div class="col">{{insurancePlanData[0].minInvestmentAmount}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Max Investment Amount</div>
+        <div class="col">{{insurancePlanData[0].maxInvestmentAmount}}</div>
+      </div>
+      <div class="row">
+        <div class="col">Profit Ratio Percentage</div>
+        <div class="col">{{insurancePlanData[0].profitRatioPercentage}}</div>
+      </div>
+    </div>
+  </div> -->
 </div>
+
+</body>
