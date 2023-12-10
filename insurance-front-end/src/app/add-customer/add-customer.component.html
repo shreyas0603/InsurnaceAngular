@@ -1,4 +1,4 @@
-<p>add-customer works!</p>
+<!-- <p>add-customer works!</p> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,16 +9,30 @@
   <title>Login Page</title>
 </head>
 <body>
-    <header>
+  <div *ngIf="temporaryData.getRole()=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="temporaryData.getRole()=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+    <!-- <header>
         <app-admin-navbar></app-admin-navbar>
-    </header>
+    </header> -->
     <div class="login-container">
       <h1>Customer Registration</h1>
       <!-- -->
       <form [formGroup]="addCustomer" (ngSubmit)="addNewCustomer(addCustomer.value)"  >
         <!-- <p>Kindly enter the credentials</p> -->
         <div class="form-group">
-          <input type="text" id="firstName" name="username" placeholder="Enter your FirstName" formControlName="firstName" required>
+          <label >Date Of Birth <span>*</span></label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth"  formControlName="dateOfBirth" required>
+            <div *ngIf="addCustomer.get('dateOfBirth')?.hasError('required') && addCustomer.get('dateOfBirth')?.touched">
+              DOB is mandatory.
+          </div>
+        </div>
+        <div class="form-group">
+          <label >First Name <span>*</span></label>
+          <input type="text" id="firstName" name="username"  formControlName="firstName" required>
           <div *ngIf="addCustomer.get('firstName')?.hasError('required') && addCustomer.get('firstName')?.touched">
             FirstName is mandatory.
         </div>
@@ -27,7 +41,8 @@
         </div>
         </div>
         <div class="form-group">
-          <input type="text" id="lastName" name="username" placeholder="Enter your LastName" formControlName="lastName" required>
+          <label >Last Name <span>*</span></label>
+          <input type="text" id="lastName" name="username"  formControlName="lastName" required>
           <div *ngIf="addCustomer.get('lastName')?.hasError('required') && addCustomer.get('lastName')?.touched">
             lastName is mandatory.
         </div>
@@ -36,8 +51,9 @@
         </div>
         </div>
         <div class="form-group">
+          <label >User Name <span>*</span></label>
           <!-- <label for="username">Username</label> -->
-          <input type="text" id="userName" name="username" placeholder="Enter your username" formControlName="userName" [(ngModel)]="userName" (input)="checkUsernameUniqueness()" required>
+          <input type="text" id="userName" name="username"  formControlName="userName" [(ngModel)]="userName" (input)="checkUsernameUniqueness()" required>
           <div *ngIf="addCustomer.get('userName')?.hasError('required') && addCustomer.get('userName')?.touched">
             userName is mandatory.
           </div>
@@ -48,7 +64,8 @@
           <!-- <div align="left" *ngIf="isUnique === true">Username is unique.</div> -->
         </div>
           <div class="form-group">
-              <input type="password" id="password" name="password" placeholder="Enter your password" formControlName="password">
+            <label>Password <span>*</span></label>
+              <input type="password" id="password" name="password"  formControlName="password">
               <div *ngIf="addCustomer.get('password')?.hasError('required') && addCustomer.get('password')?.touched">
                 Password is mandatory.
             </div>
@@ -61,7 +78,8 @@
               <input type="password" id="password" name="password" placeholder="Confirm Password" formControlName="password">
           </div> -->
           <div class="form-group">
-              <input type="number" id="mobileNumber" name="username" placeholder="Enter your MobileNumber" formControlName="mobileNumber">
+            <label >Mobile Number <span>*</span></label>
+              <input type="text" id="mobileNumber" name="username"  formControlName="mobileNumber">
               <div *ngIf="addCustomer.get('mobileNumber')?.hasError('required') && addCustomer.get('mobileNumber')?.touched">
                 mobileNumber is mandatory.
             </div>
@@ -69,21 +87,48 @@
               mobileNumber should be of 10 characters.
             </div>
             </div>
-          
-          
           <div class="form-group">
-              <input type="email" id="email" name="username" placeholder="Enter your Email" formControlName="email" required>
+            <label >Email <span>*</span></label>
+              <input type="email" id="email" name="username"  formControlName="email" required>
               <div *ngIf="addCustomer.get('email')?.hasError('required') && addCustomer.get('email')?.touched">
                 Email is mandatory.
             </div>
-            
+          </div>
+
+            <div class="form-group">
+              <label >Nominee Name <span>*</span></label>
+                <input type="text" id="nomineeName" name="nomineeName"  formControlName="nomineeName" required>
+                <div *ngIf="addCustomer.get('nomineeName')?.hasError('required') && addCustomer.get('nomineeName')?.touched">
+                  Nominee Name is mandatory.
+              </div>
             </div>
+
+              <div class="form-group">
+                <label>Nominee Relation <span>*</span></label>
+                <input type="text" id="nomineeRelation" name="nomineeRelation"  formControlName="nomineeRelation" required>
+                <div *ngIf="addCustomer.get('nomineeRelation')?.hasError('required') && addCustomer.get('nomineeRelation')?.touched">
+                  Nominee Relation is mandatory.
+              </div>
+              </div>
+
+              <div class="form-group">
+                <input type="hidden" formControlName="agentId"  value="{{agentId}}">
+            </div>
+            <label>Location <span>*</span></label>
+            <select  id="account-type" name="account-type" aria-placeholder="Insurance Type" formControlName="locationId">
+        
+              <!-- <option value="" disabled selected>Choose Location </option> -->
+              <!-- <option>null</option> -->
+              <option *ngFor="let location of locationData" value="{{location.id}}">{{location.city}},{{location.state}}
+               </option>
+              
+            </select><br>
+            
+          <button type="submit" >Submit</button>
           
-  
-  
-        <button type="submit" [disabled]="addCustomer">Submit</button>
-      </form>
+        </form>
     </div>
+    
 </body>
 </html>
 

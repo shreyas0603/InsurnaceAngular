@@ -60,7 +60,10 @@ th {
   <div *ngIf="userRole=='Agent'">
     <app-agent-navbar></app-agent-navbar>
   </div>
-  <h1 >View Agent Customer</h1>
+  <h1 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    View Agent Customer
+    <button *ngIf="temporaryData.getRole()=='Agent'" style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addCustomer">Add Customer</button>
+  </h1>
   <!-- <button class="btn btn-primary" routerLink="/addAgent"></button> -->
 
   <table class="table table-striped">

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
+import { TemporaryDataService } from '../service/temporary-data.service';
 
 @Component({
   selector: 'app-customer-payment',
@@ -8,10 +9,10 @@ import { InsuranceService } from '../service/insurance.service';
 })
 export class CustomerPaymentComponent {
 
-  constructor(protected auth:InsuranceService){}
+  constructor(protected auth:InsuranceService,protected temporaryData:TemporaryDataService){}
    options = {
     "key": "rzp_test_84pZkIaemIyf7F", // Enter the Key ID generated from the Dashboard
-    "amount": "1000"+"00",
+    "amount": this.temporaryData.installmentAmt+"10000",
     "currency": "INR",
     "description": "Acme Corp",
     "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
@@ -81,8 +82,10 @@ export class CustomerPaymentComponent {
 
   rzp1:any;
   pay(){
+    // debugger
     this.rzp1 = new this.auth.nativeWindow.Razorpay(this.options);
     this.rzp1.open();
+    
   }
 
 }

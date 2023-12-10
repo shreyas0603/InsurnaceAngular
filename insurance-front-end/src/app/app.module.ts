@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 // import { MatPaginatorModule } from '@angular/material/paginator';
 // import { MatTableModule } from '@angular/material/table';
@@ -145,7 +145,7 @@ import { CustomerPaymentComponent } from './customer-payment/customer-payment.co
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,FormsModule,
     BrowserAnimationsModule,
     NgxPaginationModule
   ],

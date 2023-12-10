@@ -49,6 +49,7 @@ import { OpenDocumentComponent } from './open-document/open-document.component';
 import { CustomerInsuranceSchemeComponent } from './customer-insurance-scheme/customer-insurance-scheme.component';
 import { CustomerAddInsuranceAccountComponent } from './customer-add-insurance-account/customer-add-insurance-account.component';
 import { CustomerPaymentComponent } from './customer-payment/customer-payment.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
 // import { AddAgentComponent } from './add-agent/add-agent.component';
 
 const routes: Routes = [
@@ -123,6 +124,10 @@ const routes: Routes = [
   {
     path:'customer',
     component:CustomerComponentComponent
+  },
+  {
+    path:'addCustomer',
+    component:AddCustomerComponent
   },
   {
     path:'customerChangePassword',

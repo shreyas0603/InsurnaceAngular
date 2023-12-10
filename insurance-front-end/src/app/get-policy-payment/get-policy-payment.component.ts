@@ -48,6 +48,9 @@ export class GetPolicyPaymentComponent {
       
       this.filterPayment()
     }
+    else{
+      this.paymentData=this.notFilteredPayment
+    }
   }
   filterPayment(){
     debugger

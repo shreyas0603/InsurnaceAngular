@@ -13,43 +13,58 @@ import { DataService } from '../service/data.service';
 })
 export class AddDocumentComponent {
 
-  addFile = new FormGroup({
-    id:new FormControl(0),
-    documentType: new FormControl(''),
-    file: new FormControl(''),
-    documentName: new FormControl(''),
-    customerId: new FormControl(''),
-
-  })
-   customerId:number=0;
-   storeFile:any
-  constructor(private insuranceservice: InsuranceService, private router: Router, private temporaryData: TemporaryDataService,private data:DataService) {
-    this.customerId=data.userId
-    console.log(this.customerId)
+  documents: Document[] = [];
+  documentDto: any = {
+    documentType: '',
+    documentName: '',
+    customerId: this.data.userId,
+    file: null
+  };
+ 
+  constructor(private insuranceservice: InsuranceService, private router: Router, private temporaryData: TemporaryDataService,private data:DataService)
+   {
+    alert(this.documentDto.customerId)
+   }
+ 
+  ngOnInit() {
+    // Load documents if needed
   }
-
+ 
   onFileSelected(event: any) {
-    debugger
+    // debugger
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.storeFile = file;
+      this.documentDto.file = file;
     }
   }
-  addFiles(data:any){
+ 
+  uploadFile() {
     debugger
-    console.log(data)
-    data.file=this.storeFile
-    
-    this.insuranceservice.addFiles(data).subscribe({
-      next:(result)=>{
-        alert("files Added Successfully")
-        console.log(result)
-        // this.router.navigateByUrl("/customer")
-      },
-      error:(errorResponse:HttpErrorResponse)=>{
-        console.log(errorResponse)
-      }
-    })
+    if (this.documentDto.file) {
+      const formData = new FormData();
+      formData.append('documentType', this.documentDto.documentType);
+      formData.append('documentName', this.documentDto.documentName);
+      formData.append('customerId', this.documentDto.customerId.toString());
+      formData.append('file', this.documentDto.file);
+      console.log(formData)
+      this.insuranceservice.addFiles(formData).subscribe({
+        next:(result)=>{
+          alert("Doc Added Successfully")
+          console.log(result)
+         
+        },
+        error:(errorResponse:HttpErrorResponse)=>{
+          console.log(errorResponse)
+        }
+      })
+ 
+ 
+       
+    } else {
+      console.warn('No file selected for upload');
+      // Provide user feedback about selecting a file
+    }
+ 
   }
 }
 

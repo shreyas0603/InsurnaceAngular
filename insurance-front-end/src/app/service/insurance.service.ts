@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 function _window() : any {
   // return the global native browser window object
+  
   return window;
 }
 
@@ -12,6 +13,7 @@ function _window() : any {
 export class InsuranceService {
   
   get nativeWindow() : any {
+    
     return _window();
  }
   url="https://localhost:7114/api"
@@ -64,6 +66,9 @@ export class InsuranceService {
     return this.http.post(this.url+"/Agent/ChangePassword",data)
   }
   //Customer
+  addCustomer(data:any){
+    return this.http.post(this.url+"/Customer",data)
+  }
   getCustomer():Observable<any>{
     return this.http.get(this.url+"/Customer")
   }
@@ -239,8 +244,8 @@ export class InsuranceService {
     return this.http.post(this.url+"/CommisionWithdrawal",data)
   }
   //Document
-  addFiles(data:any){
-    return this.http.post(this.url+"/Documents/Upload",data)
+  addFiles(data:FormData){
+    return this.http.post<any>(this.url+"/Documents/Upload",data)
   }
   getDocumentById(id: number): Observable<any> {
     return this.http.get(this.url+"/Documents/"+id);

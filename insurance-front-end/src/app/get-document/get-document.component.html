@@ -1,20 +1,4 @@
-<p>get-document works!</p>
-<!-- <p>view-document works!</p>
-<div *ngIf="document; else loading">
-    <h2>{{ document.documentName }}</h2>
-    <p>Document Type: {{ document.documentType }}</p>
-    <p>Customer ID: {{ document.customerId }}</p>
-  
-    <div *ngIf="documentUrl; else noDocument">
-      <iframe [src]="documentUrl" width="100%" height="500px"></iframe>
-    </div>
-    <ng-template #noDocument>
-      <div>No document available.</div>
-    </ng-template>
-  </div>
-  <ng-template #loading>
-    <div>Loading document...</div>
-  </ng-template> -->
+
   <!doctype html>
 <html>
 <head>
@@ -90,7 +74,13 @@ th {
       <div *ngIf="temporaryData.getRole()=='Agent'">
         <app-agent-navbar></app-agent-navbar>
       </div>
-  <h1>View Commision Withdrawal</h1>
+      <div *ngIf="temporaryData.getRole()=='Customer'">
+        <app-customer-navbar></app-customer-navbar>
+      </div>
+  <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    View Commision Withdrawal
+    <button *ngIf="temporaryData.getRole()=='Customer'" style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addDocument">Upload Document</button>
+  </h1>
  
   <table class="table table-striped">
   <thead>

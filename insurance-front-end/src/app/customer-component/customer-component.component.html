@@ -58,75 +58,43 @@
   <h1 >Welcome {{userName}}</h1>
     <!-- Dashboard Content -->
     <div class="dashboard-content">
-
+ 
+        <br>
+        <br>
+        <br>
         <!-- Clickable Cards -->
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Customer Profile</h5>
-                        <p class="card-text">No. of records :- int</p>
-                        <a routerLink="/getAgent" class="btn btn-primary">View Profile</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
                         <h5 class="card-title">Documents</h5>
-                        <p class="card-text">No. of records :- int</p>
+                        <p class="card-text">No. of records :- {{documentCount}}</p>
                         <a routerLink="/getDocument" class="btn btn-primary">View Documents</a>
                     </div>
                 </div>
             </div>
-
+ 
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Insurance Account </h5>
-                        <p class="card-text">No. of records :- int</p>
-                        <a routerLink="/agentCustomer" class="btn btn-primary">View Customer Insurance Account</a>
+                        <h5 class="card-title">Insurnace Account</h5>
+                        <p class="card-text">No. of records :- {{insuranceAccountCount}}</p>
+                        <a routerLink="/getCustomerInsuranceAccount" class="btn btn-primary">View Customer Insurance Account</a>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Query Or FeedBack </h5>
+                        <p class="card-text">No. of records :- {{queryCount}}</p>
+                        <a routerLink="/getFeedback" class="btn btn-primary">Query Or FeedBack</a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Query Or FeedBack</h5>
-                        <p class="card-text">No. of records :- int</p>
-                        <a routerLink="/getInsuranceType" class="btn btn-primary">Query Or FeedBack</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">View Feedback</h5>
-                        <p class="card-text">No. of records :- int</p>
-                        <a routerLink="/getInsuranceScheme" class="btn btn-primary">View Feedback</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Change Password</h5>
-                        <p class="card-text">No. of records :- int</p>
-                        <a routerLink="/getLocation" class="btn btn-primary">Change Password</a>
-                    </div>
-                </div>
-            </div>
         </div>
-        <!-- End Clickable Cards -->
-    </div>
   
   <!-- <div class="container">
     <div class="left">

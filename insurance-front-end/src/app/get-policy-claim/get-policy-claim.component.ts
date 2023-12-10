@@ -65,6 +65,9 @@ export class GetPolicyClaimComponent {
       
       this.filterPayment()
     }
+    else{
+      this.claimData=this.notFilteredClaim
+    }
   }
   filterPayment(){
     debugger

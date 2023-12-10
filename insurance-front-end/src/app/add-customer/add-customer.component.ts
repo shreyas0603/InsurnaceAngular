@@ -13,18 +13,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddCustomerComponent {
 
   customerDat:any
+  
   addCustomer = new FormGroup({
+    dateOfBirth : new FormControl('',Validators.required),
     firstName : new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
     lastName : new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
     userName : new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9]*'), Validators.minLength(3), Validators.maxLength(50)]),
     password : new FormControl('', [Validators.required,  Validators.minLength(6),
        Validators.maxLength(15), this.validateSpecialChar]),
-    mobileNumber: new FormControl('', [Validators.required,  Validators.minLength(10), Validators.maxLength(10),
+    mobileNumber : new FormControl('', [Validators.required,  Validators.minLength(10), Validators.maxLength(10),
        Validators.pattern('^[0-9]*$')]),
-    email:new FormControl('', [Validators.required, Validators.email])
-  
+    email :new FormControl('', [Validators.required, Validators.email]),
+    nomineeName : new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
+    nomineeRelation : new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
+    agentId:new FormControl(''),
+    locationId:new FormControl('')
 
   })
+  agentId:number=0
+  locationId:number=3
   validateSpecialChar(control:any) {
     const specialCharRegex = /[!@#$%^&*]/;
     if (control.value && !specialCharRegex.test(control.value)) {
@@ -34,8 +41,27 @@ export class AddCustomerComponent {
   }
   userName:string="";
   isUnique:any;
-  constructor(private customerInfo:InsuranceService,private router:Router,private temporaryData:TemporaryDataService){
+  locationData:Array<any>
+  
+  constructor(private customerInfo:InsuranceService,private router:Router,protected temporaryData:TemporaryDataService){
+    //debugger
+    // if(temporaryData.getLoginId()!=0){
+      this.agentId=temporaryData.getLoginId()
+    // }
+    // this.agentId=11
+    this.locationData=new Array<any>()
+    customerInfo.getLocation().subscribe({
+      next:(result)=>{
+        this.locationData=result
 
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse)
+      }
+      
+    })
+    console.log(this.locationData);
+    
   }
   // ngOnInit():void{
   //   // debugger
@@ -65,16 +91,22 @@ export class AddCustomerComponent {
   
   addNewCustomer(data:any){
     debugger
-    this.customerInfo.addAgent(data).subscribe({
+    if(this.temporaryData.getLoginId()==0){
+      // data.agentId=this.temporaryData.getLoginId()
+      data.agentId=null
+    }
+    else{
+      data.agentId=this.temporaryData.getLoginId()
+    }
+    this.customerInfo.addCustomer(data).subscribe({
       next:(result)=>{
         alert("Customer Added Successfully")
         console.log(result)
-        this.router.navigateByUrl("/admin")
+        // this.router.navigateByUrl("/admin")
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse)
       }
     })
   }
-
 }

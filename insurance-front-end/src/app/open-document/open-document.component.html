@@ -1,4 +1,13 @@
-<p>open-document works!</p>
+<!-- <p>open-document works!</p> -->
+<div *ngIf="temporaryData.getRole()=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="temporaryData.getRole()=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="temporaryData.getRole()=='Customer'">
+  <app-customer-navbar></app-customer-navbar>
+</div>
 <div *ngIf="documentData; else loading">
     <!-- <h2>{{ document.documentName }}</h2>
     <p>Document Type: {{ document.documentType }}</p>

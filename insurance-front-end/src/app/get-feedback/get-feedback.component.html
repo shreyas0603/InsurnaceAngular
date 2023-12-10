@@ -73,7 +73,10 @@ th {
   <div *ngIf="userRole=='Customer'">
     <app-customer-navbar></app-customer-navbar>
   </div>
-  <h1 >View FeedBack</h1>
+  <h1 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    View FeedBack
+    <button *ngIf="userRole=='Customer'" style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addQuery">Write a query</button>
+  </h1>
 
   <table class="table table-striped">
 	<thead>
