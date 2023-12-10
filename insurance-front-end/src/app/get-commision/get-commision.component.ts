@@ -102,8 +102,8 @@ export class GetCommisionComponent {
       alert('Please login')
       this.router.navigateByUrl('/login')
     }
-    else if(role!='Admin' && role!='Agent'){
-      alert('Please Login As Admin Or Agent')
+    else if(role!='Admin' && role!='Agent' && role!='Employee'){
+      alert('Please Login As Admin Or Agent Or Employee')
       this.router.navigateByUrl('/login')
     }
   }

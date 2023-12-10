@@ -73,7 +73,16 @@ th {
   <div *ngIf="userRole=='Agent'">
     <app-agent-navbar></app-agent-navbar>
   </div>
-  <h1 >View Policy Claims</h1>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+  <div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+  </div>
+  <h1 >
+    View Policy Claims
+    <!-- <button *ngIf="userRole=='Customer'" style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addPolicyClaim">Apply For Claim</button> -->
+  </h1>
 
   <table class="table table-striped">
 	<thead>
@@ -86,7 +95,8 @@ th {
             <th scope="col">WithdrawalDate</th>
             <th scope="col">Bank Name</th>
             <th scope="col">WithdrawalAmount</th>
-          
+            <th scope="col">IsApproved</th>
+            <th *ngIf="userRole=='Employee'" scope="col">Verify</th>
             <!-- <th scope="col">WithdrawalStatus</th> -->
             <!-- <th scope="col">Withdrawal status</th>     can be added--> 
          
@@ -97,7 +107,7 @@ th {
 		<tr *ngFor="let payment of claimData
     | paginate:{
 			id:'listing_pagination',
-      itemsPerPage:5,
+      itemsPerPage:pageSize,
       currentPage:page,
       totalItems:totalRecords
     };index as i">
@@ -106,6 +116,10 @@ th {
             <td>{{ payment.withdrawalDate}}</td>
             <td>{{ payment.bankName}}</td> 
             <td>{{payment.withdrawalAmount}}</td><!--paid amount +TaxAmount-->
+            <td>{{payment.isApproved}}</td>
+            <td *ngIf="userRole=='Employee'">
+              <button class="btn btn-primary" (click)="createData(payment.id)" >Verify</button>
+            </td>
             <!-- <td>{{ payment.paidDate}}</td>
             <td>{{ payment.transactionType}}</td> -->
           
@@ -124,7 +138,11 @@ th {
 	>
 	</pagination-controls>
 	</div>
-
+  <select class="form-select" style="width: auto" (change)="changePageSize($event)">
+		<option [value]="5">5 items per page</option>
+		<option [value]="10">10 items per page</option>
+		<option [value]="15">15 items per page</option>
+	</select>
 <!-- <div class="d-flex justify-content-between p-2">
 	<ngb-pagination
 		[collectionSize]="collectionSize"

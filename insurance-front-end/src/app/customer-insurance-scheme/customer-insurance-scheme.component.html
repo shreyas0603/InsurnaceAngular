@@ -90,7 +90,7 @@
         <div class="col"><input type="text" placeholder="{{(calculateData.investmentAmt)*1 + (calculateData.investmentAmt * 0.06)}}" disabled></div>
         
     </div><br>
-    <button routerLink="/customerAddInsuranceAccount">Submit</button>
+    <button *ngIf="temporaryData.getRole()=='Customer'" (click)="checkIfDocumentIsVerified()">Submit</button>
     </div>
   </div>
 

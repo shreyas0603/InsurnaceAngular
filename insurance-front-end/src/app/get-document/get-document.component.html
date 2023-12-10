@@ -77,6 +77,9 @@ th {
       <div *ngIf="temporaryData.getRole()=='Customer'">
         <app-customer-navbar></app-customer-navbar>
       </div>
+      <div *ngIf="temporaryData.getRole()=='Employee'">
+        <app-employee-navbar></app-employee-navbar>
+      </div>
   <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     View Commision Withdrawal
     <button *ngIf="temporaryData.getRole()=='Customer'" style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addDocument">Upload Document</button>
@@ -92,7 +95,9 @@ th {
       <!-- <th scope="col">AgentId</th> -->
       <th scope="col">Document Name</th>
       <th scope="col">Customer ID</th> 
+      <th scope="col">IsApproved</th>
       <th scope="col"> View Document</th>
+      <th *ngIf="temporaryData.getRole()=='Employee'" scope="col">Verify</th>
        <!--account no-->
             <!-- <th scope="col">TotalAmount</th> -->
          
@@ -107,8 +112,12 @@ th {
             <!-- <td>{{getAgentName(withdrawal.agentId)}}</td> -->
             <td>{{document.documentName}}</td>
             <td>{{ document.customerId}}</td>
+            <td>{{document.isApproved}}</td>
             <td>
-                <button (click)="openDocument(document.id)" >View</button>
+                <button class="btn btn-primary" (click)="openDocument(document.id)" >View</button>
+            </td>
+            <td *ngIf="temporaryData.getRole()=='Employee'">
+              <button class="btn btn-primary" (click)="createData(document.id)" >Verify</button>
             </td>
     </tr>
        

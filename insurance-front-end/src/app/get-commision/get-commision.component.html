@@ -60,6 +60,9 @@ th {
   <div *ngIf="userRole=='Agent'">
     <app-agent-navbar></app-agent-navbar>
   </div>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
   <h1 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     View Agent Commision 
     <button *ngIf="userRole=='Agent'" style="float: right;  margin: 10px; " class="btn btn-primary" routerLink="/addCommmisionWithdrawal">Withdraw Commision</button>

@@ -50,6 +50,11 @@ import { CustomerInsuranceSchemeComponent } from './customer-insurance-scheme/cu
 import { CustomerAddInsuranceAccountComponent } from './customer-add-insurance-account/customer-add-insurance-account.component';
 import { CustomerPaymentComponent } from './customer-payment/customer-payment.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { EmployeeComponentComponent } from './employee-component/employee-component.component';
+import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
+import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { AddPolicyClaimComponent } from './add-policy-claim/add-policy-claim.component';
+import { ServicesComponent } from './services/services.component';
 // import { AddAgentComponent } from './add-agent/add-agent.component';
 
 const routes: Routes = [
@@ -223,6 +228,14 @@ const routes: Routes = [
     component:GetPolicyClaimComponent
   },
   {
+    path:'services',
+    component:ServicesComponent
+  },
+  {
+    path:'addPolicyClaim',
+    component:AddPolicyClaimComponent
+  },
+  {
     path:"getCommission",
     component:GetCommisionComponent
   },
@@ -253,6 +266,18 @@ const routes: Routes = [
   {
     path:'addQuery',
     component:AddQueryComponent
+  },
+  {
+    path:'employee',
+    component:EmployeeComponentComponent
+  },
+  {
+    path:'employeeProfile',
+    component:EmployeeProfileComponent
+  },
+  {
+    path:'employeeChangePassword',
+    component:EmployeeChangePasswordComponent
   }
   
   

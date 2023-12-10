@@ -16,6 +16,8 @@ export class CustomerComponentComponent {
   documentCount:number=0;
   insuranceAccountCount:number=0;
   queryCount:number=0;
+  policyClaimCount:number=0
+  policyPaymentCount:number=0
   constructor(private insuranceService:InsuranceService,private router:Router,protected temporaryData:TemporaryDataService,private data:DataService){
     this.userName= data.userName
     insuranceService.getQuery().subscribe((data)=>{
@@ -28,6 +30,14 @@ export class CustomerComponentComponent {
  
     insuranceService.getAllDocuments().subscribe((data)=>{
       this.documentCount=data.length
+    })
+    insuranceService.getPolicyClaim().subscribe((data)=>{
+      this.policyClaimCount=data.length
+      console.log(this.policyClaimCount)
+    })
+    insuranceService.getPolicyPayements().subscribe((data)=>{
+      this.policyPaymentCount=data.length
+      console.log(this.policyClaimCount)
     })
   }
     ngOnInit():void{

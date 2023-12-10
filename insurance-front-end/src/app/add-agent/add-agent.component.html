@@ -9,7 +9,12 @@
 </head>
 <body>
     <header>
+      <div *ngIf="temporaryData.getRole()=='Admin'">
         <app-admin-navbar></app-admin-navbar>
+      </div>
+      <div *ngIf="temporaryData.getRole()=='Employee'">
+        <app-employee-navbar></app-employee-navbar>
+      </div>
     </header>
     <div class="login-container">
       <h1>Agent Registration</h1>

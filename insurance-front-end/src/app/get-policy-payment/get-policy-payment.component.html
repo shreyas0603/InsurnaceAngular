@@ -73,6 +73,12 @@ th {
   <div *ngIf="userRole=='Agent'">
     <app-agent-navbar></app-agent-navbar>
   </div>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+  <div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+  </div>
   <h1 >View Policy Payments</h1>
 
   <table class="table table-striped">
@@ -98,7 +104,7 @@ th {
 		<tr *ngFor="let payment of paymentData
     | paginate:{
 			id:'listing_pagination',
-      itemsPerPage:5,
+      itemsPerPage:pageSize,
       currentPage:page,
       totalItems:totalRecords
     };index as i">
@@ -130,7 +136,11 @@ th {
 	>
 	</pagination-controls>
 	</div>
-
+  <select class="form-select" style="width: auto" (change)="changePageSize($event)">
+		<option [value]="5">5 items per page</option>
+		<option [value]="10">10 items per page</option>
+		<option [value]="15">15 items per page</option>
+	</select>
 <!-- <div class="d-flex justify-content-between p-2">
 	<ngb-pagination
 		[collectionSize]="collectionSize"

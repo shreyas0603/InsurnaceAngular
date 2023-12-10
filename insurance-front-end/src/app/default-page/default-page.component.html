@@ -58,7 +58,7 @@
   
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="#">
+      <a class="navbar-brand" routerLink="/">
         <!-- <img src="path/to/your/logo.png" alt="Logo" height="24"> -->
         <h5>AtmanirbharInsurance</h5>
       </a>
@@ -68,29 +68,24 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" routerLink="#">Home</a>
+            <a class="nav-link" routerLink="/">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/aboutUs">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="#">Services</a>
+            <a class="nav-link" routerLink="/services">Services</a>
           </li>
-          <li  ngbDropdown class="dropdown nav-item ">
-            <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
-              Insurance Plan
+          <li ngbDropdown class="dropdown nav-item ">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+              Insurance Plans
             </a>
-            <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <!-- The DropDown Options will be fetched from the database this options are dummy -->
-              <!-- <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance Plan 1</a></li>
-              <li><a ngbDropdownItem class="dropdown-item" href="#">Insurance plan 2</a></li> -->
-              <option class="dropdown-item" *ngFor="let insuranceScheme of insuranceSchemeData" value="{{insuranceScheme.id}}">{{insuranceScheme.insuranceSchemeName}}
-              </option>
+            <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown" >
+              <li *ngFor="let items of insuranceTypeData"><a ngbDropdownItem class="dropdown-item" (click)="setInsuranceTypeId(items.id)">{{items.insuranceTypeName}}</a></li>
+              
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="#">Contact</a>
-          </li>
+          
         </ul>
         <ul class="navbar-nav navbar-right">
           <li class="nav-item">

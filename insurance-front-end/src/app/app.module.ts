@@ -76,6 +76,8 @@ import { EmployeeNavbarComponent } from './employee-navbar/employee-navbar.compo
 import { EmployeeComponentComponent } from './employee-component/employee-component.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { AddPolicyClaimComponent } from './add-policy-claim/add-policy-claim.component';
+import { ServicesComponent } from './services/services.component';
 // import { AddLocationsComponent } from './add-locations/add-locations.component';
 
 @NgModule({
@@ -146,6 +148,8 @@ import { EmployeeChangePasswordComponent } from './employee-change-password/empl
     EmployeeComponentComponent,
     EmployeeProfileComponent,
     EmployeeChangePasswordComponent,
+    AddPolicyClaimComponent,
+    ServicesComponent,
     // AddLocationsComponent
   ],
   imports: [

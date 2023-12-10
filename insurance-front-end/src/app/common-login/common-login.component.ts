@@ -216,6 +216,7 @@ export class CommonLoginComponent {
           //Store it in ls
           localStorage.setItem("token",this.myToken)
           localStorage.setItem("role",this.roleResponse)
+          this.temporaryData.setRole('Employee')
           // this.router.navigateByUrl("/weather");
   
           //access object from resopnse body

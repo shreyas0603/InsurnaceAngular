@@ -39,7 +39,7 @@ export class GetCustomerInsuranceAccountComponent {
       this.insuranceSchemeData=data
     })
     // accountinfo.getInsuranceScheme().subscribe
-    if(this.userRole=='Admin' || this.userRole=='Agent'){
+    if(this.userRole=='Admin' || this.userRole=='Agent' || this.userRole=='Employee'){
       
       accountinfo.getCustomerInsuranceAccount().subscribe((data)=>{
         this. notFilteredAccounts=data
@@ -117,10 +117,7 @@ export class GetCustomerInsuranceAccountComponent {
       alert('Please login')
       this.router.navigateByUrl('/login')
     }
-    else if(role!='Admin' && role!='Agent' && role!='Customer'){
-      alert('Please Login As Admin Or Agent')
-      this.router.navigateByUrl('/login')
-    }
+    
   }
   filterCustomer(){
     // var agent=this.agentData.find((a: any) => a.userId === this.dataService.userId)

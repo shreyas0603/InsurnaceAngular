@@ -28,19 +28,25 @@ export class GetPolicyPaymentComponent {
       this.totalRecords=data.length
       console.log(this. notFilteredPayment);
       // this.collectionSize=this.customerData.length;
+      paymentinfo.getCustomer().subscribe({
+        next:(response)=>{
+          this.customerData=response
+          this.filterCustomer()
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
+      })
     })
-    paymentinfo.getCustomer().subscribe({
-      next:(response)=>{
-        this.customerData=response
-        this.filterCustomer()
-      },
-      error(errorResponse:HttpErrorResponse){
-        console.log(errorResponse)
-      }
-    })
+  }
+  pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
   }
   filterCustomer(){
     // var agent=this.agentData.find((a: any) => a.userId === this.dataService.userId)
+    debugger
     if((this.userRole=="Agent")){
       this.customerData=this.customerData.filter(x=>x.agentId === this.data.userId)
       console.log('filtered Customer' )
@@ -88,10 +94,7 @@ export class GetPolicyPaymentComponent {
       alert('Please login')
       this.router.navigateByUrl('/login')
     }
-    else if(role!='Admin' && role!='Agent'){
-      alert('Please Login As Admin Or Agent')
-      this.router.navigateByUrl('/login')
-    }
+   
   }
   setId(id:number){
     console.log(id)

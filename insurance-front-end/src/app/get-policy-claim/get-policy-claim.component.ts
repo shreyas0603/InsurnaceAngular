@@ -19,32 +19,74 @@ export class GetPolicyClaimComponent {
   page: number = 1;
   totalRecords:number=0
   userRole:string=''
-  constructor(claiminfo:InsuranceService,private temporaryData:TemporaryDataService,private router:Router,private data:DataService){
+  create:Array<any>
+  constructor(private claiminfo:InsuranceService,private temporaryData:TemporaryDataService,private router:Router,private data:DataService){
     this.claimData=new Array<any>()
     this.customerData=new Array<any>()
     this.notFilteredClaim=new Array<any>()
+    this.create=new Array<any>()
     this.userRole=temporaryData.getRole()
-    claiminfo.getPolicyClaim().subscribe((data)=>{
-      this. notFilteredClaim=data
-      console.log(this. claimData);
-      this.totalRecords=data.length
-      console.log(this.totalRecords)
-      // this.collectionSize=this.customerData.length;
-    })
-    claiminfo.getCustomer().subscribe({
-      next:(response)=>{
-        this.customerData=response
-        this.filterCustomer()
-      },
-      error(errorResponse:HttpErrorResponse){
-        console.log(errorResponse)
-      }
-    })
+    this.getPolicyClaimData()
     // claiminfo.getPolicyClaim().subscribe((data)=>{
     //   this. claimData=data
     //   console.log(this. claimData);
     //   // this.collectionSize=this.customerData.length;
     // })
+  }
+  getPolicyClaimData(){
+    this.claiminfo.getPolicyClaim().subscribe((data)=>{
+      this. notFilteredClaim=data
+      console.log(this. claimData);
+      this.totalRecords=data.length
+      console.log(this.totalRecords)
+      // this.collectionSize=this.customerData.length;
+      this.claiminfo.getCustomer().subscribe({
+        next:(response)=>{
+          this.customerData=response
+          this.filterCustomer()
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
+      })
+    })
+  }
+  createData(Id:number){
+    debugger
+    this.claiminfo.getPolicyClaimById(Id).subscribe((response)=>{
+      //var c = response
+      response.isApproved = true;
+      this.create=response;
+      //this.create.isApproved=true;
+      this.updatePolicyClaim(this.create);
+ 
+ 
+    })
+  }
+  updatePolicyClaim(data:any){
+   
+    // this.insuranceTypeForm.id=this.insuranceTypeId
+   
+    console.log(data)
+    this.claiminfo.updatePolicyClaim(data).subscribe({
+      next:(resopnse:any)=>{
+        console.log(resopnse)
+        this.getPolicyClaimData()
+        // location.reload();
+        // alert("Policy Claim Added");
+        // this.router.navigateByUrl("/admin")
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse)
+      }
+     
+    })
+    console.log(data)
+  }
+  pageSize:number=5;
+  changePageSize(event:any){
+    this.pageSize=event.target.value
+    console.log(this.pageSize)
   }
   getCustomerName(customerId: number): string {
  
@@ -94,9 +136,6 @@ export class GetPolicyClaimComponent {
       alert('Please login')
       this.router.navigateByUrl('/login')
     }
-    else if(role!='Admin' && role!='Agent'){
-      alert('Please Login As Admin Or Agent')
-      this.router.navigateByUrl('/login')
-    }
+    
   }
 }

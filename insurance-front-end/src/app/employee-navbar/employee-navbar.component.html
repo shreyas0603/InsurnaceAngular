@@ -1,1 +1,73 @@
-<p>employee-navbar works!</p>
+<body (click)="setRole()" style="max-height: 50px;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" routerLink="/">
+                <!-- <img src="path/to/your/logo.png" alt="Logo" height="24"> -->
+                <h5>AtmanirbharInsurance</h5>
+              </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/employee">Dashboard</a>
+              </li>
+              <li  ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Commision
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCommission">View Commision</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCommisionWithdrawal">View Commision Withdrawl</a></li>
+    
+                </ul>
+              </li>
+              <!-- <li  ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Document Verification
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getDocumentVerification">Verify Document</a></li>
+                   <li><a ngbDropdownItem class="dropdown-item" routerLink="/getAgent">View Agent</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCommission">View Commision</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCommisionWithdrawal">View Commision Withdrawl</a></li> -->
+    
+                <!-- </ul>
+              </li>  -->
+              
+              
+              <li ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Insurance
+                </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/agentCustomer">View Customers</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getCustomerInsuranceAccount">Insurance Account</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/getPolicyPayment">View Policy Payment</a></li>
+                </ul>
+              </li>
+              
+              <li ngbDropdown class="dropdown nav-item ">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+                  Account
+                  </a>
+                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/employeeProfile">Profile</a></li>
+                  <li><a ngbDropdownItem class="dropdown-item" routerLink="/employeeChangePassword">Change Password</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-right">
+              <li class="nav-item">
+                <a class="nav-link" (click)="deleteToken()" routerLink="/">Logout</a>
+              </li>
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </body>
+    

@@ -19,7 +19,7 @@
         h1 {
             font-size: 2.5em; /* Set your desired font size */
             font-weight: 700; /* Set your desired font weight */
-            color: aliceblue; /* Set your desired text color */
+            color: #495057; /* Set your desired text color */
             margin-top: 20px;
             text-align: center;
         }
@@ -76,7 +76,10 @@ th {
   <div *ngIf="userRole=='Customer'">
     <app-customer-navbar></app-customer-navbar>
   </div>
-  <h1 style="color: grey;">View Customer Insurance Account</h1>
+  <div *ngIf="temporaryData.getRole()=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+  <h1 >View Customer Insurance Account</h1>
 
   <table class="table table-striped">
 	<thead>

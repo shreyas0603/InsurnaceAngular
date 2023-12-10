@@ -23,8 +23,22 @@ export class GetCommisionWithdrawalComponent {
     this.userRole=temporaryData.getRole()
     this.customerData=new Array<any>()
     this.updateData=new Array<any>()
-    
+    debugger
     this.getWithdrawalData()
+  }
+  ngOnInit():void{
+    // debugger
+    var token=localStorage.getItem('token')
+    
+    var role = localStorage.getItem('role')
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Admin' && role!='Agent' && role!='Employee'){
+      alert('Please Login As Admin Or Agent Or Employee')
+      this.router.navigateByUrl('/login')
+    }
   }
   getWithdrawalData(){
     this.locationinfo.getCommisonWithdrawal().subscribe((data)=>{
@@ -34,8 +48,7 @@ export class GetCommisionWithdrawalComponent {
       if((this.userRole=="Agent")){
         this.withdrawalData=this.withdrawalData.filter((x:any)=>x.agentId === this.data.userId)
         console.log('filtered comm' )
-        console.log(this.withdrawalData)
-        
+        console.log(this.withdrawalData) 
       }
     })
   }

@@ -35,7 +35,7 @@ export class AddAgentComponent {
   }
   userName:string="";
   isUnique:any;
-  constructor(private agentInfo:InsuranceService,private router:Router,private temporaryData:TemporaryDataService){
+  constructor(private agentInfo:InsuranceService,private router:Router,protected temporaryData:TemporaryDataService){
 
   }
   ngOnInit():void{
@@ -47,7 +47,7 @@ export class AddAgentComponent {
       alert('Please login')
       this.router.navigateByUrl('/login')
     }
-    else if(role!='Admin'){
+    else if(role!='Admin' && role!='Employee'){
       alert('Please Login As Admin')
       this.router.navigateByUrl('/login')
     }

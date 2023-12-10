@@ -106,6 +106,9 @@ export class InsuranceService {
   deleteEmployee(id:number){
     return this.http.delete(this.url+"/Employee/"+id)
   }
+  changePasswordEmployee(data:any){
+    return this.http.post(this.url+"/Employee/ChangePassword",data)
+  }
   //Location
   getLocation ():Observable<any>{
     return this.http.get(this.url+"/Location")
@@ -206,6 +209,9 @@ export class InsuranceService {
   getPolicyClaim():Observable<any>{
     return this.http.get(this.url+"/PolicyClaim")
   }
+  getPolicyClaimById(id:number):Observable<any>{
+    return this.http.get(this.url+"/PolicyClaim/"+id)
+  }
   updatePolicyClaim(data:any){
     return this.http.put(this.url+"/PolicyClaim",data)
   }
@@ -261,7 +267,9 @@ export class InsuranceService {
   getDocumentById(id: number): Observable<any> {
     return this.http.get(this.url+"/Documents/"+id);
   }
-
+  updateDocument(data:any){
+    return this.http.put(this.url+"/Documents/Update",data)
+  }
   getAllDocuments(): Observable<any> {
     // const url = ${this.apiUrl}/document;
     return this.http.get(this.url+"/Documents/getAll");

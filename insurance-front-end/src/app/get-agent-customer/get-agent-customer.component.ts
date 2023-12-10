@@ -125,8 +125,8 @@ export class GetAgentCustomerComponent {
       alert('Please login')
       this.router.navigateByUrl('/login')
     }
-    else if(role!='Admin' && role!='Agent'){
-      alert('Please Login As Admin or Agent')
+    else if(role!='Admin' && role!='Agent' && role!='Employee' ){
+      alert('Please Login As Admin or Agent or Employee')
       this.router.navigateByUrl('/login')
     }
   }

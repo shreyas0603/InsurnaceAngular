@@ -59,6 +59,29 @@ export class CustomerInsuranceSchemeComponent {
     }
   })
   }
+  checkIfDocumentIsVerified(){
+    var documentData=new Array<any>()
+    var isVerified=true
+    this.insuranceService.getAllDocuments().subscribe((data)=>{
+      documentData=data
+      documentData.filter(x=>x.customerId==this.temporaryData.getLoginId())
+      for(var d of documentData){
+        if(d.isApproved==false){
+          isVerified=false
+          alert('Documents Are Not Verified')
+          
+        }
+      }
+      if(isVerified==true){
+
+        this.router.navigateByUrl('/customerAddInsuranceAccount')
+      }
+      else{
+
+        this.router.navigateByUrl('/customer')
+      }
+    })
+  }
   calculateInterest(data:any){
 
     this.calculateData=data
