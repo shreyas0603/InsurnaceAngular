@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./update-insurance-plan.component.css']
 })
 export class UpdateInsurancePlanComponent {
-
+  
   insurnacePlanForm=new FormGroup({
     id:new FormControl(''),
     minPolicyTerm:new FormControl(''),

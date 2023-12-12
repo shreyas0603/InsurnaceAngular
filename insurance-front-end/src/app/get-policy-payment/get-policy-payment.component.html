@@ -95,7 +95,8 @@ th {
           
             <th scope="col">PaidDate</th>
             <th scope="col">TransactionType</th>
-            <!-- <th scope="col">Action</th> -->
+            <th scope="col">IsPaid</th>
+            <th scope="col" *ngIf="userRole=='Customer'">Action</th>
             <!-- <th scope="col">Status</th> -->   <!--can be added-->
            
 		</tr>
@@ -115,6 +116,10 @@ th {
             <td>{{payment.totalAmount}}</td><!--paid amount +TaxAmount-->
             <td>{{ payment.paidDate}}</td>
             <td>{{ payment.transactionType}}</td>
+            <td>{{payment.isPaid}}</td>
+            <td *ngIf="userRole=='Customer'">
+              <button class="btn btn-primary" (click)="payAmount(payment.id)">Pay</button>
+            </td>
             <!-- <td>{{payment.id}}</td> -->
             <!-- <td>
               <button (click)="setId(payment.id)">Edit</button>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { InsuranceService } from '../service/insurance.service';
 import { TemporaryDataService } from '../service/temporary-data.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-customer-payment',
@@ -24,6 +25,8 @@ export class CustomerPaymentComponent {
   totalAmt:number=0
   transactionType:string='RazorPay'
   customerId:number=0
+  installments:number=0
+  customerInsId:any=0
   constructor(protected auth:InsuranceService,protected temporaryData:TemporaryDataService){
     this.taxAmt=temporaryData.installmentAmt*0.06
     this.totalAmt=temporaryData.installmentAmt*1+this.taxAmt*1
@@ -106,18 +109,58 @@ export class CustomerPaymentComponent {
   rzp1:any;
   pay(data:any){
     debugger
-    this.auth.addPolicyPayments(data).subscribe((response)=>{
+    this.auth.addCustomerInsuranceAccount(this.temporaryData.insuraanceAccountData).subscribe((response)=>{
       console.log(response)
-      this.auth.addCustomerInsuranceAccount(this.temporaryData.insuraanceAccountData).subscribe((response)=>{
+      
+      const id=response
+      this.customerInsId=id
+      this.installments = this.temporaryData.policyTerm *(12/this.temporaryData.months)
+      data.customerInsuranceAccountId=this.customerInsId
+      data.isPaid=true
+      this.auth.addPolicyPayments(data).subscribe({
+        next:(response)=>{
         console.log(response)
+        this.addInstallments(data)
+        console.log(Math.round(this.installments)*1);
+        console.log(this.installments);
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
       })
     })
+    
     console.log(Math.round(this.totalAmt)*1);
     console.log(this.totalAmt);
     
     this.rzp1 = new this.auth.nativeWindow.Razorpay(this.options);
     this.rzp1.open();
     
+  }
+  addInstallments(data:any): void{
+    data.isPaid=false
+    // data.date=null
+    // const installments = this.temporaryData.policyTerm *(12/this.temporaryData.months)
+    for(let i=0;i<this.installments-1;i++)
+    {
+      var date = new Date(data.paidDate+'T02:00:00Z')
+      var year = date.getFullYear();
+      var month = date.getMonth()+1;
+      var dt = date.getDate();
+
+      // if (dt < 10) {
+      //   dt = '0' + dt;
+      // }
+      // if (month < 10) {
+      //   month = '0' + month;
+      // }
+      data.paidDate=new Date(year , month + this.temporaryData.months*1 , dt).toISOString().split('T')[0];
+      
+      // data.paidDate=data.paidDate
+      this.auth.addPolicyPayments(data).subscribe((response)=>{
+        console.log(response)
+      })
+    }
   }
 
 }

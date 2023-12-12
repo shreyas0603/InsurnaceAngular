@@ -44,7 +44,7 @@ export class CustomerInsurancePlanComponent {
   insurancePlanData:Array<any>
   insuranceTypeId:number=0
   insuranceName:string=''
-  constructor(private insuranceService:InsuranceService,private temporaryData:TemporaryDataService,private router:Router){
+  constructor(private insuranceService:InsuranceService,protected temporaryData:TemporaryDataService,private router:Router){
     this.insuranceTypeData=new Array<any>()
     this.insuranceSchemeData=new Array<any>()
     this.insurancePlanData=new Array<any>()

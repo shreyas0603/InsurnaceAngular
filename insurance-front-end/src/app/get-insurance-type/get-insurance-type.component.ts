@@ -65,11 +65,12 @@ export class GetInsuranceTypeComponent {
     this.router.navigateByUrl("/updateInsuranceType")
   }
   deleteInsuranceType(id:number){
+    debugger
     console.log(id)
     this.insuranceService.deleteInsuranceType(id).subscribe({
       next:(response)=>{
         alert('data deleted')
-        location.reload()
+        this.getInsuranceData()
       }
     })
   }

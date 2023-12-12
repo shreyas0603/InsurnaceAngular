@@ -44,49 +44,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-          <a class="navbar-brand" routerLink="/">
-            <!-- <img src="path/to/your/logo.png" alt="Logo" height="24"> -->
-            <h5>AtmanirbharInsurance</h5>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/aboutUs">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/services">Services</a>
-              </li>
-              <li ngbDropdown class="dropdown nav-item ">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
-                  Insurance Plans
-                </a>
-                <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                  <li *ngFor="let items of insuranceTypeData"><a ngbDropdownItem class="dropdown-item" (click)="setInsuranceTypeId(items.id)">{{items.insuranceTypeName}}</a></li>
-                  
-                </ul>
-              </li>
-              
-            </ul>
-            <ul class="navbar-nav navbar-right">
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/login">Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/addCustomer">Sign Up</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+  <app-default-page-navbar></app-default-page-navbar>
     <section>
         <h2>About Us</h2>
 

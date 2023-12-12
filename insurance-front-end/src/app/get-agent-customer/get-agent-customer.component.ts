@@ -33,8 +33,12 @@ export class GetAgentCustomerComponent {
     this.agentData=new Array<any>()
     this.userRole=temporaryData.getRole()
     console.log(this.userRole)
+    this.getCustomerData()
     // this.insurnaceService=customerinfo
-    customerinfo.getCustomer().subscribe((data)=>{
+    // this.refreshCountries();
+  }
+  getCustomerData(){
+    this.customerinfo.getCustomer().subscribe((data)=>{
       this.customerData=data
       this.totalRecords=data.length
       console.log(this.totalRecords)
@@ -42,18 +46,8 @@ export class GetAgentCustomerComponent {
       console.log(this.customerData);
       this.filterCustomer()
     console.log('jdsc' +this.customerData)
-      // this.collectionSize=this.customerData.length;
-      // customerinfo.getLocation().subscribe({
-      //   next:(response)=>{
-      //     console.log(response)
-      //     this.locationData=response
-      //   },
-      //   error(errorResponse:HttpErrorResponse){
-      //     console.log(errorResponse)
-      //   }
-      // })
       debugger
-      customerinfo.getAgent().subscribe({
+      this.customerinfo.getAgent().subscribe({
         next:(response)=>{
           this.agentData=response
         },
@@ -67,12 +61,12 @@ export class GetAgentCustomerComponent {
     //   this.agentData=data
     // })
  
-    customerinfo.getLocation().subscribe((data)=>{
+    this.customerinfo.getLocation().subscribe((data)=>{
       this.locationData=data
     })
     
     // customerinfo
-    // this.refreshCountries();
+    
   }
   pageSize:number=5;
   changePageSize(event:any){
@@ -137,11 +131,27 @@ export class GetAgentCustomerComponent {
   }
   deleteData(id:number){
     console.log(id)
-    this.customerinfo.deleteCustomerInsuranceAccount(id).subscribe({
+    this.customerinfo.deleteCustomer(id).subscribe({
       next:(response)=>{
         alert('data deleted')
-        location.reload()
+        this.getCustomerData()
+        // location.reload()
+
       }
     })
   }
+  // searchTerm:string=''
+  // onSearchChange(): void {
+  //   this.page = 1;
+  //   const searchTermLC = this.searchTerm.toLowerCase();
+  //   this.customerData = this.customerData.filter((customer) =>
+  //     customer.id.toString().includes(this.searchTerm) || // Search by CustomerId
+  //     customer.firstName.toLowerCase().includes(searchTermLC) 
+  //     // || // Search by FirstName
+  //     // customer.state.toLowerCase().includes(searchTermLC) ||
+  //     // customer.city.toLowerCase().includes(searchTermLC) ||
+  //     // customer.nominee.toLowerCase().includes(searchTermLC) 
+      
+  //   );
+  // }
 }

@@ -16,10 +16,11 @@
       <!-- <p>Kindly enter the credentials</p> -->
       <div class="form-group">
         <label for="username">Insurance Type Name <span>*</span></label>
-        <input type="text" id="insuranceTypeName" name="insuranceTypeName" placeholder="" formControlName="insuranceTypeName" required>
+        <input type="text" id="insuranceTypeName" name="insuranceTypeName" placeholder="" formControlName="insuranceTypeName" [(ngModel)]="typeName" (input)="checkTypeNameUniqueness()" required>
         <div *ngIf="insuranceTypeForm.get('insuranceTypeName')?.hasError('required') && insuranceTypeForm.get('insuranceTypeName')?.touched">
           insuranceTypeName is mandatory.
       </div>
+      <div align="left" *ngIf="isUnique === false">Name is not unique.</div>
       </div>
       
       <button type="submit" >Submit</button>

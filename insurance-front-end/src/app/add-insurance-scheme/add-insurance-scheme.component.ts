@@ -13,10 +13,11 @@ export class AddInsuranceSchemeComponent {
 
   insuranceSchemeData:any
   insuranceTypeData:any
+  
   insuranceSchemeForm=new FormGroup({
     insuranceTypeId:new FormControl('',[Validators.required]),
     insuranceSchemeName:new FormControl('', [Validators.required, Validators.maxLength(50)]),
-    newRegistrationCommision:new FormControl('', [Validators.required, Validators.min(1)]),
+    newRegistrastionCommision:new FormControl('', [Validators.required, Validators.min(1)]),
     installmentPaymentCommision:new FormControl('', [Validators.required, Validators.min(1)]),
     details:new FormControl('', [Validators.required])
   })
@@ -45,6 +46,7 @@ export class AddInsuranceSchemeComponent {
     }
   }
   addInsuranceScheme(data:any){
+    debugger
     console.log(this.insuranceSchemeForm)
     this.insuranceService.addInsuranceScheme(data).subscribe({
       next:(resopnse)=>{
@@ -54,5 +56,21 @@ export class AddInsuranceSchemeComponent {
         console.log(errorResponse)
       }
     })
+  }
+  schemeName:string=''
+  isUnique:any
+  checkTypeNameUniqueness() {
+    
+    if (this.schemeName) {
+      this.insuranceService.isSchemeNameUnique(this.schemeName).subscribe({
+        next: (result) => {
+          console.log(result)
+          this.isUnique=result;
+        },
+        error: (Httperror: HttpErrorResponse) => {
+          console.log(Httperror);
+        }
+      });
+    }
   }
 }

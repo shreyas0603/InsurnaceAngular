@@ -125,7 +125,12 @@
 </head>
 
 <body>
-    <app-customer-navbar></app-customer-navbar>
+    <div *ngIf="temporaryData.getRole()=='Customer'">
+        <app-customer-navbar></app-customer-navbar>
+    </div>
+    <div *ngIf="temporaryData.getRole()!='Customer'">
+        <app-default-page-navbar></app-default-page-navbar>
+    </div>
     <h1 align="center">{{insuranceName}}</h1>
 
     <div class="insurance-type">

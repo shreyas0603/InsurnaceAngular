@@ -18,17 +18,21 @@ export class GetPolicyPaymentComponent {
   totalRecords:number=0
   userRole:string=''
   customerData:Array<any>
+  amount:number=1
   constructor(private paymentinfo:InsuranceService,private temporaryData:TemporaryDataService,private router:Router, private data:DataService){
     this.paymentData=new Array<any>()
     this.notFilteredPayment=new Array<any>()
     this.customerData=new Array<any>()
     this.userRole=temporaryData.getRole()
-    paymentinfo.getPolicyPayements().subscribe((data)=>{
+    this.getPolicyPaymentData()
+  }
+  getPolicyPaymentData(){
+    this.paymentinfo.getPolicyPayements().subscribe((data)=>{
       this. notFilteredPayment=data
       this.totalRecords=data.length
       console.log(this. notFilteredPayment);
       // this.collectionSize=this.customerData.length;
-      paymentinfo.getCustomer().subscribe({
+      this.paymentinfo.getCustomer().subscribe({
         next:(response)=>{
           this.customerData=response
           this.filterCustomer()
@@ -109,5 +113,107 @@ export class GetPolicyPaymentComponent {
         location.reload()
       }
     })
+  }
+  getAmount(){
+    this.paymentinfo.getPolicyPayementsById(44).subscribe((response)=>{
+      //var c = response
+      this.amount=response.totalAmount
+      return this.amount
+    })
+  }
+  options = {
+    "key": "rzp_test_84pZkIaemIyf7F", // Enter the Key ID generated from the Dashboard
+    "amount": 7066,
+    "currency": "INR",
+    "description": "Acme Corp",
+    "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",
+    "prefill":
+    {
+      "email": "gaurav.kumar@example.com",
+      "contact": +919900000000,
+    },
+    config: {
+      display: {
+        blocks: {
+          utib: { //name for Axis block
+            name: "Pay using Axis Bank",
+            instruments: [
+              {
+                method: "card",
+                issuers: ["UTIB"]
+              },
+              {
+                method: "netbanking",
+                banks: ["UTIB"]
+              },
+              {
+                method: 'upi'
+              },
+            ]
+          },
+          other: { //  name for other block
+            name: "Other Payment modes",
+            instruments: [
+              {
+                method: "card",
+                issuers: ["ICIC"]
+              },
+              {
+                method: 'netbanking',
+              }
+            ]
+          }
+        },
+        // hide: [
+        //   {
+        //   method: "upi"
+        //   }
+        // ],
+        sequence: ["block.utib", "block.other"],
+        preferences: {
+          show_default_blocks: false // Should Checkout show its default blocks?
+        }
+      }
+    },
+    // "handler": function (response) {
+    //   alert(response.razorpay_payment_id);
+    // },
+    "modal": {
+      "ondismiss": function () {
+        if (confirm("Are you sure, you want to close the form?")) {
+          const txt = "You pressed OK!";
+          console.log("Checkout form closed by the user");
+        } else {
+          const txt = "You pressed Cancel!";
+          console.log("Complete the Payment")
+        }
+      }
+    }
+  };
+
+  rzp1:any;
+  
+  payAmount(id:number){
+    this.paymentinfo.getPolicyPayementsById(id).subscribe((response)=>{
+      //var c = response
+      this.amount=response.totalAmount
+      response.isPaid = true;
+      this.paymentinfo.updatePolicyPayments(response).subscribe({
+     
+        next:(resopnse1:any)=>{
+          console.log(resopnse1)
+          // location.reload();
+          this.getPolicyPaymentData()
+          // alert("Policy Claim Added");
+          // this.router.navigateByUrl("/admin")
+        },
+        error(errorResponse:HttpErrorResponse){
+          console.log(errorResponse)
+        }
+       
+      })
+    })
+    this.rzp1 = new this.paymentinfo.nativeWindow.Razorpay(this.options);
+    this.rzp1.open();
   }
 }

@@ -14,7 +14,7 @@ export class AddInsurancePlanComponent {
   insuranceSchemeData:any
   insurancePlanData:any
   insurancePlanForm=new FormGroup({
-    insurenceSchemeId: new FormControl('', [Validators.required]),
+    insuranceSchemeId: new FormControl('', [Validators.required]),
     minPolicyTerm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(60)]),
     maxPolicyTerm: new FormControl('', [Validators.required, Validators.min(1), Validators.max(60)]),
     minAge: new FormControl('', [Validators.required, Validators.maxLength(3), Validators.pattern(/^[0-9]+$/)]),
@@ -23,19 +23,32 @@ export class AddInsurancePlanComponent {
     maxInvestmentAmount: new FormControl('', [Validators.required, Validators.min(1)]),
     profitRatioPercentage: new FormControl('', [Validators.required, Validators.min(0)])
   })
+  minPolicyTerm:number=0
+  maxPolicyTerm:number=0
+  minAge:number=0
+  maxAge:number=0
+  minInvestmentAmount:number=0
+  maxInvestmentAmount:number=0
   constructor(private insuranceService:InsuranceService,private router:Router){
-    insuranceService.getInsuranceScheme().subscribe({
-      next:(result)=>{
-        this.insuranceSchemeData=result
-        console.log(this.insuranceSchemeData)
-      },
-      error(errorResponse:HttpErrorResponse){
-        console.log(errorResponse)
-      }
+    // debugger
+  }
+  getInsurancePlan(){
+    // this.insuranceService.getInsuranceScheme().subscribe({
+    //   next:(result)=>{
+    //     this.insuranceSchemeData=result
+    //     console.log(this.insuranceSchemeData)
+    //   },
+    //   error(errorResponse:HttpErrorResponse){
+    //     console.log(errorResponse)
+    //   }
+    // })
+    this.insuranceService.getInsuranceScheme().subscribe((data)=>{
+      this.insuranceSchemeData=data
     })
   }
   ngOnInit():void{
     // debugger
+    
     var token=localStorage.getItem('token')
     
     var role = localStorage.getItem('role')
@@ -47,8 +60,10 @@ export class AddInsurancePlanComponent {
       alert('Please Login As Admin')
       this.router.navigateByUrl('/login')
     }
+    this.getInsurancePlan()
   }
   addInsuranceScheme(data:any){
+    // debugger
     console.log(this.insurancePlanForm)
     this.insuranceService.addInsurancePlan(data).subscribe({
       next:(resopnse)=>{

@@ -11,22 +11,4 @@ import { TemporaryDataService } from '../service/temporary-data.service';
 })
 export class ServicesComponent {
 
-  insuranceTypeData:Array<any>
-  constructor(private insuranceService:InsuranceService,private temporarydata:TemporaryDataService,private router:Router){
-    this.insuranceTypeData=new Array<any>()
-    insuranceService.getInsuranceType().subscribe({
-      next:(data)=>{
-        this.insuranceTypeData=data
-      }
-    })
-
   }
-  setInsuranceTypeId(id:number){
-    this.temporarydata.insuranceTypeId=id
-    this.router.navigateByUrl('/customerInsurancePlan')
-  }
-  
-  loginPage(){
-    this.router.navigateByUrl('/login')
-  }
-}

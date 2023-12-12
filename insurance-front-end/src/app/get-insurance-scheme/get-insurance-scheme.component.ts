@@ -17,27 +17,30 @@ export class GetInsuranceSchemeComponent {
   totalRecords:number=0
   constructor(private insuranceService:InsuranceService, private router: Router,protected temporaryData:TemporaryDataService){
     this.insuranceSchemeData=new Array<any>()
-    insuranceService.getInsuranceScheme().subscribe({
-      next:(data)=>{
-      this.insuranceSchemeData=data
-      this.totalRecords=data.length
-      console.log(this.totalRecords)
-      console.log(this.insuranceSchemeData)
-      // debugger
-      
-    },
-    error:(errorResponse:HttpErrorResponse)=>{
-      console.log(errorResponse)
-    }
-  })
-  insuranceService.getInsuranceType().subscribe({
-    next:(result)=>{
-      this.insuranceTypeData=result
-    },
-    error(errorResponse:HttpErrorResponse){
-      console.log(errorResponse)
-    }
-  })
+    this.getInsuranceScheme()
+}
+getInsuranceScheme(){
+  this.insuranceService.getInsuranceScheme().subscribe({
+    next:(data)=>{
+    this.insuranceSchemeData=data
+    this.totalRecords=data.length
+    console.log(this.totalRecords)
+    console.log(this.insuranceSchemeData)
+    // debugger
+    
+  },
+  error:(errorResponse:HttpErrorResponse)=>{
+    console.log(errorResponse)
+  }
+})
+this.insuranceService.getInsuranceType().subscribe({
+  next:(result)=>{
+    this.insuranceTypeData=result
+  },
+  error(errorResponse:HttpErrorResponse){
+    console.log(errorResponse)
+  }
+})
 }
 pageSize:number=5;
   changePageSize(event:any){
@@ -78,9 +81,14 @@ deleteData(id:number){
   this.insuranceService.deleteInsuranceScheme(id).subscribe({
     next:(response)=>{
       alert('data deleted')
-      location.reload()
+      this.getInsuranceScheme()
     }
   })
+}
+getInsuranceTypeName(id:number){
+  const insuranceTypeName=this.insuranceTypeData.find((x:any)=>x.id===id)
+    return insuranceTypeName ?`${insuranceTypeName.insuranceTypeName}`:`insuranceType Not Found`;
+  
 }
 // findInsuranceTypeName(id:number){
 //   // debugger

@@ -15,6 +15,9 @@
   <div *ngIf="temporaryData.getRole()=='Agent'">
     <app-agent-navbar></app-agent-navbar>
   </div>
+  <div *ngIf="temporaryData.getRole()!='Admin' && temporaryData.getRole()!='Agent'">
+    <app-default-page-navbar></app-default-page-navbar>
+</div>
     <!-- <header>
         <app-admin-navbar></app-admin-navbar>
     </header> -->

@@ -160,7 +160,13 @@ export class InsuranceService {
   deleteInsuranceType(id:number){
     return this.http.delete(this.url+"/InsuranceType/"+id)
   }
+  isTypeNameUnique(name:string){
+    return this.http.get(this.url + "/InsuranceType/Unique/" + name)
+  }
   //InsuranceScheme
+  isSchemeNameUnique(name:string){
+    return this.http.get(this.url + "/InsuranceScheme/Unique/" + name)
+  }
   addInsuranceScheme(data:any){
     return this.http.post(this.url+"/InsuranceScheme",data)
   }
@@ -204,6 +210,9 @@ export class InsuranceService {
   }
   deletePolicyPayments(id:number){
     return this.http.delete(this.url+"/PolicyPayment/"+id)
+  }
+  getPolicyPayementsById(id:number):Observable<any>{
+    return this.http.get(this.url+"/PolicyPayment/"+id)
   }
   //policy claim
   getPolicyClaim():Observable<any>{

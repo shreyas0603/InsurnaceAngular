@@ -44,4 +44,20 @@ export class AddInsuranceTypeComponent {
       }
     })
   }
+  typeName:string=''
+  isUnique:any
+  checkTypeNameUniqueness() {
+    // debugger
+    if (this.typeName) {
+      this.insuranceTypeInfo.isTypeNameUnique(this.typeName).subscribe({
+        next: (result) => {
+          console.log(result)
+          this.isUnique=result;
+        },
+        error: (Httperror: HttpErrorResponse) => {
+          console.log(Httperror);
+        }
+      });
+    }
+  }
 }

@@ -63,7 +63,14 @@ export class GetInsurancePlanComponent {
       }
     })
   }
-
+  getInsuranceSchemeName(id:number){
+    this.insuranceService.getInsuranceScheme().subscribe((data)=>{
+      this.insuranceSchemeData=data
+    })
+    const insuranceSchemeName=this.insuranceSchemeData.find((x:any)=>x.id===id)
+    return insuranceSchemeName ?`${insuranceSchemeName.insuranceSchemeName}`:`insuranceScheme Not Found`;
+  
+  }
 // findInsuranceTypeName(id:number){
 //   // debugger
 //   this.insuranceService.getInsuranceTypeById(id).subscribe({

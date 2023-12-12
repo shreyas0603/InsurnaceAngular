@@ -59,8 +59,9 @@ export class UpdateCustomerInsuranceAccountComponent {
   }
   updateCustomerAccount(data:any){
     // this.insuranceTypeForm.id=this.insuranceTypeId
+    debugger
     console.log(data)
-    this.accountinfo.updateCustomer(data).subscribe({
+    this.accountinfo.updateCustomerInsuranceAccount(data).subscribe({
       next:(resopnse)=>{
         console.log(resopnse)
         alert("Insurance type Added");

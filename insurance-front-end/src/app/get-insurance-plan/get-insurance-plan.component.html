@@ -16,7 +16,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-            <!-- <th scope="col">Insurance Type Name</th> -->
+            <th scope="col">Insurance Scheme Name</th>
 			<th scope="col">Minimum Policy Term</th>
             <th scope="col">Max Policy Term</th>
             <th scope="col">Minimum Age</th>
@@ -37,6 +37,7 @@
       totalItems:totalRecords
     };index as i">
 			<!-- <td>{{insuranceTypeData.insuranceTypeName}}</td> -->
+			<td>{{getInsuranceSchemeName(insurancePlan.insuranceSchemeId)}}</td>
 			<td>
 				{{ insurancePlan.minPolicyTerm}}
 			</td>

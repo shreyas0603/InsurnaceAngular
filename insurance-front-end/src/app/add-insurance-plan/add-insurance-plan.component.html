@@ -16,7 +16,7 @@
       <!-- <p>Kindly enter the credentials</p> -->
       <label >Insurance Scheme <span>*</span></label>
       <div class="form-group">
-      <select  id="account-type" name="account-type" formControlName="accountType">
+      <select  id="account-type" name="account-type" formControlName="insuranceSchemeId">
         
         <!-- <option  disabled selected>Choose Insurance Scheme</option> -->
         <option value="" disabled selected>Choose your profile</option>
@@ -27,46 +27,55 @@
     </div>
     <div class="form-group">
       <label for="username">Min Policy Term <span>*</span></label>
-      <input type="number"  placeholder="" formControlName="minPolicyTerm" required>
+      <input type="number"  placeholder="" formControlName="minPolicyTerm" [(ngModel)]="minPolicyTerm" required>
       <div *ngIf="insurancePlanForm.get('minPolicyTerm')?.hasError('required') && insurancePlanForm.get('minPolicyTerm')?.touched">
         minPolicyTerm is mandatory.
     </div>
     </div>
     <div class="form-group">
       <label for="username">Max Policy Term <span>*</span></label>
-      <input type="number"  placeholder="" formControlName="maxPolicyTerm" required>
+      <input type="number"  placeholder="" formControlName="maxPolicyTerm" [(ngModel)]="maxPolicyTerm" required>
       <div *ngIf="insurancePlanForm.get('maxPolicyTerm')?.hasError('required') && insurancePlanForm.get('maxPolicyTerm')?.touched">
         maxPolicyTerm is mandatory.
     </div>
+    <div *ngIf="maxPolicyTerm<minPolicyTerm">
+      maxPolicyTerm should be greater.
+  </div>
     </div>
     <div class="form-group">
       <!-- <label for="username">Username</label> -->
       <label for="username">Min Age <span>*</span></label>
-      <input type="number"  placeholder="" formControlName="minAge" required>
+      <input type="number"  placeholder="" formControlName="minAge" [(ngModel)]="minAge" required>
       <div *ngIf="insurancePlanForm.get('minAge')?.hasError('required') && insurancePlanForm.get('minAge')?.touched">
         minAge is mandatory.
     </div>
     </div>
     <div class="form-group">
       <label for="username">Max Age <span>*</span></label>
-          <input type="number"  placeholder="" formControlName="maxAge" required>
+          <input type="number"  placeholder="" formControlName="maxAge" [(ngModel)]="maxAge" required>
           <div *ngIf="insurancePlanForm.get('maxAge')?.hasError('required') && insurancePlanForm.get('maxAge')?.touched">
             maxAge is mandatory.
         </div>
+        <div *ngIf="maxAge<minAge">
+          maxAge should be greater.
+      </div>
         </div>
       <div class="form-group">
         <label for="username">Min Investment Amount <span>*</span></label>
-          <input type="number"  placeholder="" formControlName="minInvestmentAmount" required>
+          <input type="number"  placeholder="" formControlName="minInvestmentAmount" [(ngModel)]="minInvestmentAmount" required>
           <div *ngIf="insurancePlanForm.get('minInvestmentAmount')?.hasError('required') && insurancePlanForm.get('minInvestmentAmount')?.touched">
             minInvestmentAmount is mandatory.
         </div>
         </div>
       <div class="form-group">
         <label for="username">Max Investment Amount <span>*</span></label>
-          <input type="number" placeholder="" formControlName="maxInvestmentAmount" required>
+          <input type="number" placeholder="" formControlName="maxInvestmentAmount" [(ngModel)]="maxInvestmentAmount" required>
           <div *ngIf="insurancePlanForm.get('maxInvestmentAmount')?.hasError('required') && insurancePlanForm.get('maxInvestmentAmount')?.touched">
             maxInvestmentAmount is mandatory.
         </div>
+        <div *ngIf="maxInvestmentAmount<minInvestmentAmount">
+          maxInvestmentAmount should be greater.
+      </div>
         </div>
       <div class="form-group">
         <label for="username">Profit Ratio Percentage <span>*</span></label>
@@ -78,7 +87,7 @@
         
 
 
-      <button type="submit" [disabled]="insurancePlanForm">Submit</button>
+      <button type="submit" >Submit</button>
     </form>
   </div>
 </body>

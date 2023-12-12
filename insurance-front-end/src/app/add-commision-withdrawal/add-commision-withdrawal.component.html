@@ -27,18 +27,19 @@
          <input type="text" id="username" name="username" placeholder=" {{calculateTotal()}} {{makeTotalZero()}}" disabled  >
            <br>
            <!-- <label >{{calculateTotal()}} {{makeTotalZero()}}</label>  -->
- 
+           <div class="form-group">
          <label for="username"> withdrawalAmount <span>*</span></label>
          <input type="text" id="username" name="username"
-         formControlName="withdrawalAmount">
- 
+         formControlName="withdrawalAmount" [(ngModel)]="amount" (input)="checkIfAmountIsGreater()">
+         <div style="color: red;" *ngIf="isGreater === false">Amount Should be less.</div>
+        </div>
          <input type="hidden" id="username" name="username"
          formControlName="agentId" [(ngModel)]="agentId">
  
          <!-- <input type="hidden" id="username" name="username"
          formControlName="isApproved" placeholder="true" > -->
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" [disabled]="!isGreater">Submit</button>
     </form>
   </div>
 </body>

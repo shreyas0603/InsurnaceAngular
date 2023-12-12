@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { InsuranceService } from '../service/insurance.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -16,11 +16,12 @@ export class AddCommisionWithdrawalComponent {
   commisionData:any
   total:number=0;
   totalWithdrawalAmount:number=0
+  isGreater:boolean=true
   addWithrawal = new FormGroup({
     // id: new FormGroup(''),
     requestDate : new FormControl(''),
     withdrawalAmount: new FormControl(''),
-    agentId:new FormControl(''),
+    agentId:new FormControl('',[Validators.required, this.maxValue(500)]),
     // isApproved:new FormControl('')
    
   })
@@ -43,20 +44,40 @@ export class AddCommisionWithdrawalComponent {
     // this.calculateTotal()
     // this.makeTotalZero()
   }
- 
+  maxValue(max: number) {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+  
+      if (isNaN(value) || value > max) {
+        return { maxValue: { max } };
+      }
+  
+      return null;
+    };
+  }
   addCommisionWithdrawal(data:any){
     this.insuranceservice.addCommisionWithdrawal(data).subscribe({
       next:(result)=>{
         alert("Commision withdrawal Added Successfully")
         console.log(result)
-        // this.router.navigateByUrl("/admin")
+        this.router.navigateByUrl("/agent")
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse)
       }
     })
   }
- 
+  amount:number=0
+  checkIfAmountIsGreater(){
+    const t = this.calculateTotal()
+    this.makeTotalZero()
+    if(t<this.amount){
+      this.isGreater=false
+    }
+    else{
+      this.isGreater=true
+    }
+  }
   calculateTotal() {
     // if (!this.commisionData) {
     //   return 0;

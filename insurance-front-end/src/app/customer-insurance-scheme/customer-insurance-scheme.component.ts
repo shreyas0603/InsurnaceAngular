@@ -52,6 +52,8 @@ export class CustomerInsuranceSchemeComponent {
       this.insurancePlanData=this.insurancePlanData.filter(x=>x.insuranceSchemeId===this.insurnaceSchemeId ,)
       console.log(this.insurancePlanData);
       this.temporaryData.planId=this.insurancePlanData[0].id
+      this.yrs=this.insurancePlanData[0].minPolicyTerm
+      this.investAmt=this.insurancePlanData[0].minInvestmentAmount
       console.log('plan: '+ this.temporaryData.planId)
     },
     error(errorResponse:HttpErrorResponse){
@@ -82,6 +84,28 @@ export class CustomerInsuranceSchemeComponent {
       }
     })
   }
+  yrs:number=0
+  investAmt:number=0
+  mnths:number=0
+  checkYears(){
+    
+    if(this.yrs<this.insurancePlanData[0].minPolicyTerm || this.yrs>this.insurancePlanData[0].maxPolicyTerm){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+  checkInvestmentAmount(){
+    
+    if(this.investAmt<this.insurancePlanData[0].minInvestmentAmount || this.investAmt>this.insurancePlanData[0].maxInvestmentAmount){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+  
   calculateInterest(data:any){
 
     this.calculateData=data

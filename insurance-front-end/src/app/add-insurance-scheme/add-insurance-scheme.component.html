@@ -27,10 +27,11 @@
     </div>
     <div class="form-group">
       <label for="username">Insurance Scheme Name <span>*</span></label>
-      <input type="text" placeholder="" formControlName="insuranceSchemeName">
+      <input type="text" placeholder="" formControlName="insuranceSchemeName" [(ngModel)]="schemeName" (input)="checkTypeNameUniqueness()">
       <div *ngIf="insuranceSchemeForm.get('insuranceSchemeName')?.hasError('required') && insuranceSchemeForm.get('insuranceSchemeName')?.touched">
         insuranceSchemeName is mandatory.
     </div>
+    <div align="left" *ngIf="isUnique === false">Name is not unique.</div>
     </div>
     <div class="form-group">
       <label for="username">New Registrastion Commision <span>*</span></label>
@@ -58,7 +59,7 @@
         </div>
         </div>
         
-      <button type="submit" [disabled]="insuranceSchemeForm">Submit</button>
+      <button type="submit" >Submit</button>
     </form>
   </div>
 </body>

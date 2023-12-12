@@ -16,7 +16,10 @@ export class GetLocationComponent {
   
   constructor(private locationinfo:InsuranceService,protected temporaryData:TemporaryDataService,private router:Router){
     this.locationData=new Array<any>()
-    locationinfo.getLocation().subscribe((data)=>{
+    this.getLocation()
+  }
+  getLocation(){
+    this.locationinfo.getLocation().subscribe((data)=>{
       this. locationData=data
       this.totalRecords=data.length
       console.log(this.locationData);
@@ -47,7 +50,7 @@ export class GetLocationComponent {
     this.locationinfo.deleteLocation(id).subscribe({
       next:(response)=>{
         alert('data deleted')
-        location.reload()
+        this.getLocation()
       }
     })
   }

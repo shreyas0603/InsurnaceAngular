@@ -101,6 +101,12 @@ export class AddCustomerComponent {
     this.customerInfo.addCustomer(data).subscribe({
       next:(result)=>{
         alert("Customer Added Successfully")
+        if(this.temporaryData.getRole()=='Agent'){
+          this.router.navigateByUrl('/agentCustomer')
+        }
+        else{
+          this.router.navigateByUrl('/login')
+        }
         console.log(result)
         // this.router.navigateByUrl("/admin")
       },
