@@ -1,5 +1,6 @@
 Insurance Application
 Overview
+
 This is a full-stack insurance management application built with .NET Core for the backend and Angular for the frontend, using a REST API architecture. The application is divided into four modules: Admin, Customer, Employee, and Agent, each offering specific functionalities to manage insurance policies, customer interactions, commissions, and more.
 
 Features
